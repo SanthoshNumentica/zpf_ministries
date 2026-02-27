@@ -7,6 +7,11 @@
   <title>ZPF Ministries</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
 
   <!-- Favicons -->
   <!-- Fonts -->
@@ -144,89 +149,7 @@
     </section>
     <!-- Schedule Section -->
     <section id="schedule" class="schedule section light-background">
-      <section id="call-to-action" class="call-to-action section dark-background">
 
-        <div class="container">
-
-          <div class="row justify-content-center">
-            <div class="col-lg-8 text-center">
-              <h2 class="display-4 mb-4">Ready to Transform Your Professional Network?</h2>
-              <p class="lead mb-5">Join industry leaders and innovators at the premier professional development
-                conference. Secure your place among 5,000+ forward-thinking professionals from 25+ countries.</p>
-            </div>
-          </div>
-
-          <div class="row justify-content-center mb-5">
-            <div class="col-lg-10">
-              <div class="stats-wrapper">
-                <div class="row g-4">
-                  <div class="col-lg-3 col-md-6">
-                    <div class="stat-item">
-                      <div class="stat-icon">
-                        <i class="bi bi-people"></i>
-                      </div>
-                      <div class="stat-number" data-purecounter-start="0" data-purecounter-end="5000"
-                        data-purecounter-duration="2">5000</div>
-                      <div class="stat-label">Expected Attendees</div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="stat-item">
-                      <div class="stat-icon">
-                        <i class="bi bi-person-badge"></i>
-                      </div>
-                      <div class="stat-number" data-purecounter-start="0" data-purecounter-end="85"
-                        data-purecounter-duration="2">85</div>
-                      <div class="stat-label">Expert Speakers</div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="stat-item">
-                      <div class="stat-icon">
-                        <i class="bi bi-globe"></i>
-                      </div>
-                      <div class="stat-number" data-purecounter-start="0" data-purecounter-end="25"
-                        data-purecounter-duration="2">25</div>
-                      <div class="stat-label">Countries Represented</div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                    <div class="stat-item">
-                      <div class="stat-icon">
-                        <i class="bi bi-calendar-event"></i>
-                      </div>
-                      <div class="stat-number" data-purecounter-start="0" data-purecounter-end="3"
-                        data-purecounter-duration="2">3</div>
-                      <div class="stat-label">Days of Excellence</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row justify-content-center">
-            <div class="col-lg-6 text-center">
-              <div class="cta-content">
-                <h3 class="mb-4">Early Bird Registration Ends Soon</h3>
-                <p class="mb-4">Secure your spot at the exclusive rate. Limited availability for premium networking
-                  sessions and workshop access.</p>
-                <div class="cta-buttons">
-                  <a href="#" class="btn btn-primary btn-lg me-3">Register Now</a>
-                  <a href="#" class="btn btn-outline-secondary btn-lg">Download Brochure</a>
-                </div>
-                <div class="security-note mt-4">
-                  <small>
-                    <i class="bi bi-shield-check me-2"></i>
-                    Secure payment processing • Full refund policy • ISO certified event management
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </section><!-- /Call To Action Section -->
 
       <!-- Testimonials Section -->
       <section id="testimonials" class="testimonials section">
@@ -237,51 +160,55 @@
         </div>
       </section>
 
-      <section id="videos" class="gallery section">
-        <div class="container-fluid">
-          <div class="row gy-4 justify-content-center">
+      <section id="videos" class="videos section">
+        <div class="container">
+          <div class="row gy-4">
 
             <!-- Video 1 -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="video-item">
+            <div class="col-lg-4 col-md-6">
+              <div class="video-box">
+
+                <h4 class="video-title">Sunday Worship Service</h4>
+                <p class="video-desc">Watch our powerful Sunday worship and message.</p>
+
                 <div class="ratio ratio-16x9">
-                  <iframe src="https://www.youtube.com/live/seFPZUvjjjQ?si=XRou16XOYCYk-Hoi" title="YouTube video"
+                  <iframe src="https://www.youtube.com/embed/seFPZUvjjjQ" title="Sunday Worship Service"
                     allowfullscreen>
                   </iframe>
                 </div>
+
               </div>
             </div>
 
             <!-- Video 2 -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="video-item">
+            <div class="col-lg-4 col-md-6">
+              <div class="video-box">
+
+                <h4 class="video-title">Special Prayer Meeting</h4>
+                <p class="video-desc">Join us in a special live prayer session.</p>
+
                 <div class="ratio ratio-16x9">
-                  <iframe src="https://www.youtube.com/live/9jwZmBheCIY?si=3vhyEMh5r7zZ9WC1" title="YouTube video"
+                  <iframe src="https://www.youtube.com/embed/9jwZmBheCIY" title="Special Prayer Meeting"
                     allowfullscreen>
                   </iframe>
                 </div>
+
               </div>
             </div>
 
             <!-- Video 3 -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="video-item">
-                <div class="ratio ratio-16x9">
-                  <iframe src="https://www.youtube.com/live/c3jWhjjqdaQ?si=uCejf-11_jTor_mR" title="YouTube video"
-                    allowfullscreen>
-                  </iframe>
-                </div>
-              </div>
-            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="video-box">
 
-            <!-- Video 4 -->
-            <div class="col-xl-3 col-lg-4 col-md-6">
-              <div class="video-item">
+                <h4 class="video-title">Youth Fellowship Program</h4>
+                <p class="video-desc">Highlights from our recent youth fellowship gathering.</p>
+
                 <div class="ratio ratio-16x9">
-                  <iframe src="https://www.youtube.com/live/2g1g-513giE?si=Pqlxb7gQaUDKMf7e" title="YouTube video"
+                  <iframe src="https://www.youtube.com/embed/c3jWhjjqdaQ" title="Youth Fellowship Program"
                     allowfullscreen>
                   </iframe>
                 </div>
+
               </div>
             </div>
 
@@ -312,62 +239,15 @@
             <a href=""><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Hic solutasetp</h4>
-          <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Nobis illum</h4>
-          <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
-          </ul>
-        </div>
-
       </div>
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">MyWebsite</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">ZPF Ministries</strong> <span>All Rights Reserved</span>
+      </p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+
+        Designed by <a href="https://santhoshs.co.in/">Santhosh</a>
       </div>
     </div>
 
