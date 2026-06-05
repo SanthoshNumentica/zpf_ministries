@@ -72,15 +72,15 @@ export default function LoginGate({ children }) {
             <stop offset="100%" stopColor="#aa771c" />
           </linearGradient>
         </defs>
-        <path 
-          d="M50,15 L50,85 M35,38 L65,38" 
-          stroke="url(#goldCrossGrad)" 
-          strokeWidth="1.2" 
+        <path
+          d="M50,15 L50,85 M35,38 L65,38"
+          stroke="url(#goldCrossGrad)"
+          strokeWidth="1.2"
           strokeLinecap="round"
         />
       </svg>
 
-      <motion.div 
+      <motion.div
         className="login-card-container"
         initial={{ opacity: 0, y: 50, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -89,7 +89,7 @@ export default function LoginGate({ children }) {
         <div className="login-card-glow"></div>
         <div className="login-card">
           <div className="login-header text-center">
-            <motion.div 
+            <motion.div
               className="logo-icon-wrapper"
               animate={{ y: [0, -6, 0] }}
               transition={{ repeat: Infinity, duration: 3.5, ease: "easeInOut" }}
@@ -106,8 +106,8 @@ export default function LoginGate({ children }) {
               <label className="form-label">Date of Birth</label>
               <div className="input-group-custom">
                 <i className="bi bi-calendar3 input-icon"></i>
-                <input 
-                  type="date" 
+                <input
+                  type="date"
                   className="form-control-custom"
                   value={dob}
                   onChange={(e) => setDob(e.target.value)}
@@ -149,7 +149,7 @@ export default function LoginGate({ children }) {
                     {num}
                   </motion.button>
                 ))}
-                
+
                 {/* Clear button */}
                 <motion.button
                   type="button"
@@ -160,7 +160,7 @@ export default function LoginGate({ children }) {
                 >
                   C
                 </motion.button>
-                
+
                 {/* Zero */}
                 <motion.button
                   type="button"
@@ -171,7 +171,7 @@ export default function LoginGate({ children }) {
                 >
                   0
                 </motion.button>
-                
+
                 {/* Delete button */}
                 <motion.button
                   type="button"
@@ -189,7 +189,7 @@ export default function LoginGate({ children }) {
             {/* Error Message */}
             <AnimatePresence>
               {error && (
-                <motion.div 
+                <motion.div
                   className="login-error-alert"
                   initial={{ opacity: 0, y: -10, height: 0 }}
                   animate={{ opacity: 1, y: 0, height: 'auto' }}
@@ -202,8 +202,8 @@ export default function LoginGate({ children }) {
               )}
             </AnimatePresence>
 
-            <motion.button 
-              type="submit" 
+            <motion.button
+              type="submit"
               className="btn-login-submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -215,7 +215,7 @@ export default function LoginGate({ children }) {
 
           <div className="credential-hint mt-4 text-center">
             <p className="hint-title">🔑 Access Code Hint</p>
-            <p className="hint-detail">DOB: <code>1995-08-15</code> | Pin: <code>7777</code></p>
+            <p className="hint-detail">DOB: <code>15-08-1995</code> | Pin: <code>7777</code></p>
           </div>
         </div>
       </motion.div>
