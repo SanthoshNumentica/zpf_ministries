@@ -152,12 +152,7 @@ export default function Admin() {
                     </button>
                   </form>
 
-                  <div className="credential-hint mt-4 text-center">
-                    <p className="hint-title">🔑 Admin Credentials Hint</p>
-                    <p className="hint-detail">
-                      Email: <code>admin@gmail.com</code> | Pass: <code>Admin@123</code>
-                    </p>
-                  </div>
+
                 </div>
               </div>
             </motion.div>
