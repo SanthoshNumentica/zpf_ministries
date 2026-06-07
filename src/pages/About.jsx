@@ -119,7 +119,7 @@ export default function About() {
                   </div>
                   <div className="stat-content">
                     <h4>Weekly Services</h4>
-                    <p>Join us every Sunday for spirit-filled praise and worship</p>
+                    <p>Join us every Friday for spirit-filled praise and worship</p>
                   </div>
                 </motion.div>
 

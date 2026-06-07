@@ -202,12 +202,12 @@ export default function Home() {
             {/* Video 1 */}
             <div className="col-lg-4 col-md-6">
               <motion.div className="video-box" variants={fadeInUp}>
-                <h4 className="video-title">Sunday Worship Service</h4>
-                <p className="video-desc">Watch our powerful Sunday worship and message.</p>
+                <h4 className="video-title">Friday Worship Service</h4>
+                <p className="video-desc">Watch our powerful Friday worship and message.</p>
                 <div className="ratio ratio-16x9">
                   <iframe 
                     src="https://www.youtube.com/embed/seFPZUvjjjQ" 
-                    title="Sunday Worship Service"
+                    title="Friday Worship Service"
                     allowFullScreen
                   ></iframe>
                 </div>

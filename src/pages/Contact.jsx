@@ -150,8 +150,8 @@ export default function Contact() {
                 </div>
                 <div className="info-content">
                   <h4>Church Service Timing</h4>
-                  <p>Sunday Morning: 9:00 AM - 12:30 PM</p>
-                  <p>Sunday Evening: 6:00 PM - 8:30 PM</p>
+                  <p>Friday Morning: 9:00 AM - 12:30 PM</p>
+                  <p>Friday Evening: 6:00 PM - 8:30 PM</p>
                 </div>
               </motion.div>
             </div>
