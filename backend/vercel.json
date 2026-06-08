@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "buildCommand": "cd backend && pnpm run build",
+  "outputDirectory": "backend/dist",
   "framework": null
 }
