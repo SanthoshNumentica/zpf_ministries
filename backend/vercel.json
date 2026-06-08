@@ -1,5 +1,5 @@
 {
   "buildCommand": "pnpm run build",
-  "outputDirectory": "backend/dist",
+  "outputDirectory": "dist",
   "framework": null
 }
