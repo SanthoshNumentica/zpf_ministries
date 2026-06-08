@@ -1,6 +1,0 @@
-import * as Prisma from './internal/prismaNamespaceBrowser.js';
-export { Prisma };
-export * as $Enums from './enums.js';
-export * from './enums.js';
-export type SanctuaryUser = Prisma.SanctuaryUserModel;
-export type Admin = Prisma.AdminModel;
