@@ -4,11 +4,14 @@
   "description": "ZPF Ministries - Frontend and Backend",
   "private": true,
   "scripts": {
-    "install:all": "pnpm install && cd frontend && pnpm install && cd ../backend && pnpm install",
-    "build:frontend": "cd frontend && pnpm run build",
+    "install:all": "pnpm install &&  pnpm install && cd ../backend && pnpm install",
+    "build:frontend": " pnpm run build",
     "build:backend": "pnpm run build",
     "build": "pnpm run build:backend && pnpm run build:frontend",
-    "dev:frontend": "cd frontend && pnpm run dev",
+    "dev:frontend": " pnpm run dev",
     "dev:backend": "pnpm run start:dev"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2"
   }
 }
