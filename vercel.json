@@ -1,8 +1,10 @@
 {
+  "buildCommand": "pnpm run build:frontend",
+  "outputDirectory": "frontend/dist",
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/api/index"
+      "destination": "/backend/api"
     },
     {
       "source": "/(.*)",

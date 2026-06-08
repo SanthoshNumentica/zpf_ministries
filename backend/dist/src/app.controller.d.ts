@@ -20,5 +20,11 @@ export declare class AppController {
     }): Promise<{
         token: string;
     }>;
-    getUsers(authHeader: string): Promise<any>;
+    getUsers(authHeader: string): Promise<{
+        id: number;
+        dob: string;
+        passcode: string;
+        createdAt: Date;
+        updatedAt: Date;
+    }[]>;
 }
