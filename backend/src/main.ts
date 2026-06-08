@@ -2,16 +2,9 @@ import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { ExpressAdapter } from '@nestjs/platform-express';
-import express from 'express';
 
-const server = express();
-
-async function createApp() {
-  const app = await NestFactory.create(
-    AppModule,
-    new ExpressAdapter(server),
-  );
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
 
   app.enableCors();
 
@@ -25,10 +18,9 @@ async function createApp() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.init();
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
 
-  return server;
+  console.log(`🚀 Server running on port ${port}`);
 }
-
-// IMPORTANT: export handler for Vercel
-export default createApp() as any;
+bootstrap();
