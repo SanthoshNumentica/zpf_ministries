@@ -39,22 +39,13 @@ export default function LoginGate({ children }) {
     }
   }
 
-  // Handle keypad taps
-  const handleKeyPress = (num) => {
-    setError('')
-    if (password.length < 10) {
-      setPassword((prev) => prev + num)
+  // Handle password input from keyboard
+  const handlePasswordChange = (e) => {
+    const value = e.target.value.replace(/\D/g, '') // Only allow numbers
+    if (value.length <= 10) {
+      setError('')
+      setPassword(value)
     }
-  }
-
-  const handleDelete = () => {
-    setError('')
-    setPassword((prev) => prev.slice(0, -1))
-  }
-
-  const handleClear = () => {
-    setError('')
-    setPassword('')
   }
 
   const handleLoginSubmit = async (e) => {
@@ -96,11 +87,6 @@ export default function LoginGate({ children }) {
     return <>{children}</>
   }
 
-  // Display dots (at least 4, expanding if more characters typed)
-  const numDots = Math.max(4, password.length)
-  const dotsArray = Array.from({ length: numDots })
-
-  const keypadNumbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 
   return (
     <div className="login-gate-wrapper">
@@ -165,73 +151,22 @@ export default function LoginGate({ children }) {
               </div>
             </div>
 
-            {/* Step 2: Passcode secure dot display */}
-            <div className="form-group mb-4 text-center">
-              <label className="form-label d-block mb-3">Security Passcode</label>
-              <div className="passcode-dots-container d-flex justify-content-center gap-3">
-                {dotsArray.map((_, index) => {
-                  const isFilled = index < password.length
-                  return (
-                    <motion.div
-                      key={index}
-                      className={`passcode-dot ${isFilled ? 'filled' : ''}`}
-                      animate={isFilled ? { scale: [1, 1.2, 1], shadow: '0 0 10px #e5c158' } : { scale: 1 }}
-                      transition={{ duration: 0.2 }}
-                    />
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* Step 3: Interactive numeric dialer */}
-            <div className="keypad-container mb-4">
-              <div className="keypad-grid">
-                {keypadNumbers.map((num) => (
-                  <motion.button
-                    key={num}
-                    type="button"
-                    className="keypad-btn"
-                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(229, 193, 88, 0.15)' }}
-                    whileTap={{ scale: 0.93 }}
-                    onClick={() => handleKeyPress(num)}
-                  >
-                    {num}
-                  </motion.button>
-                ))}
-
-                {/* Clear button */}
-                <motion.button
-                  type="button"
-                  className="keypad-btn control"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.93 }}
-                  onClick={handleClear}
-                >
-                  C
-                </motion.button>
-
-                {/* Zero */}
-                <motion.button
-                  type="button"
-                  className="keypad-btn"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.93 }}
-                  onClick={() => handleKeyPress('0')}
-                >
-                  0
-                </motion.button>
-
-                {/* Delete button */}
-                <motion.button
-                  type="button"
-                  className="keypad-btn control"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.93 }}
-                  onClick={handleDelete}
-                  aria-label="Delete last digit"
-                >
-                  <i className="bi bi-backspace"></i>
-                </motion.button>
+            {/* Step 2: Passcode input */}
+            <div className="form-group mb-4">
+              <label className="form-label">Security Passcode</label>
+              <div className="input-group-custom">
+                <i className="bi bi-key input-icon"></i>
+                <input
+                  type="password"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  className="form-control-custom"
+                  placeholder="Enter numbers only"
+                  value={password}
+                  onChange={handlePasswordChange}
+                  required
+                  maxLength={10}
+                />
               </div>
             </div>
 
