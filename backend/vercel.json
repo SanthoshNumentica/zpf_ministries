@@ -3,7 +3,7 @@
   "buildCommand": "pnpm run build",
   "functions": {
     "dist/main.js": {
-      "runtime": "@vercel/node"
+      "runtime": "nodejs20.x"
     }
   },
   "routes": [
