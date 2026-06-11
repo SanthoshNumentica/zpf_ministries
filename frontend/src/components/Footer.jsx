@@ -3,44 +3,63 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
-    <footer id="footer" className="footer position-relative dark-background">
-      <div className="container footer-top">
-        <div className="row gy-4">
+    <footer id="footer" className="footer redesign-footer">
+      <div className="container">
+        <div className="redesign-footer-row">
           
-          {/* Left Side */}
-          <div className="col-lg-5 col-md-6 footer-about">
-            <Link to="/" className="logo d-flex align-items-center">
-              <span className="sitename">ZPF Ministries</span>
-            </Link>
-            <p className="mt-3">
-              Proclaiming the Word of God with faith, love, and hope. 
-              Join us in worship and spiritual growth.
-            </p>
-            <div className="footer-contact pt-3">
-              <p><strong>Location:</strong> Chennai, Tamil Nadu</p>
-              <p><strong>Email:</strong> info@zpfministries.org</p>
-            </div>
+          {/* Left Column: Social Media */}
+          <div className="redesign-footer-socials">
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="redesign-footer-social-icon" aria-label="YouTube">
+              <i className="bi bi-youtube"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="redesign-footer-social-icon" aria-label="Instagram">
+              <i className="bi bi-instagram"></i>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="redesign-footer-social-icon" aria-label="Facebook">
+              <i className="bi bi-facebook"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="redesign-footer-social-icon" aria-label="Twitter">
+              <i className="bi bi-twitter-x"></i>
+            </a>
           </div>
 
-          {/* Right Side - Bible Verse */}
-          <div className="col-lg-7 col-md-6 d-flex align-items-center">
-            <div className="bible-verse text-md-end text-center w-100">
-              <h3 className="verse-text">
-                கர்த்தர் என் மேய்ப்பராயிருக்கிறார்; நான் தாழ்ச்சியடையேன்.
-              </h3>
-              <p className="verse-ref">— சங்கீதம் 23:1</p>
+          {/* Center Column: Logo & Name */}
+          <div className="redesign-footer-logo">
+            <img 
+              src="/assets/img/zpf_logo.png" 
+              alt="ZPF Ministries Logo" 
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
+            <div>ZPF Ministries, Chennai</div>
+          </div>
+
+          {/* Right Column: Contact Details */}
+          <div className="redesign-footer-contact">
+            <div>
+              <i className="bi bi-telephone"></i>
+              <span>+91 90000 00000</span>
+            </div>
+            <div>
+              <i className="bi bi-envelope"></i>
+              <span>info@zpfministries.org</span>
+            </div>
+            <div>
+              <i className="bi bi-geo-alt"></i>
+              <span>Chennai, Tamil Nadu, India</span>
             </div>
           </div>
 
         </div>
-      </div>
 
-      <div className="container text-center mt-4">
-        <p>© <strong>ZPF Ministries</strong> | All Rights Reserved</p>
-        <div className="credits">
-          Designed by <a href="https://santhoshs.co.in/" target="_blank" rel="noopener noreferrer">Santhosh</a>
+        {/* Bottom Section */}
+        <div className="redesign-footer-bottom">
+          <p>© {new Date().getFullYear()} <strong>ZPF Ministries</strong>. All Rights Reserved.</p>
+          <div className="credits" style={{ marginTop: '5px', fontSize: '0.75rem' }}>
+            Designed by <a href="https://santhoshs.co.in/" target="_blank" rel="noopener noreferrer">Santhosh</a>
+          </div>
         </div>
       </div>
     </footer>
   )
 }
+

@@ -1326,3 +1326,1156 @@ body.scrolled .header {
     justify-content: center;
   }
 }
+
+/* =======================================================
+ * ZPF Ministries - Mockup-Inspired Redesign Styles
+ * ======================================================= */
+
+/* Redesign Theme Context */
+.main.redesign-mode {
+  background: #ffffff;
+  color: #333333;
+  font-family: 'Outfit', sans-serif;
+}
+
+.main.redesign-mode h1,
+.main.redesign-mode h2,
+.main.redesign-mode h3,
+.main.redesign-mode h4,
+.main.redesign-mode h5,
+.main.redesign-mode h6 {
+  font-family: 'Outfit', sans-serif !important;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+/* Redesigned Header */
+.header.redesign-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  transform: none;
+  width: 100%;
+  max-width: 100%;
+  height: 80px;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid #eaeaea;
+  background: #ffffff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  padding: 0 40px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+body.scrolled .header.redesign-header {
+  top: 0;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  background: #ffffff;
+  border-color: #e0e0e0;
+}
+
+.header.redesign-header .logo img {
+  max-height: 48px;
+  filter: none;
+}
+
+.header.redesign-header .navmenu a {
+  color: #555555;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  padding: 8px 12px;
+  border-radius: 0;
+  background: transparent;
+  transition: color 0.2s ease;
+}
+
+.header.redesign-header .navmenu a:hover,
+.header.redesign-header .navmenu a.active {
+  color: #000000;
+  background: transparent;
+  text-shadow: none;
+  border-bottom: 2px solid #000000;
+}
+
+.header.redesign-header .mobile-nav-toggle {
+  color: #333333;
+}
+
+/* Redesigned Hero Carousel */
+.redesign-hero {
+  position: relative;
+  height: 85vh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.redesign-hero-slider {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.redesign-hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.redesign-hero-slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.redesign-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 2;
+}
+
+.redesign-hero-content {
+  position: relative;
+  z-index: 3;
+  color: #ffffff;
+  padding: 0 40px;
+  max-width: 900px;
+  margin-top: -40px;
+}
+
+.redesign-hero-tag {
+  font-size: 1.4rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 300;
+  margin-bottom: 15px;
+  opacity: 0.9;
+}
+
+.redesign-hero-title {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+
+.redesign-hero-title span.orange {
+  color: #f39c12;
+}
+
+/*******************************************************
+ * redesigned hero typography updates
+ *******************************************************/
+.redesign-hero-subtitle {
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 30px;
+}
+
+.hero-slide-bible {
+  margin-top: 15px;
+  border-left: 3px solid #f39c12;
+  padding-left: 20px;
+  max-width: 850px;
+  text-align: left;
+}
+
+.tamil-verse {
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #f39c12;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.english-verse {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: #ffffff;
+  line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+  .redesign-hero-title {
+    font-size: 2.2rem !important;
+    letter-spacing: -0.5px !important;
+  }
+  .hero-slide-bible {
+    padding-left: 10px;
+    margin-top: 10px;
+  }
+  .tamil-verse {
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+  }
+  .english-verse {
+    font-size: 0.95rem;
+  }
+}
+
+.redesign-hero-btn {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  z-index: 10;
+  background: #000000;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.redesign-hero-btn:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #ffffff;
+}
+
+.redesign-hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 3rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s ease;
+}
+
+.redesign-hero-arrow:hover {
+  color: #ffffff;
+}
+
+.redesign-hero-arrow.prev { left: 20px; }
+.redesign-hero-arrow.next { right: 20px; }
+
+.redesign-hero-dots {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.redesign-hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.redesign-hero-dot.active {
+  background: #ffffff;
+  width: 25px;
+  border-radius: 5px;
+}
+
+/* Sections */
+.redesign-section {
+  padding: 80px 0;
+}
+
+.redesign-section.light-bg {
+  background: #ffffff;
+}
+
+.redesign-section.gray-bg {
+  background: #f8f9fa;
+}
+
+.redesign-section-header {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 0 20px;
+}
+
+.redesign-section-header h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.redesign-section-header p {
+  font-size: 1.05rem;
+  color: #666666;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Campuses Section */
+.campus-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .campus-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .campus-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.campus-card {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: 30px 24px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.campus-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-color: #cccccc;
+}
+
+.campus-card-icon {
+  font-size: 2.2rem;
+  color: #888888;
+  margin-bottom: 20px;
+}
+
+.campus-card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #222222;
+  margin-bottom: 15px;
+}
+
+.campus-card-desc {
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.campus-card-timings {
+  font-size: 0.85rem;
+  color: #444444;
+  margin-bottom: 25px;
+  border-top: 1px dashed #eaeaea;
+  padding-top: 15px;
+}
+
+.campus-card-timings strong {
+  display: block;
+  color: #111111;
+  margin-bottom: 4px;
+}
+
+.campus-card-btn {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #000000;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.2s ease;
+}
+
+.campus-card-btn:hover {
+  gap: 12px;
+}
+
+/* Get Involved Carousel Inner Slider */
+.involved-slider-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.involved-slide {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  color: #ffffff;
+  padding: 40px;
+}
+
+.involved-slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
+  z-index: 1;
+}
+
+.involved-slide-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.involved-slide-tag {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #f39c12;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.involved-slide-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 15px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.involved-slide-timings {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.involved-slide-timings span.orange {
+  color: #f39c12;
+  font-weight: 700;
+}
+
+/* Worship Banner Section */
+.worship-banner {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.worship-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.worship-banner-content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  max-width: 600px;
+}
+
+.worship-banner-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
+}
+
+.worship-banner-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #e0e0e0;
+  margin-bottom: 0;
+}
+
+/* Sermons & Care cells grid */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .feature-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.feature-card-img {
+  height: 220px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.feature-card-body {
+  padding: 35px 30px;
+  color: #ffffff;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-card-body.blue-bg {
+  background: #2563eb; /* Royal Blue */
+}
+
+.feature-card-body.orange-bg {
+  background: #f97316; /* Tangerine/Orange */
+}
+
+.feature-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.feature-card-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff !important;
+}
+
+.feature-card-icon {
+  font-size: 1.8rem;
+}
+
+.feature-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.feature-card-link {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Deep Dive Bible Club Banner */
+.bible-club-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.bible-club-img {
+  height: 250px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.bible-club-body {
+  background: #0ea5e9; /* Sky Blue */
+  padding: 40px;
+  color: #ffffff;
+}
+
+.bible-club-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.bible-club-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff !important;
+}
+
+.bible-club-logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.bible-club-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 25px;
+}
+
+.bible-club-btn {
+  background: #ffffff;
+  color: #0ea5e9;
+  border: none;
+  padding: 12px 24px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: opacity 0.2s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.bible-club-btn:hover {
+  opacity: 0.9;
+}
+
+/* Three Cards Grid (Kids, Teens, Young Adults) */
+.ministry-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .ministry-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.ministry-panel {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ministry-panel-img {
+  height: 180px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.ministry-panel-body {
+  padding: 30px 24px;
+  color: #ffffff;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.ministry-panel-body.yellow-bg {
+  background: #eab308; /* Yellow */
+}
+
+.ministry-panel-body.purple-bg {
+  background: #a855f7; /* Purple */
+}
+
+.ministry-panel-body.lime-bg {
+  background: #84cc16; /* Lime Green */
+}
+
+.ministry-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.ministry-panel-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff !important;
+}
+
+.ministry-panel-icon {
+  font-size: 1.4rem;
+}
+
+.ministry-panel-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+.ministry-panel-link {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+}
+
+.ministry-panel-link:hover {
+  gap: 10px;
+}
+
+/* All Ministries Section (Bottom Grayscale Photo) */
+.all-ministries-card {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.all-ministries-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.all-ministries-content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  max-width: 750px;
+}
+
+.all-ministries-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff !important;
+  margin-bottom: 15px;
+}
+
+.all-ministries-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #cccccc;
+  margin-bottom: 25px;
+}
+
+.all-ministries-btn {
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
+  padding: 12px 30px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.all-ministries-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Redesigned Footer */
+.footer.redesign-footer {
+  background: #000000;
+  color: #ffffff;
+  padding: 50px 0 20px;
+  border-top: none;
+}
+
+.footer.redesign-footer p {
+  color: #888888;
+}
+
+.redesign-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  border-bottom: 1px solid #222222;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.redesign-footer-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.redesign-footer-social-icon {
+  color: #888888;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+.redesign-footer-social-icon:hover {
+  color: #ffffff;
+}
+
+.redesign-footer-logo {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.redesign-footer-logo img {
+  max-height: 35px;
+  margin: 0 auto 10px;
+}
+
+.redesign-footer-contact {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+@media (max-width: 768px) {
+  .redesign-footer-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .redesign-footer-contact {
+    text-align: center;
+  }
+}
+
+.redesign-footer-contact div {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .redesign-footer-contact div {
+    justify-content: center;
+  }
+}
+
+.redesign-footer-contact i {
+  color: #cccccc;
+}
+
+.redesign-footer-bottom {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #555555;
+}
+
+.redesign-footer-bottom a {
+  color: #888888;
+  text-decoration: none;
+}
+
+.redesign-footer-bottom a:hover {
+  color: #ffffff;
+}
+
+/* =======================================================
+ * ZPF Ministries - Redesigned About Page Custom Styles
+ * ======================================================= */
+
+.about-banner {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.about-banner h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 10px;
+}
+
+.about-banner .breadcrumbs {
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+.about-banner .breadcrumbs a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* Pastor cards */
+.pastor-family-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.pastor-family-card-img {
+  height: 320px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.pastor-family-card-body {
+  padding: 24px;
+  text-align: center;
+}
+
+.pastor-family-card-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.pastor-family-card-role {
+  font-size: 0.9rem;
+  color: #f39c12;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Belief statements */
+.belief-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .belief-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .belief-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.belief-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.belief-card:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-color: #cccccc;
+}
+
+.belief-card-icon {
+  font-size: 1.8rem;
+  color: #2563eb;
+  margin-bottom: 15px;
+}
+
+.belief-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.belief-card-text {
+  font-size: 0.9rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Servant Profiles Grid */
+.servants-subheading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 40px 0 20px;
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+.servant-grid-small {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .servant-grid-small {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .servant-grid-small {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .servant-grid-small {
+    grid-template-columns: 1fr;
+  }
+}
+
+.servant-profile-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  padding: 20px 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.servant-profile-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+.servant-profile-icon {
+  font-size: 1.8rem;
+  color: #888888;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.servant-profile-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 2px;
+}
+
+.servant-profile-role {
+  font-size: 0.8rem;
+  color: #666666;
+  font-weight: 500;
+}
+
+/* Elegant Servant tables */
+.servants-table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.servants-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.servants-table th {
+  background: #f8f9fa;
+  padding: 16px 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111111;
+  border-bottom: 2px solid #eaeaea;
+}
+
+.servants-table td {
+  padding: 16px 20px;
+  font-size: 0.95rem;
+  color: #444444;
+  border-bottom: 1px solid #eaeaea;
+  vertical-align: top;
+}
+
+.servants-table tr:last-child td {
+  border-bottom: none;
+}
+
+.servant-list-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.servant-list-tag {
+  background: #f1f5f9;
+  color: #334155;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 15px;
+}
+
+.servant-list-tag.blue-tag {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.servant-list-tag.orange-tag {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+

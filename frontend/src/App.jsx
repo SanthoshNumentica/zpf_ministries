@@ -5,6 +5,10 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import About from './pages/About'
+import Events from './pages/Events'
+import Sermons from './pages/Sermons'
+import Live from './pages/Live'
+import Gallery from './pages/Gallery'
 import Contact from './pages/Contact'
 import LoginGate from './components/LoginGate'
 import Admin from './pages/Admin'
@@ -52,6 +56,62 @@ function AnimatedRoutes() {
               className="page-wrapper"
             >
               <About />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/events" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+              className="page-wrapper"
+            >
+              <Events />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/sermons" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+              className="page-wrapper"
+            >
+              <Sermons />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/live" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+              className="page-wrapper"
+            >
+              <Live />
+            </motion.div>
+          } 
+        />
+        <Route 
+          path="/gallery" 
+          element={
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+              className="page-wrapper"
+            >
+              <Gallery />
             </motion.div>
           } 
         />

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 export default function Header() {
   const [isMobileActive, setIsMobileActive] = useState(false)
+  const location = useLocation()
 
   const toggleMobileNav = () => {
     setIsMobileActive(!isMobileActive)
@@ -24,13 +25,27 @@ export default function Header() {
     }
   }, [isMobileActive])
 
+  // Scroll to section helper for homepage hashes
+  const handleNavClick = (sectionId) => {
+    closeMobileNav()
+    if (location.pathname !== '/') {
+      return // standard Link behavior to homepage will trigger scroll on mount
+    }
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }, 100)
+  }
+
   return (
-    <header id="header" className="header">
+    <header id="header" className="header redesign-header">
       <Link to="/" className="logo d-flex align-items-center" onClick={closeMobileNav}>
         <img 
           src="/assets/img/zpf_logo.png" 
           alt="ZPF Ministries Logo" 
-          style={{ maxHeight: '40px' }} 
+          style={{ maxHeight: '48px' }} 
         />
       </Link>
 
@@ -39,7 +54,7 @@ export default function Header() {
           <li>
             <NavLink 
               to="/" 
-              className={({ isActive }) => isActive ? 'active' : ''} 
+              className={({ isActive }) => isActive && location.hash === '' ? 'active' : ''} 
               onClick={closeMobileNav}
             >
               Home
@@ -56,11 +71,55 @@ export default function Header() {
           </li>
           <li>
             <NavLink 
+              to="/events" 
+              className={({ isActive }) => isActive ? 'active' : ''} 
+              onClick={closeMobileNav}
+            >
+              Events
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/sermons" 
+              className={({ isActive }) => isActive ? 'active' : ''} 
+              onClick={closeMobileNav}
+            >
+              Sermons
+            </NavLink>
+          </li>
+          <li>
+            <Link 
+              to="/#care" 
+              onClick={() => handleNavClick('care')}
+            >
+              Care
+            </Link>
+          </li>
+          <li>
+            <NavLink 
+              to="/gallery" 
+              className={({ isActive }) => isActive ? 'active' : ''} 
+              onClick={closeMobileNav}
+            >
+              Gallery
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
+              to="/live" 
+              className={({ isActive }) => isActive ? 'active' : ''} 
+              onClick={closeMobileNav}
+            >
+              Live
+            </NavLink>
+          </li>
+          <li>
+            <NavLink 
               to="/contact" 
               className={({ isActive }) => isActive ? 'active' : ''} 
               onClick={closeMobileNav}
             >
-              Contact
+              Connect
             </NavLink>
           </li>
           {sessionStorage.getItem('zpf_logged_in') === 'true' && (
@@ -89,3 +148,4 @@ export default function Header() {
     </header>
   )
 }
+
