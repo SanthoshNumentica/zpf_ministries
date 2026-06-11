@@ -76,11 +76,13 @@ body::before {
   margin-right: -15px;
 }
 
-.gy-4 > [class*="col-"] {
+.gy-4 > [class*="col-"],
+.g-4 > [class*="col-"] {
   padding-bottom: 24px;
 }
 
-.gy-5 > [class*="col-"] {
+.gy-5 > [class*="col-"],
+.g-5 > [class*="col-"] {
   padding-bottom: 30px;
 }
 
@@ -711,7 +713,7 @@ body.scrolled .header {
   padding-bottom: 56.25%;
 }
 
-.ratio iframe {
+.ratio > * {
   position: absolute;
   top: 0;
   left: 0;
@@ -1535,6 +1537,7 @@ body.scrolled .header.redesign-header .logo img {
   line-height: 1.1;
   margin-bottom: 20px;
   letter-spacing: -1.5px;
+  color: #ffffff !important;
 }
 
 .redesign-hero-title span.orange {
@@ -1562,7 +1565,7 @@ body.scrolled .header.redesign-header .logo img {
   font-size: 1.45rem;
   font-weight: 600;
   color: #f39c12;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   line-height: 1.45;
 }
 
@@ -1584,7 +1587,7 @@ body.scrolled .header.redesign-header .logo img {
   }
   .tamil-verse {
     font-size: 1.05rem;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
   }
   .english-verse {
     font-size: 0.95rem;
@@ -1831,7 +1834,7 @@ body.scrolled .header.redesign-header .logo img {
 .involved-slide-title {
   font-size: 2.8rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #ffffff !important;
   margin-bottom: 15px;
   line-height: 1.1;
   letter-spacing: -0.5px;
@@ -1878,7 +1881,7 @@ body.scrolled .header.redesign-header .logo img {
 .worship-banner-title {
   font-size: 3rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #ffffff !important;
   margin-bottom: 15px;
   letter-spacing: -1px;
 }
@@ -2384,6 +2387,201 @@ body.scrolled .header.redesign-header .logo img {
 }
 
 .belief-card {
+  display: inline-block;
+}
+
+.all-ministries-btn:hover {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* Redesigned Footer */
+.footer.redesign-footer {
+  background: #000000;
+  color: #ffffff;
+  padding: 50px 0 20px;
+  border-top: none;
+}
+
+.footer.redesign-footer p {
+  color: #888888;
+}
+
+.redesign-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 30px;
+  border-bottom: 1px solid #222222;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+}
+
+.redesign-footer-socials {
+  display: flex;
+  gap: 15px;
+}
+
+.redesign-footer-social-icon {
+  color: #888888;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+
+.redesign-footer-social-icon:hover {
+  color: #ffffff;
+}
+
+.redesign-footer-logo {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.redesign-footer-logo img {
+  max-height: 35px;
+  margin: 0 auto 10px;
+}
+
+.redesign-footer-contact {
+  text-align: right;
+  font-size: 0.85rem;
+  color: #888888;
+}
+
+@media (max-width: 768px) {
+  .redesign-footer-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .redesign-footer-contact {
+    text-align: center;
+  }
+}
+
+.redesign-footer-contact div {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .redesign-footer-contact div {
+    justify-content: center;
+  }
+}
+
+.redesign-footer-contact i {
+  color: #cccccc;
+}
+
+.redesign-footer-bottom {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #555555;
+}
+
+.redesign-footer-bottom a {
+  color: #888888;
+  text-decoration: none;
+}
+
+.redesign-footer-bottom a:hover {
+  color: #ffffff;
+}
+
+/* =======================================================
+ * ZPF Ministries - Redesigned About Page Custom Styles
+ * ======================================================= */
+
+.about-banner {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.about-banner h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 10px;
+}
+
+.about-banner .breadcrumbs {
+  font-size: 0.9rem;
+  color: #666666;
+}
+
+.about-banner .breadcrumbs a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* Pastor cards */
+.pastor-family-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.pastor-family-card-img {
+  height: 320px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.pastor-family-card-body {
+  padding: 24px;
+  text-align: center;
+}
+
+.pastor-family-card-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.pastor-family-card-role {
+  font-size: 0.9rem;
+  color: #f39c12;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Belief statements */
+.belief-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 30px;
+}
+
+@media (max-width: 900px) {
+  .belief-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .belief-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.belief-card {
   background: #ffffff;
   border: 1px solid #eaeaea;
   border-radius: 12px;
@@ -2452,37 +2650,70 @@ body.scrolled .header.redesign-header .logo img {
 .servant-profile-card {
   background: #ffffff;
   border: 1px solid #eaeaea;
-  border-radius: 10px;
-  padding: 20px 15px;
+  border-radius: 12px;
+  padding: 15px;
   text-align: center;
   transition: all 0.3s ease;
+  height: 100%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
 }
 
 .servant-profile-card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  border-color: rgba(229, 193, 88, 0.3);
 }
 
-.servant-profile-icon {
-  font-size: 1.8rem;
-  color: #888888;
-  margin-bottom: 10px;
-  display: inline-block;
+.servant-profile-img-wrapper {
+  position: relative;
+  width: 75px; /* Decreased size */
+  height: 75px; /* Decreased size */
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 10px;
+  border: 2px solid #f8f9fa;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.servant-profile-card:hover .servant-profile-img-wrapper {
+  transform: scale(1.05);
+  border-color: #bf953f;
+}
+
+.servant-profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay for name on top of circular image */
+.servant-profile-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.1) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 6px;
 }
 
 .servant-profile-name {
-  font-size: 1rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #222222;
-  margin-bottom: 2px;
+  color: #ffffff !important; /* White color on dark overlay */
+  text-align: center;
+  line-height: 1.1;
+  padding: 0 4px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .servant-profile-role {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: #666666;
   font-weight: 500;
+  margin-top: 5px;
 }
 
-/* Elegant Servant tables */
 .servants-table-container {
   overflow-x: auto;
   margin-top: 20px;
@@ -2525,12 +2756,20 @@ body.scrolled .header.redesign-header .logo img {
 }
 
 .servant-list-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: #f1f5f9;
   color: #334155;
   font-size: 0.8rem;
   font-weight: 500;
   padding: 4px 10px;
   border-radius: 15px;
+  line-height: 1;
+}
+
+.servant-list-tag:has(.servant-tag-img) {
+  padding: 3px 8px 3px 3px;
 }
 
 .servant-list-tag.blue-tag {
@@ -2543,4 +2782,128 @@ body.scrolled .header.redesign-header .logo img {
   color: #c2410c;
 }
 
+.servant-tag-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
 
+/* =======================================================
+ * Redesigned Contact Page (Light Theme Matching)
+ * ======================================================= */
+.main.redesign-mode .contact-info-box {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  padding: 30px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  height: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+}
+
+.main.redesign-mode .contact-info-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+  border-color: #bf953f;
+}
+
+.main.redesign-mode .contact-info-box .icon-box {
+  background: #fdfaf2;
+  color: #bf953f;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(229, 193, 88, 0.1);
+}
+
+.main.redesign-mode .contact-info-box .info-content h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 8px;
+  font-family: 'Outfit', sans-serif !important;
+}
+
+.main.redesign-mode .contact-info-box .info-content p {
+  font-size: 0.9rem;
+  color: #666666;
+  margin-bottom: 4px;
+  line-height: 1.5;
+}
+
+.main.redesign-mode .contact-form-wrapper {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 24px;
+  padding: 50px 40px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.05);
+}
+
+.main.redesign-mode .contact-form-wrapper h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111111;
+  text-align: center;
+  font-family: 'Outfit', sans-serif !important;
+}
+
+.main.redesign-mode .form-group .form-control {
+  background-color: #f8f9fa !important;
+  border: 1px solid #eaeaea !important;
+  border-radius: 8px !important;
+  padding: 12px 15px 12px 45px !important;
+  color: #333333 !important;
+  font-size: 0.95rem;
+  transition: all 0.3s ease !important;
+  height: 52px;
+}
+
+.main.redesign-mode .form-group .form-control:focus {
+  border-color: #bf953f !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(229, 193, 88, 0.15) !important;
+}
+
+.main.redesign-mode .form-group .input-with-icon i {
+  color: #888888;
+}
+
+.main.redesign-mode .form-group .form-control:focus + i,
+.main.redesign-mode .form-group .input-with-icon:focus-within i {
+  color: #bf953f;
+}
+
+.main.redesign-mode .form-container-overlap {
+  position: relative;
+  margin-top: -80px;
+  margin-bottom: 60px;
+  z-index: 10;
+}
+
+.main.redesign-mode .sent-message {
+  background: rgba(46, 204, 113, 0.1);
+  color: #27ae60;
+  border: 1px solid rgba(46, 204, 113, 0.2);
+}
+
+.main.redesign-mode .error-message {
+  background: rgba(231, 76, 60, 0.1);
+  color: #c0392b;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+}
+
+.main.redesign-mode .loading {
+  background: rgba(229, 193, 88, 0.05);
+  color: #bf953f;
+  border: 1px solid rgba(229, 193, 88, 0.2);
+}

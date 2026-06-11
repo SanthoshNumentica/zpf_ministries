@@ -22,7 +22,7 @@ export default function Home() {
       tag: 'OUR VISION',
       title: 'Isaiah 58:12',
       subtitle: (
-        <div className="hero-slide-bible">
+        <div className="hero-slide-bible" style={{ borderColor: '#ffffff' }}>
           <div className="tamil-verse">உன்னிடத்திலிருந்து தோன்றினவர்கள் பூர்வமுதல் பாழாய்க்கிடந்த ஸ்தலங்களைக் கட்டுவார்கள்; தலைமுறை தலைமுறையாக இருக்கும் அஸ்திபாரங்கள்மேல் நீ கட்டுவாய்; திறப்பானதை அடைக்கிறவன் என்றும், குடியிருக்கும்படி பாதைகளைத் திருத்துகிறவன் என்றும் நீ பெயர் பெறுவாய்</div>
           <div className="english-verse">Those from among you Shall build the old waste places; You shall raise up the foundations of many generations; And you shall be called the Repairer of the Breach, The Restorer of Streets to Dwell In.</div>
         </div>
@@ -106,7 +106,7 @@ export default function Home() {
 
   return (
     <main className="main redesign-mode">
-      
+
       {/* 1. HERO SLIDESHOW */}
       <section className="redesign-hero">
         <div className="redesign-hero-slider">
@@ -165,12 +165,12 @@ export default function Home() {
           <div className="campus-grid">
             {/* Card 1 */}
             <div className="campus-card">
-              <i className="bi bi-geo-alt-fill campus-card-icon"></i>
-              <h3 className="campus-card-title">Kothanur Campus</h3>
-              <p className="campus-card-desc">
+              <i className="bi bi-geo-alt-fill campus-card-icon text-center"></i>
+              <h3 className="campus-card-title text-center">Kothanur Campus</h3>
+              <p className="campus-card-desc text-center">
                 Welcome to ZPF Ministries Kothanur. Join our English Service for powerful praise and teaching in our main sanctuary.
               </p>
-              <div className="campus-card-timings">
+              <div className="campus-card-timings text-center">
                 <strong>Service Timings:</strong>
                 English Service: 9:00 AM<br />
                 Evening Service: 6:00 PM
@@ -182,12 +182,12 @@ export default function Home() {
 
             {/* Card 2 */}
             <div className="campus-card">
-              <i className="bi bi-geo-alt-fill campus-card-icon"></i>
-              <h3 className="campus-card-title">HBR Campus</h3>
-              <p className="campus-card-desc">
+              <i className="bi bi-geo-alt-fill campus-card-icon text-center"></i>
+              <h3 className="campus-card-title text-center">HBR Campus</h3>
+              <p className="campus-card-desc text-center">
                 Join the HBR layout community as we gather for worship, interactive bible teaching, and family prayer groups.
               </p>
-              <div className="campus-card-timings">
+              <div className="campus-card-timings text-center">
                 <strong>Service Timings:</strong>
                 Tamil Service: 7:00 AM<br />
                 English Service: 11:30 AM
@@ -199,12 +199,12 @@ export default function Home() {
 
             {/* Card 3 */}
             <div className="campus-card">
-              <i className="bi bi-geo-alt-fill campus-card-icon"></i>
-              <h3 className="campus-card-title">Cornerstone Campus</h3>
-              <p className="campus-card-desc">
+              <i className="bi bi-geo-alt-fill campus-card-icon text-center"></i>
+              <h3 className="campus-card-title text-center">Cornerstone Campus</h3>
+              <p className="campus-card-desc text-center">
                 Our Cornerstone branch hosts regional language fellowships, focusing on local outreach and youth cell groups.
               </p>
-              <div className="campus-card-timings">
+              <div className="campus-card-timings text-center">
                 <strong>Service Timings:</strong>
                 Malayalam Service: 9:00 AM<br />
                 Telugu Service: 11:30 AM
@@ -216,12 +216,12 @@ export default function Home() {
 
             {/* Card 4 */}
             <div id="live-stream" className="campus-card">
-              <i className="bi bi-broadcast campus-card-icon"></i>
-              <h3 className="campus-card-title">Live Stream</h3>
-              <p className="campus-card-desc">
+              <i className="bi bi-broadcast campus-card-icon text-center"></i>
+              <h3 className="campus-card-title text-center">Live Stream</h3>
+              <p className="campus-card-desc text-center">
                 Can't make it in person? Join our vibrant online community live from wherever you are. Live chat and prayer available.
               </p>
-              <div className="campus-card-timings">
+              <div className="campus-card-timings text-center">
                 <strong>Broadcast Timings:</strong>
                 Sunday Morning: 9:00 AM<br />
                 Friday Evening: 6:30 PM
@@ -270,7 +270,7 @@ export default function Home() {
       <section className="worship-banner" style={{ backgroundImage: `url('/assets/img/worship_singers.png')` }}>
         <div className="worship-banner-overlay"></div>
         <div className="container">
-          <div className="worship-banner-content">
+          <div className="worship-banner-content text-white">
             <h2 className="worship-banner-title">ZPF Worship</h2>
             <p className="worship-banner-desc">
               Our worship team seeks to lead the congregation into a deep encounter with God's presence through music, singing, and prayer. Experience our weekly live worship recordings.
@@ -345,7 +345,7 @@ export default function Home() {
       <section className="redesign-section gray-bg">
         <div className="container">
           <div className="ministry-row">
-            
+
             {/* Kids Card */}
             <div className="ministry-panel">
               <div className="ministry-panel-img" style={{ backgroundImage: `url('/assets/img/kids_ministry.png')` }}></div>

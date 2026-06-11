@@ -202,12 +202,20 @@ export default function About() {
             <div className="col-md-6">
               <h3 className="servants-subheading">Elders</h3>
               <div className="row g-3">
-                {['Bro. Alwyn', 'Bro. Asir', 'Bro. Simon'].map((elder, idx) => (
+                {[
+                  { name: 'Bro. Alwyn', image: '/assets/img/servants/elder_alwyn.png', role: 'Church Elder' },
+                  { name: 'Bro. Asir', image: '/assets/img/servants/elder_asir.png', role: 'Church Elder' },
+                  { name: 'Bro. Simon', image: '/assets/img/servants/elder_simon.png', role: 'Church Elder' }
+                ].map((elder, idx) => (
                   <div className="col-sm-6" key={idx}>
                     <div className="servant-profile-card">
-                      <i className="bi bi-person-check servant-profile-icon"></i>
-                      <div className="servant-profile-name">{elder}</div>
-                      <div className="servant-profile-role">Church Elder</div>
+                      <div className="servant-profile-img-wrapper">
+                        <img src={elder.image} alt={elder.name} className="servant-profile-img" />
+                        <div className="servant-profile-overlay">
+                          <div className="servant-profile-name">{elder.name}</div>
+                        </div>
+                      </div>
+                      <div className="servant-profile-role">{elder.role}</div>
                     </div>
                   </div>
                 ))}
@@ -218,12 +226,22 @@ export default function About() {
             <div className="col-md-6">
               <h3 className="servants-subheading">Kids Bible School Teachers</h3>
               <div className="row g-3">
-                {['Bro. Prabu', 'Sis. Jancy', 'Sis. Nithya', 'Sis. Helen', 'Sis. Shobha'].map((teacher, idx) => (
+                {[
+                  { name: 'Bro. Prabu', image: '/assets/img/servants/teacher_prabu.png', role: 'Sunday School Teacher' },
+                  { name: 'Sis. Jancy', image: '/assets/img/servants/teacher_jancy.png', role: 'Sunday School Teacher' },
+                  { name: 'Sis. Nithya', image: '/assets/img/person/person-f-6.webp', role: 'Sunday School Teacher' },
+                  { name: 'Sis. Helen', image: '/assets/img/person/person-f-10.webp', role: 'Sunday School Teacher' },
+                  { name: 'Sis. Shobha', image: '/assets/img/person/person-f-12.webp', role: 'Sunday School Teacher' }
+                ].map((teacher, idx) => (
                   <div className="col-sm-6" key={idx}>
                     <div className="servant-profile-card">
-                      <i className="bi bi-journal-bookmark servant-profile-icon"></i>
-                      <div className="servant-profile-name">{teacher}</div>
-                      <div className="servant-profile-role">Sunday School Teacher</div>
+                      <div className="servant-profile-img-wrapper">
+                        <img src={teacher.image} alt={teacher.name} className="servant-profile-img" />
+                        <div className="servant-profile-overlay">
+                          <div className="servant-profile-name">{teacher.name}</div>
+                        </div>
+                      </div>
+                      <div className="servant-profile-role">{teacher.role}</div>
                     </div>
                   </div>
                 ))}
@@ -251,15 +269,32 @@ export default function About() {
                       <tr>
                         <td>
                           <div className="servant-list-tags">
-                            {['Bro. James', 'Bro. Vinu', 'Bro. Moses', 'Bro. Prabu', 'Bro. Raja Mohan'].map((n, i) => (
-                              <span className="servant-list-tag blue-tag" key={i}>{n}</span>
+                            {[
+                              { name: 'Bro. James', image: '/assets/img/events/speaker-1.webp' },
+                              { name: 'Bro. Vinu', image: '/assets/img/events/speaker-2.webp' },
+                              { name: 'Bro. Moses', image: '/assets/img/events/speaker-3.webp' },
+                              { name: 'Bro. Prabu', image: '/assets/img/events/speaker-4.webp' },
+                              { name: 'Bro. Raja Mohan', image: '/assets/img/events/speaker-5.webp' }
+                            ].map((deacon, i) => (
+                              <span className="servant-list-tag blue-tag" key={i}>
+                                <img src={deacon.image} alt={deacon.name} className="servant-tag-img" />
+                                {deacon.name}
+                              </span>
                             ))}
                           </div>
                         </td>
                         <td>
                           <div className="servant-list-tags">
-                            {['Bro. John Peter', 'Bro. Vigil', 'Bro. Gilbert', 'Bro. Philip'].map((n, i) => (
-                              <span className="servant-list-tag orange-tag" key={i}>{n}</span>
+                            {[
+                              { name: 'Bro. John Peter', image: '/assets/img/events/speaker-6.webp' },
+                              { name: 'Bro. Vigil', image: '/assets/img/events/speaker-7.webp' },
+                              { name: 'Bro. Gilbert', image: '/assets/img/events/speaker-8.webp' },
+                              { name: 'Bro. Philip', image: '/assets/img/events/speaker-9.webp' }
+                            ].map((deacon, i) => (
+                              <span className="servant-list-tag orange-tag" key={i}>
+                                <img src={deacon.image} alt={deacon.name} className="servant-tag-img" />
+                                {deacon.name}
+                              </span>
                             ))}
                           </div>
                         </td>
@@ -284,13 +319,27 @@ export default function About() {
                       <tr>
                         <td>
                           <div className="servant-list-tags">
-                            <span className="servant-list-tag blue-tag">Deacon Families</span>
+                            {[
+                              { name: 'Deacon Families', image: '/assets/img/person/person-f-10.webp' }
+                            ].map((deacon, i) => (
+                              <span className="servant-list-tag blue-tag" key={i}>
+                                <img src={deacon.image} alt={deacon.name} className="servant-tag-img" />
+                                {deacon.name}
+                              </span>
+                            ))}
                           </div>
                         </td>
                         <td>
                           <div className="servant-list-tags">
-                            {['Bro. Prabu', 'Bro. Jeremiah', 'Bro. Joseph Mani'].map((n, i) => (
-                              <span className="servant-list-tag orange-tag" key={i}>{n}</span>
+                            {[
+                              { name: 'Bro. Prabu', image: '/assets/img/events/speaker-4.webp' },
+                              { name: 'Bro. Jeremiah', image: '/assets/img/events/speaker-10.webp' },
+                              { name: 'Bro. Joseph Mani', image: '/assets/img/events/speaker-11.webp' }
+                            ].map((deacon, i) => (
+                              <span className="servant-list-tag orange-tag" key={i}>
+                                <img src={deacon.image} alt={deacon.name} className="servant-tag-img" />
+                                {deacon.name}
+                              </span>
                             ))}
                           </div>
                         </td>
@@ -318,8 +367,15 @@ export default function About() {
                     <td><strong>Media Team</strong></td>
                     <td>
                       <div className="servant-list-tags">
-                        {['Bro. Gilbert', 'Bro. Pon Christopher', 'Bro. Immanuel', 'Bro. Milton'].map((n, i) => (
-                          <span className="servant-list-tag" key={i}>{n}</span>
+                        {[
+                          'Bro. Gilbert',
+                          'Bro. Pon Christopher',
+                          'Bro. Immanuel',
+                          'Bro. Milton'
+                        ].map((name, i) => (
+                          <span className="servant-list-tag" key={i}>
+                            {name}
+                          </span>
                         ))}
                       </div>
                     </td>
@@ -328,7 +384,13 @@ export default function About() {
                     <td><strong>Food Ministry</strong></td>
                     <td>
                       <div className="servant-list-tags">
-                        <span className="servant-list-tag">Bro. James & Team</span>
+                        {[
+                          'Bro. James & Team'
+                        ].map((name, i) => (
+                          <span className="servant-list-tag" key={i}>
+                            {name}
+                          </span>
+                        ))}
                       </div>
                     </td>
                   </tr>
@@ -336,8 +398,15 @@ export default function About() {
                     <td><strong>Cleaning Team</strong></td>
                     <td>
                       <div className="servant-list-tags">
-                        {['Bro. Gilbert', 'Bro. Pon Christopher', 'Bro. Dhinesh', 'Bro. Immanuel'].map((n, i) => (
-                          <span className="servant-list-tag" key={i}>{n}</span>
+                        {[
+                          'Bro. Gilbert',
+                          'Bro. Pon Christopher',
+                          'Bro. Dhinesh',
+                          'Bro. Immanuel'
+                        ].map((name, i) => (
+                          <span className="servant-list-tag" key={i}>
+                            {name}
+                          </span>
                         ))}
                       </div>
                     </td>
@@ -346,8 +415,17 @@ export default function About() {
                     <td><strong>Maintenance Team</strong></td>
                     <td>
                       <div className="servant-list-tags">
-                        {['Bro. Gilbert', 'Bro. Arul Prabu', 'Bro. Joshua', 'Bro. Moses', 'Bro. Simon', 'Bro. Ravivarma'].map((n, i) => (
-                          <span className="servant-list-tag" key={i}>{n}</span>
+                        {[
+                          'Bro. Gilbert',
+                          'Bro. Arul Prabu',
+                          'Bro. Joshua',
+                          'Bro. Moses',
+                          'Bro. Simon',
+                          'Bro. Ravivarma'
+                        ].map((name, i) => (
+                          <span className="servant-list-tag" key={i}>
+                            {name}
+                          </span>
                         ))}
                       </div>
                     </td>
@@ -356,7 +434,13 @@ export default function About() {
                     <td><strong>Transport Team</strong></td>
                     <td>
                       <div className="servant-list-tags">
-                        <span className="servant-list-tag">All Brothers</span>
+                        {[
+                          'All Brothers'
+                        ].map((name, i) => (
+                          <span className="servant-list-tag" key={i}>
+                            {name}
+                          </span>
+                        ))}
                       </div>
                     </td>
                   </tr>

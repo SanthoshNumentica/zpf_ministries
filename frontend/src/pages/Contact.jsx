@@ -57,36 +57,21 @@ export default function Contact() {
   }
 
   return (
-    <main className="main">
-      {/* Custom Header banner */}
-      <div 
-        style={{ 
-          position: 'relative', 
-          padding: '140px 0 70px', 
-          backgroundImage: 'linear-gradient(180deg, rgba(6,7,10,0.5), rgba(6,7,10,0.95)), url(/assets/img/events/showcase-9.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          textAlign: 'center',
-          borderBottom: '1px solid var(--border-gold-light)',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
+    <main className="main redesign-mode">
+      {/* 1. CONTACT HERO BANNER */}
+      <div className="about-banner">
+        <div className="container">
           <motion.h1
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="gold-gradient-text"
-            style={{ fontSize: '3rem', textTransform: 'uppercase', marginBottom: '10px' }}
+            transition={{ duration: 0.6 }}
           >
             Contact Us
           </motion.h1>
-          <div style={{ color: 'var(--text-cosmic)', fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '2px' }}>
-            <Link to="/" style={{ color: 'var(--accent-gold)', textDecoration: 'none' }}>Home</Link>
-            <span style={{ margin: '0 10px', opacity: 0.5 }}>/</span>
-            <span style={{ color: '#fff' }}>Contact</span>
+          <div className="breadcrumbs">
+            <Link to="/">Home</Link>
+            <span className="mx-2" style={{ margin: '0 8px', color: '#999' }}>/</span>
+            <span style={{ color: '#333' }}>Contact</span>
           </div>
         </div>
       </div>
@@ -168,7 +153,7 @@ export default function Contact() {
           transition={{ duration: 1 }}
           style={{ padding: '0 15px', marginBottom: '60px' }}
         >
-          <div style={{ borderRadius: '24px', overflow: 'hidden', border: '1px solid var(--border-gold-light)', boxShadow: '0 10px 40px rgba(0, 0, 0, 0.4)' }}>
+          <div style={{ borderRadius: '24px', overflow: 'hidden', border: '1px solid #eaeaea', boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)' }}>
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.88653927238!2d80.06892543329971!3d12.981146747209673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x82a477911094864e!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
               width="100%" 

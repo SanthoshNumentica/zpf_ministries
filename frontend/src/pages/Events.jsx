@@ -235,16 +235,16 @@ export default function Events() {
                   </h3>
                   
                   <p className="campus-card-desc" style={{ marginBottom: '15px' }}>
-                    <i className="bi bi-calendar3 me-2" style={{ color: '#888' }}></i>
+                    <i className="bi bi-calendar3 me-2" style={{ color: '#888', marginRight: '8px' }}></i>
                     <strong>Schedule:</strong> {meeting.schedule}
                   </p>
 
                   <div className="campus-card-timings" style={{ borderTop: '1px dashed #eaeaea', paddingTop: '12px', marginTop: 'auto', marginBottom: 0 }}>
-                    <i className="bi bi-clock me-2" style={{ color: '#888' }}></i>
+                    <i className="bi bi-clock me-2" style={{ color: '#888', marginRight: '8px' }}></i>
                     <strong>Timing:</strong> {meeting.timing}
                     {meeting.note && (
                       <div style={{ fontSize: '0.8rem', color: '#e67e22', marginTop: '8px', fontWeight: 600 }}>
-                        <i className="bi bi-exclamation-circle me-1"></i> {meeting.note}
+                        <i className="bi bi-exclamation-circle me-1" style={{ marginRight: '4px' }}></i> {meeting.note}
                       </div>
                     )}
                   </div>
