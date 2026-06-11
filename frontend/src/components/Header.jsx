@@ -45,7 +45,6 @@ export default function Header() {
         <img 
           src="/assets/img/zpf_logo.png" 
           alt="ZPF Ministries Logo" 
-          style={{ maxHeight: '48px' }} 
         />
       </Link>
 
