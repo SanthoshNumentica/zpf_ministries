@@ -11,10 +11,11 @@
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
+    "framer-motion": "^11.2.10",
+    "jimp": "^1.6.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.23.1",
-    "framer-motion": "^11.2.10"
+    "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
