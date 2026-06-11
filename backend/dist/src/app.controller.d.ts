@@ -27,4 +27,11 @@ export declare class AppController {
         createdAt: Date;
         updatedAt: Date;
     }[]>;
+    getContent(key: string): Promise<any>;
+    updateContent(key: string, body: {
+        value: any;
+    }, authHeader: string): Promise<{
+        success: boolean;
+        key: string;
+    }>;
 }

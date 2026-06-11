@@ -140,9 +140,29 @@ export default function Events() {
     }
   ]
 
+  const [meetingsList, setMeetingsList] = React.useState(meetings)
+
+  React.useEffect(() => {
+    const fetchMeetings = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+        const res = await fetch(`${apiUrl}/content/service_hours`)
+        if (res.ok) {
+          const data = await res.json()
+          if (data && Array.isArray(data)) {
+            setMeetingsList(data)
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load dynamic service hours:', err)
+      }
+    }
+    fetchMeetings()
+  }, [])
+
   const filteredMeetings = activeTab === 'all' 
-    ? meetings 
-    : meetings.filter(m => m.category === activeTab)
+    ? meetingsList 
+    : meetingsList.filter(m => m.category === activeTab)
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 25 },

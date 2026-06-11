@@ -34,7 +34,7 @@ export default function Sermons() {
     }
   ]
 
-  const zionSongs = [
+  const defaultZionSongs = [
     { id: 'ahIVNoJZR2k', title: 'Gospel Song on John 3:16' },
     { id: 'Oi7MXSJbhi4', title: 'HE is my everything (6 Languages)' },
     { id: 'LmegPb_8LY8', title: 'Way Maker - Miracle Worker' },
@@ -43,6 +43,26 @@ export default function Sermons() {
     { id: '1rXDQYK7eyk', title: 'Dayavulla Devan' },
     { id: '7j3ZrHhGMgk', title: 'Samuvel Pol' }
   ]
+
+  const [zionSongsList, setZionSongsList] = React.useState(defaultZionSongs)
+
+  React.useEffect(() => {
+    const fetchSongs = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+        const res = await fetch(`${apiUrl}/content/zion_songs`)
+        if (res.ok) {
+          const data = await res.json()
+          if (data && Array.isArray(data)) {
+            setZionSongsList(data)
+          }
+        }
+      } catch (err) {
+        console.error('Failed to load dynamic zion songs:', err)
+      }
+    }
+    fetchSongs()
+  }, [])
 
   const casualCovers = [
     { id: 'TGjOdhv1Nhw', title: 'Take My Life' },
@@ -184,7 +204,7 @@ export default function Sermons() {
                 <p>Enjoy gospel tracks, language translations, and spiritual worship songs recorded by our teams.</p>
               </div>
               <div className="row g-4">
-                {zionSongs.map((song, idx) => (
+                {zionSongsList.map((song, idx) => (
                   <div className="col-lg-4 col-md-6" key={idx}>
                     <motion.div 
                       className="video-box"

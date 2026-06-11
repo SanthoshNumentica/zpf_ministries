@@ -118,6 +118,158 @@ async function main() {
             console.log(`Updated ${user.name} passcode successfully.`);
         }
     }
+    const defaultSongs = [
+        { id: 'ahIVNoJZR2k', title: 'Gospel Song on John 3:16' },
+        { id: 'Oi7MXSJbhi4', title: 'HE is my everything (6 Languages)' },
+        { id: 'LmegPb_8LY8', title: 'Way Maker - Miracle Worker' },
+        { id: 'gjWVYjgsbvo', title: 'Siluvaiandai Vaa Maganae (Communion/Good Friday)' },
+        { id: 'G8HSX2oNkOk', title: 'Gethsemanae Poongavinil (Good Friday)' },
+        { id: '1rXDQYK7eyk', title: 'Dayavulla Devan' },
+        { id: '7j3ZrHhGMgk', title: 'Samuvel Pol' }
+    ];
+    const defaultServices = [
+        {
+            title: 'Promise Word Service',
+            schedule: 'First Day of Every month',
+            timing: '5:00 AM - 6:00 AM',
+            locationType: 'Offline & Online',
+            category: 'services',
+            icon: 'bi-calendar-heart',
+            color: 'blue'
+        },
+        {
+            title: 'Promise Word & Communion Service',
+            schedule: 'Every First Friday',
+            timing: '10:00 AM - 1:00 PM',
+            locationType: 'Offline & Online',
+            category: 'services',
+            icon: 'bi-droplet-fill',
+            color: 'blue',
+            note: 'Communion blessing service'
+        },
+        {
+            title: 'Regular Tamil Service',
+            schedule: 'Every Friday',
+            timing: '10:00 AM - 1:00 PM',
+            locationType: 'Offline & Online',
+            category: 'services',
+            icon: 'bi-bookmark-star',
+            color: 'blue'
+        },
+        {
+            title: 'Regular English Service',
+            schedule: 'Every Friday',
+            timing: '8:00 PM – 9:30 PM',
+            locationType: 'Offline & Online',
+            category: 'services',
+            icon: 'bi-translate',
+            color: 'blue',
+            note: 'Note: Every First Friday is Communion Service'
+        },
+        {
+            title: 'Bible Study & Intercessory Prayer',
+            schedule: 'Every Sunday',
+            timing: '8:00 PM – 9:30 PM',
+            locationType: 'Online / In-Person',
+            category: 'prayer',
+            icon: 'bi-journal-text',
+            color: 'orange'
+        },
+        {
+            title: 'Open Gate & Revival Prayer',
+            schedule: 'Every Tuesday',
+            timing: '5:00 AM - 6:00 AM',
+            locationType: 'Online Only',
+            category: 'prayer',
+            icon: 'bi-unlock-fill',
+            color: 'orange'
+        },
+        {
+            title: 'Preparatory Prayer',
+            schedule: 'Every Thursday (except Last Thursday)',
+            timing: '8:00 PM - 9:00 PM',
+            locationType: 'Offline & Online',
+            category: 'prayer',
+            icon: 'bi-shield-plus',
+            color: 'orange',
+            note: 'Every Last Thursday is Missionary Prayer'
+        },
+        {
+            title: 'Fasting Prayer',
+            schedule: 'Last Saturday of Every month',
+            timing: '10:00 AM - 1:00 PM',
+            locationType: 'Offline & Online',
+            category: 'prayer',
+            icon: 'bi-hourglass-split',
+            color: 'orange'
+        },
+        {
+            title: "Women's Fellowship",
+            schedule: 'Every First Wednesday',
+            timing: '8:00 PM – 9:30 PM',
+            locationType: 'Offline & Online',
+            category: 'fellowship',
+            icon: 'bi-gender-female',
+            color: 'purple'
+        },
+        {
+            title: "Men's Fellowship",
+            schedule: 'Third Wednesday',
+            timing: '8:00 PM – 9:30 PM',
+            locationType: 'Offline & Online',
+            category: 'fellowship',
+            icon: 'bi-gender-male',
+            color: 'purple'
+        },
+        {
+            title: 'Youth Fellowship',
+            schedule: 'Every Second Saturday',
+            timing: '8:00 PM – 9:30 PM',
+            locationType: 'Offline & Online',
+            category: 'fellowship',
+            icon: 'bi-people',
+            color: 'purple'
+        },
+        {
+            title: 'Quarterly 3 Days Fasting Prayer',
+            schedule: 'Every Third Month – Last Three Days',
+            timing: '4:00 AM – 6:00 AM',
+            locationType: 'Offline & Online',
+            category: 'seasonal',
+            icon: 'bi-sun',
+            color: 'green'
+        },
+        {
+            title: '7 Days Year-End Preparatory Fasting Prayer',
+            schedule: '25 Dec – 31 Dec',
+            timing: '4:00 AM – 6:00 AM',
+            locationType: 'Offline & Online',
+            category: 'seasonal',
+            icon: 'bi-calendar-range',
+            color: 'green'
+        }
+    ];
+    const contentsToSeed = [
+        { key: 'zion_songs', value: JSON.stringify(defaultSongs) },
+        { key: 'service_hours', value: JSON.stringify(defaultServices) }
+    ];
+    for (const item of contentsToSeed) {
+        const existingContent = await prisma.websiteContent.findUnique({
+            where: { key: item.key }
+        });
+        if (!existingContent) {
+            await prisma.websiteContent.create({
+                data: {
+                    key: item.key,
+                    value: item.value
+                }
+            });
+            console.log(`Seeded default website content for key '${item.key}' successfully.`);
+        }
+        else {
+            console.log(`Website content for key '${item.key}' already exists. Skipping.`);
+        }
+    }
 }
 main()
     .catch((e) => {

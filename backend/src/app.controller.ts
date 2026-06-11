@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Headers, UnauthorizedException } from '@nestjs/common';
+import { Controller, Get, Post, Put, Body, Headers, Param, UnauthorizedException } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PrismaService } from './prisma.service';
 import { JwtService } from '@nestjs/jwt';
@@ -70,5 +70,48 @@ console.log(admin);
     });
 
     return users;
+  }
+
+  @Get('content/:key')
+  async getContent(@Param('key') key: string) {
+    const record = await this.prisma.websiteContent.findUnique({
+      where: { key },
+    });
+    if (!record) {
+      return null;
+    }
+    try {
+      return JSON.parse(record.value);
+    } catch (e) {
+      return record.value;
+    }
+  }
+
+  @Put('admin/content/:key')
+  async updateContent(
+    @Param('key') key: string,
+    @Body() body: { value: any },
+    @Headers('authorization') authHeader: string,
+  ) {
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      throw new UnauthorizedException('No authorization token provided.');
+    }
+
+    const token = authHeader.split(' ')[1];
+    try {
+      this.jwtService.verify(token);
+    } catch (err) {
+      throw new UnauthorizedException('Invalid or expired token.');
+    }
+
+    const valueStr = typeof body.value === 'string' ? body.value : JSON.stringify(body.value);
+
+    const record = await this.prisma.websiteContent.upsert({
+      where: { key },
+      update: { value: valueStr },
+      create: { key, value: valueStr },
+    });
+
+    return { success: true, key: record.key };
   }
 }

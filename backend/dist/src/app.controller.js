@@ -106,6 +106,39 @@ let AppController = class AppController {
         });
         return users;
     }
+    async getContent(key) {
+        const record = await this.prisma.websiteContent.findUnique({
+            where: { key },
+        });
+        if (!record) {
+            return null;
+        }
+        try {
+            return JSON.parse(record.value);
+        }
+        catch (e) {
+            return record.value;
+        }
+    }
+    async updateContent(key, body, authHeader) {
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            throw new common_1.UnauthorizedException('No authorization token provided.');
+        }
+        const token = authHeader.split(' ')[1];
+        try {
+            this.jwtService.verify(token);
+        }
+        catch (err) {
+            throw new common_1.UnauthorizedException('Invalid or expired token.');
+        }
+        const valueStr = typeof body.value === 'string' ? body.value : JSON.stringify(body.value);
+        const record = await this.prisma.websiteContent.upsert({
+            where: { key },
+            update: { value: valueStr },
+            create: { key, value: valueStr },
+        });
+        return { success: true, key: record.key };
+    }
 };
 exports.AppController = AppController;
 __decorate([
@@ -135,6 +168,22 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "getUsers", null);
+__decorate([
+    (0, common_1.Get)('content/:key'),
+    __param(0, (0, common_1.Param)('key')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "getContent", null);
+__decorate([
+    (0, common_1.Put)('admin/content/:key'),
+    __param(0, (0, common_1.Param)('key')),
+    __param(1, (0, common_1.Body)()),
+    __param(2, (0, common_1.Headers)('authorization')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, String]),
+    __metadata("design:returntype", Promise)
+], AppController.prototype, "updateContent", null);
 exports.AppController = AppController = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService,
