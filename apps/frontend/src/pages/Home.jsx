@@ -291,15 +291,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. WORSHIP TEAM BANNER */}
-      <section className="worship-banner" style={{ backgroundImage: `url('/assets/img/events/showcase-9.jpg')` }}>
-        <div className="worship-banner-overlay"></div>
+      {/* 4. WORSHIP TEAM SECTION */}
+      <section className="worship-section redesign-section">
         <div className="container">
-          <div className="worship-banner-content text-white">
-            <h2 className="worship-banner-title">ZPF Worship</h2>
-            <p className="worship-banner-desc">
-              Our worship team seeks to lead the congregation into a deep encounter with God's presence through music, singing, and prayer. Experience our weekly live worship recordings.
-            </p>
+          <div className="worship-grid">
+            <div className="worship-text-content">
+              <span className="worship-tag">Worship</span>
+              <h2 className="worship-title">Way Maker - Miracle Worker</h2>
+              <p className="worship-desc">
+                Watch the gospel video highlight and worship song. Experience the presence of God as we lift up His name together.
+              </p>
+              <a
+                href="https://www.youtube.com/watch?v=LmegPb_8LY8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="worship-play-btn"
+              >
+                <i className="bi bi-play-fill"></i> Watch Video
+              </a>
+            </div>
+
+            <div className="worship-video-card">
+              <div className="ratio ratio-16x9">
+                <iframe
+                  src="https://www.youtube.com/embed/LmegPb_8LY8"
+                  title="Way Maker - Miracle Worker"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>
