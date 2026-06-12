@@ -1,10 +1,131 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+
+const defaultAlbums = [
+  // Christmas Programs
+  {
+    title: 'Christmas Programs',
+    category: 'church',
+    desc: 'Annual Christmas Carol services, nativity skits, and celebrations.',
+    videos: [
+      { id: 'dlOAth52Uc0', title: '2025 Christmas Carol Service' },
+      { id: 'NK-efiHI1n0', title: '2024 Christmas Carol Service Highlights' },
+      { id: 'Tk-mEPobeL8', title: '2022 Christmas Carol Service Highlights' }
+    ],
+    cover: '/assets/img/all_ministries.png'
+  },
+  // Cottage Prayers
+  {
+    title: 'Cottage Prayers',
+    category: 'church',
+    desc: 'House blessings and prayer fellowships in Abqaiq and Jubail.',
+    details: ['Abqaiq Cottage Prayers', 'Jubail Cottage Prayers'],
+    cover: '/assets/img/care_cells_card.png'
+  },
+  // Baptism
+  {
+    title: 'Baptism Services',
+    category: 'church',
+    desc: 'Testimonies and water baptism services.',
+    videos: [
+      { id: '5T0Jr8QEd50', title: 'ZPF Baptism Service (March 2025)' }
+    ],
+    cover: '/assets/img/hero_worship.png'
+  },
+  // Bible Class
+  {
+    title: 'Bible Class Sessions',
+    category: 'youth',
+    desc: 'Regular Sunday school teachings and children\'s scripture class.',
+    details: ['Sunday Bible Class', 'Annual Exams'],
+    cover: '/assets/img/kids_ministry.png'
+  },
+  // Fellowship with Other Churches
+  {
+    title: 'Fellowship with Other Churches',
+    category: 'church',
+    desc: 'Joint prayer meets with Bethel Church, Grace Church, and Gideon Church.',
+    details: ['Bethel Church, Jubail', 'Grace Church, Jubail', 'Gideon Church, Alhassa'],
+    cover: '/assets/img/worship_singers.png'
+  },
+  // Guest Pastors
+  {
+    title: 'Guest Pastors Visit',
+    category: 'church',
+    desc: 'Sermons and blessings delivered by visiting evangelists and pastors.',
+    cover: '/assets/img/sermons_card.png'
+  },
+  // Farewells
+  {
+    title: 'Farewell Meetings',
+    category: 'church',
+    desc: 'Send-offs and blessing prayers for deacons and church families.',
+    details: ['Dhas Uncle Farewell', 'Raja Bro Farewell', 'Mary Sis Farewell', 'Victor Bro Farewell'],
+    cover: '/assets/img/care_cells_card.png'
+  },
+  // Festival of Tabernacle
+  {
+    title: 'Festival of Tabernacles',
+    category: 'church',
+    desc: 'Annual festival celebrations and thanksgiving praise meetings.',
+    cover: '/assets/img/hero_worship.png'
+  },
+  // Jericho Prayer Drive
+  {
+    title: 'Jericho Prayer Drive',
+    category: 'church',
+    desc: 'City-wide prayer drives interceding for local areas and industries.',
+    cover: '/assets/img/bible_club_banner.png'
+  },
+  // Thanksgiving Prayers
+  {
+    title: 'Thanksgiving Family Prayers',
+    category: 'fellowship',
+    desc: 'Prayers for family milestones, baby showers, puberty celebrations, and weddings.',
+    details: ['Baby Shower', 'Birthdays', 'Puberty Blessings', 'Wedding Days'],
+    cover: '/assets/img/sunday_worship.png'
+  },
+  // Teens & Youth Fellowships
+  {
+    title: 'Teens & Youth Fellowships',
+    category: 'youth',
+    desc: 'Praise sessions, career support, and fellowship for teenagers and youth.',
+    cover: '/assets/img/teens_ministry.png'
+  },
+  // ZPF Kids Practice
+  {
+    title: 'ZPF Kids Song & Choir Practice',
+    category: 'youth',
+    desc: 'Vocal practices and rehearsals for worship songs.',
+    details: ['Choir Practice', 'Carnatic Vocal Practice', 'Western Vocal Practice'],
+    cover: '/assets/img/kids_ministry.png'
+  },
+  // ZPF Kids Instrument Practice
+  {
+    title: 'ZPF Kids Instrument Practice',
+    category: 'youth',
+    desc: 'Keyboard, guitar, and drums practice for younger musicians.',
+    cover: '/assets/img/young_adults_ministry.png'
+  },
+  // ZPF Tours
+  {
+    title: 'ZPF Tours & Trips',
+    category: 'trips',
+    desc: 'Short excursions and long spiritual retreats with church families.',
+    details: [
+      'Short Trips: IAU Beach, Fanateer Beach (Jubail), Wonder Hills (Jubail), Alhassa (Yellow Lake)',
+      'Long Trips: Tabuk, Abha, Riyadh'
+    ],
+    cover: '/assets/img/young_adults_ministry.png'
+  }
+]
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [selectedVideo, setSelectedVideo] = useState(null)
+  const [albumsList, setAlbumsList] = useState([])
+  const [loading, setLoading] = useState(true)
 
   const categories = [
     { id: 'all', label: 'All Albums' },
@@ -14,128 +135,32 @@ export default function Gallery() {
     { id: 'trips', label: 'ZPF Tours' }
   ]
 
-  const albums = [
-    // Christmas Programs
-    {
-      title: 'Christmas Programs',
-      category: 'church',
-      desc: 'Annual Christmas Carol services, nativity skits, and celebrations.',
-      videos: [
-        { id: 'dlOAth52Uc0', title: '2025 Christmas Carol Service' },
-        { id: 'NK-efiHI1n0', title: '2024 Christmas Carol Service Highlights' },
-        { id: 'Tk-mEPobeL8', title: '2022 Christmas Carol Service Highlights' }
-      ],
-      cover: '/assets/img/all_ministries.png'
-    },
-    // Cottage Prayers
-    {
-      title: 'Cottage Prayers',
-      category: 'church',
-      desc: 'House blessings and prayer fellowships in Abqaiq and Jubail.',
-      details: ['Abqaiq Cottage Prayers', 'Jubail Cottage Prayers'],
-      cover: '/assets/img/care_cells_card.png'
-    },
-    // Baptism
-    {
-      title: 'Baptism Services',
-      category: 'church',
-      desc: 'Testimonies and water baptism services.',
-      videos: [
-        { id: '5T0Jr8QEd50', title: 'ZPF Baptism Service (March 2025)' }
-      ],
-      cover: '/assets/img/hero_worship.png'
-    },
-    // Bible Class
-    {
-      title: 'Bible Class Sessions',
-      category: 'youth',
-      desc: 'Regular Sunday school teachings and children\'s scripture class.',
-      details: ['Sunday Bible Class', 'Annual Exams'],
-      cover: '/assets/img/kids_ministry.png'
-    },
-    // Fellowship with Other Churches
-    {
-      title: 'Fellowship with Other Churches',
-      category: 'church',
-      desc: 'Joint prayer meets with Bethel Church, Grace Church, and Gideon Church.',
-      details: ['Bethel Church, Jubail', 'Grace Church, Jubail', 'Gideon Church, Alhassa'],
-      cover: '/assets/img/worship_singers.png'
-    },
-    // Guest Pastors
-    {
-      title: 'Guest Pastors Visit',
-      category: 'church',
-      desc: 'Sermons and blessings delivered by visiting evangelists and pastors.',
-      cover: '/assets/img/sermons_card.png'
-    },
-    // Farewells
-    {
-      title: 'Farewell Meetings',
-      category: 'church',
-      desc: 'Send-offs and blessing prayers for deacons and church families.',
-      details: ['Dhas Uncle Farewell', 'Raja Bro Farewell', 'Mary Sis Farewell', 'Victor Bro Farewell'],
-      cover: '/assets/img/care_cells_card.png'
-    },
-    // Festival of Tabernacle
-    {
-      title: 'Festival of Tabernacles',
-      category: 'church',
-      desc: 'Annual festival celebrations and thanksgiving praise meetings.',
-      cover: '/assets/img/hero_worship.png'
-    },
-    // Jericho Prayer Drive
-    {
-      title: 'Jericho Prayer Drive',
-      category: 'church',
-      desc: 'City-wide prayer drives interceding for local areas and industries.',
-      cover: '/assets/img/bible_club_banner.png'
-    },
-    // Thanksgiving Prayers
-    {
-      title: 'Thanksgiving Family Prayers',
-      category: 'fellowship',
-      desc: 'Prayers for family milestones, baby showers, puberty celebrations, and weddings.',
-      details: ['Baby Shower', 'Birthdays', 'Puberty Blessings', 'Wedding Days'],
-      cover: '/assets/img/sunday_worship.png'
-    },
-    // Teens & Youth Fellowships
-    {
-      title: 'Teens & Youth Fellowships',
-      category: 'youth',
-      desc: 'Praise sessions, career support, and fellowship for teenagers and youth.',
-      cover: '/assets/img/teens_ministry.png'
-    },
-    // ZPF Kids Practice
-    {
-      title: 'ZPF Kids Song & Choir Practice',
-      category: 'youth',
-      desc: 'Vocal practices and rehearsals for worship songs.',
-      details: ['Choir Practice', 'Carnatic Vocal Practice', 'Western Vocal Practice'],
-      cover: '/assets/img/kids_ministry.png'
-    },
-    // ZPF Kids Instrument Practice
-    {
-      title: 'ZPF Kids Instrument Practice',
-      category: 'youth',
-      desc: 'Keyboard, guitar, and drums practice for younger musicians.',
-      cover: '/assets/img/young_adults_ministry.png'
-    },
-    // ZPF Tours
-    {
-      title: 'ZPF Tours & Trips',
-      category: 'trips',
-      desc: 'Short excursions and long spiritual retreats with church families.',
-      details: [
-        'Short Trips: IAU Beach, Fanateer Beach (Jubail), Wonder Hills (Jubail), Alhassa (Yellow Lake)',
-        'Long Trips: Tabuk, Abha, Riyadh'
-      ],
-      cover: '/assets/img/young_adults_ministry.png'
+  useEffect(() => {
+    const fetchAlbums = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+        const res = await fetch(`${apiUrl}/content/gallery_albums`)
+        if (res.ok) {
+          const data = await res.json()
+          if (data && Array.isArray(data) && data.length > 0) {
+            setAlbumsList(data)
+            return
+          }
+        }
+      } catch (err) {
+        console.warn('Backend connection failed, using local default albums fallback.')
+      } finally {
+        setLoading(false)
+      }
+      setAlbumsList(defaultAlbums)
     }
-  ]
+
+    fetchAlbums()
+  }, [])
 
   const filteredAlbums = activeCategory === 'all'
-    ? albums
-    : albums.filter(a => a.category === activeCategory)
+    ? albumsList
+    : albumsList.filter(a => a.category === activeCategory)
 
   const getYoutubeThumb = (id) => `https://img.youtube.com/vi/${id}/hqdefault.jpg`
 

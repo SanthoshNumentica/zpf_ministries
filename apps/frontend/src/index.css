@@ -2945,3 +2945,45 @@ body.scrolled .header.redesign-header .logo img {
   color: #bf953f;
   border: 1px solid rgba(229, 193, 88, 0.2);
 }
+
+/* Header Logout Positioning Styles */
+@media (min-width: 993px) {
+  .mobile-only-logout {
+    display: none !important;
+  }
+}
+
+.desktop-only-logout {
+  display: none;
+}
+
+@media (min-width: 993px) {
+  .desktop-only-logout {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    z-index: 10000;
+  }
+}
+
+.header-logout-btn {
+  font-family: var(--font-sans);
+  color: #e74c3c !important;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border: 1px solid rgba(231, 76, 60, 0.25);
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.header-logout-btn:hover {
+  color: #ffffff !important;
+  background: #e74c3c;
+  border-color: #e74c3c;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}

@@ -115,7 +115,7 @@ export default function Header() {
             </NavLink>
           </li>
           {sessionStorage.getItem('zpf_logged_in') === 'true' && (
-            <li>
+            <li className="mobile-only-logout">
               <a
                 href="#"
                 onClick={(e) => {
@@ -131,6 +131,22 @@ export default function Header() {
           )}
         </ul>
       </nav>
+
+      {sessionStorage.getItem('zpf_logged_in') === 'true' && (
+        <div className="desktop-only-logout">
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              sessionStorage.removeItem('zpf_logged_in')
+              window.location.reload()
+            }}
+            className="header-logout-btn"
+          >
+            Logout
+          </a>
+        </div>
+      )}
 
       <i
         className={`mobile-nav-toggle bi ${isMobileActive ? 'bi-x' : 'bi-list'}`}

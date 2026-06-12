@@ -39,6 +39,14 @@ export default function Admin() {
     color: 'blue',
     note: ''
   })
+  const [newAlbum, setNewAlbum] = useState({
+    title: '',
+    category: 'church',
+    desc: '',
+    cover: '/assets/img/all_ministries.png',
+    details: '',
+    videos: ''
+  })
 
   // Fetch website content
   const fetchContentData = async (key) => {
@@ -134,6 +142,57 @@ export default function Admin() {
   }
 
   const handleDeleteMeeting = (index) => {
+    setContentData(contentData.filter((_, idx) => idx !== index))
+  }
+
+  const handleAddAlbum = (e) => {
+    e.preventDefault()
+    if (!newAlbum.title || !newAlbum.desc) {
+      alert('Please fill out both Album Title and Description.')
+      return
+    }
+    
+    // Parse details list
+    const detailsArr = newAlbum.details
+      ? newAlbum.details.split(',').map(d => d.trim()).filter(Boolean)
+      : undefined
+
+    // Parse videos list
+    const videosArr = newAlbum.videos
+      ? newAlbum.videos.split('\n').map(v => {
+          const parts = v.split(':')
+          if (parts.length >= 2) {
+            return { id: parts[0].trim(), title: parts.slice(1).join(':').trim() }
+          }
+          return null
+        }).filter(Boolean)
+      : undefined
+
+    const parsedAlbum = {
+      title: newAlbum.title,
+      category: newAlbum.category,
+      desc: newAlbum.desc,
+      cover: newAlbum.cover || '/assets/img/all_ministries.png'
+    }
+    if (detailsArr && detailsArr.length > 0) {
+      parsedAlbum.details = detailsArr
+    }
+    if (videosArr && videosArr.length > 0) {
+      parsedAlbum.videos = videosArr
+    }
+
+    setContentData([...contentData, parsedAlbum])
+    setNewAlbum({
+      title: '',
+      category: 'church',
+      desc: '',
+      cover: '/assets/img/all_ministries.png',
+      details: '',
+      videos: ''
+    })
+  }
+
+  const handleDeleteAlbum = (index) => {
     setContentData(contentData.filter((_, idx) => idx !== index))
   }
 
@@ -675,6 +734,7 @@ export default function Admin() {
                         <option value="zion_songs">Zion Original Songs (Sermons Tab)</option>
                         <option value="casual_covers">Casual Worship Covers (Sermons Tab)</option>
                         <option value="service_hours">Weekly Service Timings (Meetings Page)</option>
+                        <option value="gallery_albums">Our Gallery Albums (Gallery Page)</option>
                       </select>
                     </div>
 
@@ -752,6 +812,148 @@ export default function Admin() {
                               </div>
                               <button type="submit" className="btn-primary w-100 py-2">
                                 <i className="bi bi-plus-circle me-1"></i> Add Song to List
+                              </button>
+                            </form>
+                          ) : selectedContentKey === 'gallery_albums' ? (
+                            <form onSubmit={handleAddAlbum}>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Album Title</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Christmas Carol Service"
+                                  value={newAlbum.title}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, title: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Category</label>
+                                <select
+                                  className="form-control-custom"
+                                  style={{
+                                    background: '#06070ad9',
+                                    color: '#fff',
+                                    border: '1px solid rgba(229, 193, 88, 0.15)',
+                                    borderRadius: '8px',
+                                    padding: '12px 15px',
+                                    width: '100%',
+                                    fontSize: '1rem',
+                                    cursor: 'pointer'
+                                  }}
+                                  value={newAlbum.category}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, category: e.target.value })}
+                                >
+                                  <option value="church">Church Events</option>
+                                  <option value="fellowship">Fellowships</option>
+                                  <option value="youth">Kids & Youth</option>
+                                  <option value="trips">ZPF Tours</option>
+                                </select>
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Description</label>
+                                <textarea
+                                  className="form-control-custom"
+                                  placeholder="e.g. Annual celebration and carols."
+                                  value={newAlbum.desc}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, desc: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px', minHeight: '80px', color: '#fff', background: '#06070ad9', border: '1px solid rgba(229,193,88,0.15)', borderRadius: '8px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Cover Image</label>
+                                <div className="d-flex gap-2 align-items-center">
+                                  <input
+                                    type="text"
+                                    className="form-control-custom"
+                                    placeholder="e.g. /assets/img/all_ministries.png"
+                                    value={newAlbum.cover}
+                                    onChange={(e) => setNewAlbum({ ...newAlbum, cover: e.target.value })}
+                                    required
+                                    style={{ paddingLeft: '15px', flex: 1 }}
+                                  />
+                                  <label
+                                    className="btn-secondary"
+                                    style={{
+                                      padding: '10px 15px',
+                                      borderRadius: '8px',
+                                      fontSize: '0.9rem',
+                                      fontWeight: 600,
+                                      cursor: 'pointer',
+                                      margin: 0,
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      gap: '5px',
+                                      whiteSpace: 'nowrap'
+                                    }}
+                                  >
+                                    <i className="bi bi-upload"></i> Upload
+                                    <input
+                                      type="file"
+                                      accept="image/*"
+                                      onChange={(e) => {
+                                        const file = e.target.files[0]
+                                        if (file) {
+                                          if (file.size > 2 * 1024 * 1024) {
+                                            alert('File size exceeds 2MB limit. Please upload a smaller image.')
+                                            return
+                                          }
+                                          const reader = new FileReader()
+                                          reader.onloadend = () => {
+                                            setNewAlbum({ ...newAlbum, cover: reader.result })
+                                          }
+                                          reader.readAsDataURL(file)
+                                        }
+                                      }}
+                                      style={{ display: 'none' }}
+                                    />
+                                  </label>
+                                </div>
+                                {newAlbum.cover && (
+                                  <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <img
+                                      src={newAlbum.cover}
+                                      alt="Upload Preview"
+                                      style={{ width: '80px', height: '50px', objectFit: 'cover', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.1)' }}
+                                    />
+                                    {newAlbum.cover.startsWith('data:') && (
+                                      <button
+                                        type="button"
+                                        onClick={() => setNewAlbum({ ...newAlbum, cover: '/assets/img/all_ministries.png' })}
+                                        className="btn-sm"
+                                        style={{ padding: '2px 8px', fontSize: '0.75rem', background: '#e74c3c', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                                      >
+                                        Remove Upload
+                                      </button>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Sub-Items / Highlights (Optional, comma separated)</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Carol Service, Nativity Skit"
+                                  value={newAlbum.details}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, details: e.target.value })}
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Video Highlights (Optional, YouTubeID:Title, one per line)</label>
+                                <textarea
+                                  className="form-control-custom"
+                                  placeholder="e.g. dlOAth52Uc0:Carol 2025&#10;NK-efiHI1n0:Christmas Highlights"
+                                  value={newAlbum.videos}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, videos: e.target.value })}
+                                  style={{ paddingLeft: '15px', minHeight: '80px', color: '#fff', background: '#06070ad9', border: '1px solid rgba(229,193,88,0.15)', borderRadius: '8px' }}
+                                />
+                              </div>
+                              <button type="submit" className="btn-primary w-100 py-2">
+                                <i className="bi bi-plus-circle me-1"></i> Add Album to List
                               </button>
                             </form>
                           ) : (
@@ -930,6 +1132,71 @@ export default function Admin() {
                                           style={{ background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)', color: '#fff' }}
                                           type="button"
                                           title="Delete Song"
+                                        >
+                                          <i className="bi bi-trash"></i>
+                                        </button>
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          ) : selectedContentKey === 'gallery_albums' ? (
+                            <div className="table-responsive">
+                              <table className="admin-table">
+                                <thead>
+                                  <tr>
+                                    <th>Cover</th>
+                                    <th>Title / Category</th>
+                                    <th>Description / Highlights</th>
+                                    <th style={{ width: '80px' }}>Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {contentData.map((album, idx) => (
+                                    <tr key={idx}>
+                                      <td style={{ width: '120px' }}>
+                                        <img
+                                          src={album.cover || '/assets/img/all_ministries.png'}
+                                          alt={album.title}
+                                          style={{ width: '100px', height: 'auto', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.1)' }}
+                                        />
+                                      </td>
+                                      <td>
+                                        <div style={{ fontWeight: 600, color: '#fff' }}>{album.title}</div>
+                                        <span
+                                          style={{
+                                            fontSize: '0.75rem',
+                                            padding: '2px 8px',
+                                            borderRadius: '10px',
+                                            background: 'rgba(255,255,255,0.05)',
+                                            color: 'var(--accent-gold)',
+                                            textTransform: 'uppercase'
+                                          }}
+                                        >
+                                          {album.category}
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <p style={{ margin: 0, fontSize: '0.85rem', color: '#ccc' }}>{album.desc}</p>
+                                        {album.details && (
+                                          <div style={{ fontSize: '0.75rem', color: '#e67e22', marginTop: '4px' }}>
+                                            Highlights: {album.details.join(', ')}
+                                          </div>
+                                        )}
+                                        {album.videos && (
+                                          <div style={{ fontSize: '0.75rem', color: '#3498db', marginTop: '4px' }}>
+                                            Videos: {album.videos.map(v => v.title).join(', ')}
+                                          </div>
+                                        )}
+                                      </td>
+                                      <td>
+                                        <button
+                                          onClick={() => handleDeleteAlbum(idx)}
+                                          className="btn-sm btn-primary"
+                                          style={{ background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)', color: '#fff' }}
+                                          type="button"
+                                          title="Delete Album"
                                         >
                                           <i className="bi bi-trash"></i>
                                         </button>
