@@ -131,10 +131,16 @@ export default function LoginGate({ children }) {
               <i className="bi bi-shield-lock lock-icon"></i>
             </motion.div>
             <h2 className="login-title">ZPF Ministries</h2>
-            <p className="login-subtitle">Enter credentials to enter the sanctuary</p>
           </div>
 
-          <form onSubmit={handleLoginSubmit} className="login-form mt-4">
+          {/* Tamil Bible Verse */}
+          <div className="login-verse-container">
+            <i className="bi bi-quote quote-icon-left"></i>
+            <p className="tamil-verse-text">"கர்த்தருடைய ஆலயத்திற்குப் போவோம் வாருங்கள் என்று எனக்கு அவர்கள் சொன்னபோது மகிழ்ச்சியாயிருந்தேன்."</p>
+            <p className="verse-ref">சங்கீதம் 122:1</p>
+          </div>
+
+          <form onSubmit={handleLoginSubmit} className="login-form mt-3">
             {/* Step 1: DOB text input */}
             <div className="form-group mb-4">
               <label className="form-label">Date of Birth</label>

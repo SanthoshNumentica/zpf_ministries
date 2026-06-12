@@ -429,13 +429,19 @@ export default function Admin() {
               <div className="login-card-container">
                 <div className="login-card-glow"></div>
                 <div className="login-card">
-                  <div className="login-header text-center mb-4">
+                  <div className="login-header text-center mb-3">
                     <i className="bi bi-shield-lock lock-icon"></i>
                     <h2 className="login-title">Admin Access Portal</h2>
-                    <p className="login-subtitle">Provide administrator credentials to proceed</p>
                   </div>
 
-                  <form onSubmit={handleLoginSubmit} className="login-form mt-4">
+                  {/* Tamil Bible Verse */}
+                  <div className="login-verse-container">
+                    <i className="bi bi-quote quote-icon-left"></i>
+                    <p className="tamil-verse-text">"கர்த்தருடைய ஆலயத்திற்குப் போவோம் வாருங்கள் என்று எனக்கு அவர்கள் சொன்னபோது மகிழ்ச்சியாயிருந்தேன்."</p>
+                    <p className="verse-ref">சங்கீதம் 122:1</p>
+                  </div>
+
+                  <form onSubmit={handleLoginSubmit} className="login-form mt-3">
                     <div className="form-group mb-4">
                       <label className="form-label">Email Address</label>
                       <div className="input-group-custom">

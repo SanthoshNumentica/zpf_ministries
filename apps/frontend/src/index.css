@@ -628,11 +628,71 @@ body.scrolled .header {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .admin-page-container.login-mode > .container {
   position: relative;
   z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.admin-page-container.login-mode > .container > div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: unset !important;
+}
+
+.login-verse-container {
+  background: rgba(191, 149, 63, 0.05);
+  border-left: 3px solid #bf953f;
+  padding: 12px 16px;
+  border-radius: 4px 12px 12px 4px;
+  margin: 15px 0 20px;
+  position: relative;
+  text-align: left;
+}
+
+.login-verse-container .quote-icon-left {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  font-size: 1.5rem;
+  color: rgba(191, 149, 63, 0.15);
+  line-height: 1;
+}
+
+.tamil-verse-text {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #4a3e2e;
+  line-height: 1.55;
+  margin: 0 0 6px 0;
+  padding-left: 10px;
+}
+
+.verse-ref {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #bf953f;
+  text-align: right;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
 }
 
 /* =======================================================
