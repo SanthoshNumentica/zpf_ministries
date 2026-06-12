@@ -113,7 +113,7 @@ export default function Sermons() {
 
   return (
     <main className="main redesign-mode">
-      
+
       {/* Page Header */}
       <div className="about-banner">
         <div className="container">
@@ -185,7 +185,7 @@ export default function Sermons() {
       {/* Content Render */}
       <section className="redesign-section light-bg">
         <div className="container">
-          
+
           {/* TAB 1: SERMONS */}
           {activeSection === 'sermons' && (
             <div>
@@ -196,7 +196,7 @@ export default function Sermons() {
               <div className="row g-4 justify-content-center">
                 {sermonCategories.map((sermon, idx) => (
                   <div className="col-lg-4 col-md-6" key={idx}>
-                    <motion.div 
+                    <motion.div
                       className="campus-card"
                       initial="hidden"
                       whileInView="visible"
@@ -215,7 +215,6 @@ export default function Sermons() {
               </div>
             </div>
           )}
-
           {/* TAB 2: ZION SONGS */}
           {activeSection === 'songs' && (
             <div>
@@ -226,7 +225,7 @@ export default function Sermons() {
               <div className="row g-4">
                 {zionSongsList.map((song, idx) => (
                   <div className="col-lg-4 col-md-6" key={idx}>
-                    <motion.div 
+                    <motion.div
                       className="video-box"
                       initial="hidden"
                       whileInView="visible"
@@ -236,9 +235,9 @@ export default function Sermons() {
                       onClick={() => setSelectedVideo(song.id)}
                     >
                       <div className="ratio ratio-16x9 mb-3">
-                        <img 
-                          src={getYoutubeThumb(song.id)} 
-                          alt={song.title} 
+                        <img
+                          src={getYoutubeThumb(song.id)}
+                          alt={song.title}
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                         <div style={{
@@ -270,7 +269,7 @@ export default function Sermons() {
               <div className="row g-4">
                 {casualCoversList.map((cover, idx) => (
                   <div className="col-lg-4 col-md-6" key={idx}>
-                    <motion.div 
+                    <motion.div
                       className="video-box"
                       initial="hidden"
                       whileInView="visible"
@@ -280,9 +279,9 @@ export default function Sermons() {
                       onClick={() => setSelectedVideo(cover.id)}
                     >
                       <div className="ratio ratio-16x9 mb-2">
-                        <img 
-                          src={getYoutubeThumb(cover.id)} 
-                          alt={cover.title} 
+                        <img
+                          src={getYoutubeThumb(cover.id)}
+                          alt={cover.title}
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                         <div style={{

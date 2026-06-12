@@ -839,6 +839,24 @@ body.scrolled .header {
   background: rgba(22, 25, 36, 0.7);
 }
 
+.main.redesign-mode .video-box {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.main.redesign-mode .video-box:hover {
+  background: #fdfdfd;
+  border-color: #2563eb;
+  box-shadow: 0 12px 35px rgba(37, 99, 235, 0.1);
+}
+
+.main.redesign-mode .video-title {
+  color: #1a1a1a !important;
+}
+
 .video-title {
   font-size: 1.2rem;
   margin-bottom: 8px;
