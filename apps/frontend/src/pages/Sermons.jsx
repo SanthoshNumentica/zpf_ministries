@@ -269,7 +269,7 @@ export default function Sermons() {
               </div>
               <div className="row g-4">
                 {casualCoversList.map((cover, idx) => (
-                  <div className="col-lg-3 col-md-6" key={idx}>
+                  <div className="col-lg-4 col-md-6" key={idx}>
                     <motion.div 
                       className="video-box"
                       initial="hidden"
