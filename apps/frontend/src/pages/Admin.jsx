@@ -13,8 +13,8 @@ export default function Admin() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const [sortField, setSortField] = useState('createdAt')
-  const [sortOrder, setSortOrder] = useState('desc')
+  const [sortField, setSortField] = useState('id')
+  const [sortOrder, setSortOrder] = useState('asc')
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(10)
   const [showAddModal, setShowAddModal] = useState(false)
@@ -409,12 +409,8 @@ export default function Admin() {
   }
 
   const handleSort = (field) => {
-    if (sortField === field) {
-      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')
-    } else {
-      setSortField(field)
-      setSortOrder('asc')
-    }
+    setSortField(field)
+    setSortOrder('asc')
   }
 
   const paginatedUsers = filteredUsers.slice(

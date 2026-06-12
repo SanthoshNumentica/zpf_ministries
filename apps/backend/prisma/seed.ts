@@ -40,7 +40,8 @@ async function main() {
 
   // 2. Seed Sanctuary Users
   await prisma.sanctuaryUser.deleteMany({});
-  console.log('Cleared existing sanctuary users.');
+  await prisma.$executeRawUnsafe(`ALTER SEQUENCE "SanctuaryUser_id_seq" RESTART WITH 1;`);
+  console.log('Cleared existing sanctuary users and reset ID sequence to 1.');
 
   const users = [
     { name: 'Philip', dob: '26-06-2018' },
