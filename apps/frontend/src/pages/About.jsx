@@ -127,7 +127,7 @@ export default function About() {
                       style={{ height: '600px', width: '100%', objectFit: 'cover' }}
                     />
                     <div className="pastor-family-card-body" style={{ padding: '20px 15px' }}>
-                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>Bro. Muhil & Family</h3>
+                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>Family</h3>
                       <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Daughter's Family</p>
                     </div>
                   </div>
