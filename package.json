@@ -4,14 +4,22 @@
   "description": "ZPF Ministries - Frontend and Backend",
   "private": true,
   "scripts": {
-    "install:all": "pnpm install &&  pnpm install && cd ../backend && pnpm install",
-    "build:frontend": " pnpm run build",
-    "build:backend": "pnpm run build",
-    "build": "pnpm run build:backend && pnpm run build:frontend",
-    "dev:frontend": " pnpm run dev",
-    "dev:backend": "pnpm run start:dev"
+    "dev:frontend": "pnpm --filter frontend dev",
+    "dev:backend": "pnpm --filter backend start:dev",
+    "build:frontend": "pnpm --filter frontend build",
+    "build:backend": "pnpm --filter backend build",
+    "build": "pnpm --filter backend build && pnpm --filter frontend build"
   },
   "dependencies": {
     "dotenv": "^17.4.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@nestjs/core",
+      "@prisma/engines",
+      "bcrypt",
+      "prisma",
+      "esbuild"
+    ]
   }
 }
