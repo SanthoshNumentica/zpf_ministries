@@ -1,11 +1,26 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import SpotlightCard from '../components/bits/SpotlightCard'
 
 export default function Sermons() {
+  const location = useLocation()
   const [activeSection, setActiveSection] = useState('sermons')
   const [selectedVideo, setSelectedVideo] = useState(null)
+
+  React.useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const tab = params.get('tab')
+    if (tab && ['sermons', 'songs', 'covers'].includes(tab)) {
+      setActiveSection(tab)
+    } else if (location.hash === '#songs') {
+      setActiveSection('songs')
+    } else if (location.hash === '#covers') {
+      setActiveSection('covers')
+    } else if (location.hash === '#sermons') {
+      setActiveSection('sermons')
+    }
+  }, [location])
 
   const sermonCategories = [
     {

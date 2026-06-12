@@ -13,13 +13,24 @@ import Contact from './pages/Contact'
 import LoginGate from './components/LoginGate'
 import Admin from './pages/Admin'
 
-// ScrollRestoration component to scroll to top on page change
+// ScrollRestoration component to scroll to top or hash on page/hash change
 function ScrollToTop() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    if (hash) {
+      // Allow component render/mounting to finish
+      setTimeout(() => {
+        const id = hash.replace('#', '')
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname, hash])
   
   return null
 }

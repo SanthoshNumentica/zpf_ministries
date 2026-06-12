@@ -125,7 +125,7 @@ export default function Live() {
       </section>
 
       {/* 13. PRAYER POINTS SECTION */}
-      <section className="redesign-section gray-bg">
+      <section className="redesign-section gray-bg" id="prayer-points">
         <div className="container">
           <div className="redesign-section-header">
             <h2>Regular Prayer Points</h2>

@@ -162,7 +162,7 @@ export default function About() {
       </section>
 
       {/* 3. WHAT WE BELIEVE */}
-      <section className="redesign-section gray-bg">
+      <section className="redesign-section gray-bg" id="what-we-believe">
         <div className="container">
           <div className="redesign-section-header">
             <h2>What We Believe?</h2>
@@ -228,7 +228,7 @@ export default function About() {
       </section>
 
       {/* 4. OUR SERVANTS */}
-      <section className="redesign-section light-bg">
+      <section className="redesign-section light-bg" id="servants">
         <div className="container">
           <div className="redesign-section-header">
             <h2>Our Servants</h2>
@@ -527,7 +527,7 @@ export default function About() {
       </section>
 
       {/* 5. MINISTRIES & EQUIPPING */}
-      <section className="redesign-section gray-bg">
+      <section className="redesign-section gray-bg" id="zion-ministries">
         <div className="container">
           <div className="redesign-section-header">
             <h2>Our Ministries</h2>
@@ -536,7 +536,7 @@ export default function About() {
 
           <div className="row g-4" style={{ marginBottom: '60px' }}>
             {/* Deborah Fellowship */}
-            <div className="col-md-6">
+            <div className="col-md-6" id="deborah-fellowship">
               <div className="campus-card" style={{ padding: '35px' }}>
                 <i className="bi bi-gender-female" style={{ fontSize: '2.5rem', color: '#a855f7', marginBottom: '15px' }}></i>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '10px' }}>Deborah Fellowship</h3>
@@ -547,7 +547,7 @@ export default function About() {
             </div>
 
             {/* Kids Bible School */}
-            <div className="col-md-6">
+            <div className="col-md-6" id="kids-bible-school">
               <div className="campus-card" style={{ padding: '35px' }}>
                 <i className="bi bi-book-half" style={{ fontSize: '2.5rem', color: '#eab308', marginBottom: '15px' }}></i>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '10px' }}>Kids Bible School</h3>
@@ -559,7 +559,7 @@ export default function About() {
           </div>
 
           {/* Equipping & Edifying */}
-          <div style={{ marginBottom: '60px' }}>
+          <div style={{ marginBottom: '60px' }} id="edifying-one-another">
             <h3 className="servants-subheading" style={{ borderBottomColor: '#2563eb' }}>Equipping & Edifying</h3>
             <div className="row gy-4">
               <div className="col-lg-6">

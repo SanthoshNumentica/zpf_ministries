@@ -25,18 +25,8 @@ export default function Header() {
     }
   }, [isMobileActive])
 
-  // Scroll to section helper for homepage hashes
-  const handleNavClick = (sectionId) => {
+  const handleNavClick = () => {
     closeMobileNav()
-    if (location.pathname !== '/') {
-      return // standard Link behavior to homepage will trigger scroll on mount
-    }
-    setTimeout(() => {
-      const element = document.getElementById(sectionId)
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
-    }, 100)
   }
 
   return (
@@ -47,7 +37,6 @@ export default function Header() {
           alt="ZPF Ministries Logo"
         />
       </Link>
-
       <nav className="navmenu align-items-center">
         <ul>
           <li>
@@ -59,34 +48,82 @@ export default function Header() {
               Home
             </NavLink>
           </li>
-          <li>
-            <NavLink
+          {/* ABOUT DROPDOWN */}
+          <li className="dropdown">
+            <Link
               to="/about"
-              className={({ isActive }) => isActive ? 'active' : ''}
+              className={location.pathname === '/about' && location.hash === '' ? 'active' : ''}
               onClick={closeMobileNav}
             >
-              About
-            </NavLink>
+              <span>About</span> <i className="bi bi-chevron-down toggle-dropdown"></i>
+            </Link>
+            <ul>
+              <li><Link to="/about" onClick={closeMobileNav}>About ZPF</Link></li>
+              <li><Link to="/about#what-we-believe" onClick={closeMobileNav}>What We Believe</Link></li>
+              <li><Link to="/about#servants" onClick={closeMobileNav}>Servants</Link></li>
+            </ul>
           </li>
+
+          {/* MEETINGS LINK */}
           <li>
             <NavLink
               to="/events"
               className={({ isActive }) => isActive ? 'active' : ''}
               onClick={closeMobileNav}
             >
-              Events
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/sermons"
-              className={({ isActive }) => isActive ? 'active' : ''}
-              onClick={closeMobileNav}
-            >
-              Sermons
+              Meetings
             </NavLink>
           </li>
 
+          {/* MINISTRIES DROPDOWN */}
+          <li className="dropdown">
+            <a
+              href="#"
+              className={(location.pathname === '/about' && (location.hash === '#zion-ministries' || location.hash === '#deborah-fellowship' || location.hash === '#kids-bible-school' || location.hash === '#edifying-one-another')) ? 'active' : ''}
+              onClick={(e) => e.preventDefault()}
+            >
+              <span>Ministries</span> <i className="bi bi-chevron-down toggle-dropdown"></i>
+            </a>
+            <ul>
+              <li><Link to="/about#zion-ministries" onClick={closeMobileNav}>Zion Ministries</Link></li>
+              <li><Link to="/about#deborah-fellowship" onClick={closeMobileNav}>Deborah Fellowship</Link></li>
+              <li><Link to="/about#kids-bible-school" onClick={closeMobileNav}>Kids Bible School</Link></li>
+              <li><Link to="/about#edifying-one-another" onClick={closeMobileNav}>Edifying One Another</Link></li>
+            </ul>
+          </li>
+
+          {/* SERMONS & SONGS DROPDOWN */}
+          <li className="dropdown">
+            <Link
+              to="/sermons"
+              className={location.pathname === '/sermons' ? 'active' : ''}
+              onClick={closeMobileNav}
+            >
+              <span>Sermons & Songs</span> <i className="bi bi-chevron-down toggle-dropdown"></i>
+            </Link>
+            <ul>
+              <li><Link to="/sermons?tab=sermons" onClick={closeMobileNav}>Sermons</Link></li>
+              <li><Link to="/sermons?tab=songs" onClick={closeMobileNav}>Zion Songs</Link></li>
+              <li><Link to="/sermons?tab=covers" onClick={closeMobileNav}>Casual Covers</Link></li>
+            </ul>
+          </li>
+
+          {/* LIVE DROPDOWN */}
+          <li className="dropdown">
+            <Link
+              to="/live"
+              className={location.pathname === '/live' ? 'active' : ''}
+              onClick={closeMobileNav}
+            >
+              <span>Live</span> <i className="bi bi-chevron-down toggle-dropdown"></i>
+            </Link>
+            <ul>
+              <li><Link to="/live" onClick={closeMobileNav}>Live Broadcast</Link></li>
+              <li><Link to="/live#prayer-points" onClick={closeMobileNav}>Prayer Points</Link></li>
+            </ul>
+          </li>
+
+          {/* GALLERY LINK */}
           <li>
             <NavLink
               to="/gallery"
@@ -94,24 +131,6 @@ export default function Header() {
               onClick={closeMobileNav}
             >
               Gallery
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/live"
-              className={({ isActive }) => isActive ? 'active' : ''}
-              onClick={closeMobileNav}
-            >
-              Live
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/contact"
-              className={({ isActive }) => isActive ? 'active' : ''}
-              onClick={closeMobileNav}
-            >
-              Connect
             </NavLink>
           </li>
           {sessionStorage.getItem('zpf_logged_in') === 'true' && (
