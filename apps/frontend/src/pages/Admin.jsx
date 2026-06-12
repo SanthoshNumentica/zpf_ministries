@@ -178,7 +178,7 @@ export default function Admin() {
       alert('Please fill out both Album Title and Description.')
       return
     }
-    
+
     // Parse details list
     const detailsArr = newAlbum.details
       ? newAlbum.details.split(',').map(d => d.trim()).filter(Boolean)
@@ -187,12 +187,12 @@ export default function Admin() {
     // Parse videos list
     const videosArr = newAlbum.videos
       ? newAlbum.videos.split('\n').map(v => {
-          const parts = v.split(':')
-          if (parts.length >= 2) {
-            return { id: parts[0].trim(), title: parts.slice(1).join(':').trim() }
-          }
-          return null
-        }).filter(Boolean)
+        const parts = v.split(':')
+        if (parts.length >= 2) {
+          return { id: parts[0].trim(), title: parts.slice(1).join(':').trim() }
+        }
+        return null
+      }).filter(Boolean)
       : undefined
 
     const parsedAlbum = {
@@ -746,1007 +746,1007 @@ export default function Admin() {
             </div>
 
             <div className="admin-content-body">
-            {error && (
-              <div className="error-message mb-4" style={{ padding: '12px', borderRadius: '8px', background: 'rgba(231, 76, 60, 0.1)', color: '#e74c3c' }}>
-                <i className="bi bi-exclamation-octagon me-2"></i> {error}
-              </div>
-            )}
-
-            {activeTab === 'registry' && (
-              <>
-                <div className="stats-row mb-4">
-                  <div className="stat-card p-3 d-flex align-items-center gap-3" style={{ maxWidth: '300px', textAlign: 'left' }}>
-                    <div className="stat-icon" style={{ background: 'var(--gold-metallic)', color: '#1a1a1a', width: '40px', height: '40px', fontSize: '1.1rem', margin: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
-                      <i className="bi bi-people-fill"></i>
-                    </div>
-                    <div className="stat-content">
-                      <h4 style={{ margin: '0 0 4px 0', fontSize: '1.4rem' }}>{users.length}</h4>
-                      <p style={{ margin: 0, fontSize: '0.85rem' }}>Total Registered Users</p>
-                    </div>
-                  </div>
+              {error && (
+                <div className="error-message mb-4" style={{ padding: '12px', borderRadius: '8px', background: 'rgba(231, 76, 60, 0.1)', color: '#e74c3c' }}>
+                  <i className="bi bi-exclamation-octagon me-2"></i> {error}
                 </div>
+              )}
 
-                <div className="registry-table-wrapper card-panel" style={{ padding: '24px' }}>
-                  {/* Search Bar */}
-                  <div className="mb-4">
-                    <div className="input-group-custom" style={{ maxWidth: '400px' }}>
-                      <i className="bi bi-search input-icon"></i>
-                      <input
-                        type="text"
-                        className="form-control-custom"
-                        placeholder="Search by ID, DOB, or Passcode..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                      />
+              {activeTab === 'registry' && (
+                <>
+                  <div className="stats-row mb-4">
+                    <div className="stat-card p-3 d-flex align-items-center gap-3" style={{ maxWidth: '300px', textAlign: 'left' }}>
+                      <div className="stat-icon" style={{ background: 'var(--gold-metallic)', color: '#1a1a1a', width: '40px', height: '40px', fontSize: '1.1rem', margin: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '8px' }}>
+                        <i className="bi bi-people-fill"></i>
+                      </div>
+                      <div className="stat-content">
+                        <h4 style={{ margin: '0 0 4px 0', fontSize: '1.4rem' }}>{users.length}</h4>
+                        <p style={{ margin: 0, fontSize: '0.85rem' }}>Total Registered Users</p>
+                      </div>
                     </div>
                   </div>
 
-                  {loading && users.length === 0 ? (
-                    <div className="loading py-5 text-center">
-                      <p className="mt-3">Loading sanctuary registry records...</p>
+                  <div className="registry-table-wrapper card-panel" style={{ padding: '24px' }}>
+                    {/* Search Bar */}
+                    <div className="mb-4">
+                      <div className="input-group-custom" style={{ maxWidth: '400px' }}>
+                        <i className="bi bi-search input-icon"></i>
+                        <input
+                          type="text"
+                          className="form-control-custom"
+                          placeholder="Search by ID, DOB, or Passcode..."
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+                      </div>
                     </div>
-                  ) : filteredUsers.length === 0 ? (
-                    <div className="text-center py-5">
-                      <i className="bi bi-folder2-open" style={{ fontSize: '3rem', color: 'rgba(191, 149, 63, 0.3)' }}></i>
-                      <p className="text-cosmic mt-3">
-                        {searchTerm ? 'No users found matching your search.' : 'No sanctuary users found in the database.'}
-                      </p>
+
+                    {loading && users.length === 0 ? (
+                      <div className="loading py-5 text-center">
+                        <p className="mt-3">Loading sanctuary registry records...</p>
+                      </div>
+                    ) : filteredUsers.length === 0 ? (
+                      <div className="text-center py-5">
+                        <i className="bi bi-folder2-open" style={{ fontSize: '3rem', color: 'rgba(191, 149, 63, 0.3)' }}></i>
+                        <p className="text-cosmic mt-3">
+                          {searchTerm ? 'No users found matching your search.' : 'No sanctuary users found in the database.'}
+                        </p>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="table-responsive">
+                          <table className="admin-table">
+                            <thead>
+                              <tr>
+                                <th onClick={() => handleSort('id')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                                  Sl.NO {sortField === 'id' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
+                                </th>
+                                <th onClick={() => handleSort('name')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                                  Name {sortField === 'name' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
+                                </th>
+                                <th onClick={() => handleSort('dob')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                                  Date of Birth (DOB) {sortField === 'dob' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
+                                </th>
+                                <th onClick={() => handleSort('passcode')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                                  Security Passcode {sortField === 'passcode' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
+                                </th>
+                                <th onClick={() => handleSort('createdAt')} style={{ cursor: 'pointer', userSelect: 'none' }}>
+                                  Created At {sortField === 'createdAt' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
+                                </th>
+                                <th>Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {paginatedUsers.map((user) => (
+                                <tr key={user.id}>
+                                  <td><code>{user.id}</code></td>
+                                  <td><span style={{ fontWeight: 600 }}>{user.name || 'N/A'}</span></td>
+                                  <td>
+                                    <span className="user-dob">
+                                      <i className="bi bi-calendar3 me-2" style={{ color: 'var(--accent-gold)' }}></i>
+                                      {user.dob}
+                                    </span>
+                                  </td>
+                                  <td>
+                                    <span className="user-passcode">
+                                      <i className="bi bi-shield-lock-fill me-2" style={{ color: 'var(--accent-gold)' }}></i>
+                                      <code>{user.passcode}</code>
+                                    </span>
+                                  </td>
+                                  <td>
+                                    <span className="user-created">
+                                      {new Date(user.createdAt).toLocaleString()}
+                                    </span>
+                                  </td>
+                                  <td>
+                                    <div className="d-flex gap-2">
+                                      <button
+                                        onClick={() => openEditModal(user)}
+                                        className="btn-secondary"
+                                        style={{ padding: '6px 10px', fontSize: '0.85rem' }}
+                                        type="button"
+                                        title="Edit User"
+                                      >
+                                        <i className="bi bi-pencil-square"></i>
+                                      </button>
+                                      <button
+                                        onClick={() => handleDeleteUser(user.id)}
+                                        className="btn-secondary"
+                                        style={{ padding: '6px 10px', fontSize: '0.85rem', color: '#e74c3c', borderColor: 'rgba(231, 76, 60, 0.2)', background: 'rgba(231, 76, 60, 0.02)' }}
+                                        type="button"
+                                        title="Delete User"
+                                      >
+                                        <i className="bi bi-trash"></i>
+                                      </button>
+                                    </div>
+                                  </td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+
+                        {/* Pagination */}
+                        {totalPages > 1 && (
+                          <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
+                            <div className="text-cosmic" style={{ fontSize: '0.9rem' }}>
+                              Showing {((currentPage - 1) * itemsPerPage) + 1} to {Math.min(currentPage * itemsPerPage, filteredUsers.length)} of {filteredUsers.length} users
+                            </div>
+                            <div className="d-flex gap-2">
+                              <button
+                                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                                className="btn-secondary py-1 px-3"
+                                disabled={currentPage === 1}
+                                type="button"
+                              >
+                                <i className="bi bi-chevron-left"></i> Previous
+                              </button>
+                              <span className="d-flex align-items-center px-3 text-cosmic">
+                                Page {currentPage} of {totalPages}
+                              </span>
+                              <button
+                                onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+                                className="btn-secondary py-1 px-3"
+                                disabled={currentPage === totalPages}
+                                type="button"
+                              >
+                                Next <i className="bi bi-chevron-right"></i>
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                </>
+              )}
+
+              {activeTab === 'content' && (
+                <div className="content-manager-wrapper card-panel" style={{ padding: '24px' }}>
+                  {/* Select Content Key dropdown */}
+                  <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3 pb-3 border-bottom" style={{ borderColor: 'rgba(0,0,0,0.05)' }}>
+                    <div style={{ minWidth: '300px' }}>
+                      <label className="form-label">Select Content to Manage</label>
+                      <select
+                        className="form-control-custom"
+                        style={{
+                          border: '1px solid rgba(191, 149, 63, 0.2)',
+                          borderRadius: '8px',
+                          padding: '12px 15px',
+                          width: '100%',
+                          fontSize: '1rem',
+                          cursor: 'pointer'
+                        }}
+                        value={selectedContentKey}
+                        onChange={(e) => setSelectedContentKey(e.target.value)}
+                      >
+                        <option value="zion_songs">Zion Original Songs (Sermons Tab)</option>
+                        <option value="casual_covers">Casual Worship Covers (Sermons Tab)</option>
+                        <option value="service_hours">Weekly Service Timings (Meetings Page)</option>
+                        <option value="gallery_albums">Our Gallery Albums (Gallery Page)</option>
+                      </select>
+                    </div>
+
+                    <div className="d-flex gap-2 pt-4">
+                      <button
+                        onClick={handleSaveContent}
+                        className="btn-primary py-2 px-4"
+                        disabled={contentLoading}
+                        type="button"
+                      >
+                        <i className="bi bi-cloud-arrow-up-fill me-1"></i> Save Changes to Database
+                      </button>
+                    </div>
+                  </div>
+
+                  {contentSuccess && (
+                    <div className="sent-message mb-4" style={{ padding: '12px', borderRadius: '8px', background: 'rgba(46, 204, 113, 0.1)', color: '#27ae60' }}>
+                      <i className="bi bi-check-circle-fill me-2"></i> {contentSuccess}
+                    </div>
+                  )}
+
+                  {contentLoading && contentData.length === 0 ? (
+                    <div className="loading py-5 text-center">
+                      <p className="mt-3">Loading website content...</p>
                     </div>
                   ) : (
-                    <>
-                      <div className="table-responsive">
-                        <table className="admin-table">
-                          <thead>
-                            <tr>
-                              <th onClick={() => handleSort('id')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                                ID {sortField === 'id' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
-                              </th>
-                              <th onClick={() => handleSort('name')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                                Name {sortField === 'name' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
-                              </th>
-                              <th onClick={() => handleSort('dob')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                                Date of Birth (DOB) {sortField === 'dob' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
-                              </th>
-                              <th onClick={() => handleSort('passcode')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                                Security Passcode {sortField === 'passcode' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
-                              </th>
-                              <th onClick={() => handleSort('createdAt')} style={{ cursor: 'pointer', userSelect: 'none' }}>
-                                Created At {sortField === 'createdAt' && <i className={`bi bi-arrow-${sortOrder === 'asc' ? 'up' : 'down'} ms-1`}></i>}
-                              </th>
-                              <th>Actions</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {paginatedUsers.map((user) => (
-                              <tr key={user.id}>
-                                <td><code>#{user.id}</code></td>
-                                <td><span style={{ fontWeight: 600 }}>{user.name || 'N/A'}</span></td>
-                                <td>
-                                  <span className="user-dob">
-                                    <i className="bi bi-calendar3 me-2" style={{ color: 'var(--accent-gold)' }}></i>
-                                    {user.dob}
-                                  </span>
-                                </td>
-                                <td>
-                                  <span className="user-passcode">
-                                    <i className="bi bi-shield-lock-fill me-2" style={{ color: 'var(--accent-gold)' }}></i>
-                                    <code>{user.passcode}</code>
-                                  </span>
-                                </td>
-                                <td>
-                                  <span className="user-created">
-                                    {new Date(user.createdAt).toLocaleString()}
-                                  </span>
-                                </td>
-                                <td>
-                                  <div className="d-flex gap-2">
-                                    <button
-                                      onClick={() => openEditModal(user)}
-                                      className="btn-secondary"
-                                      style={{ padding: '6px 10px', fontSize: '0.85rem' }}
-                                      type="button"
-                                      title="Edit User"
-                                    >
-                                      <i className="bi bi-pencil-square"></i>
-                                    </button>
-                                    <button
-                                      onClick={() => handleDeleteUser(user.id)}
-                                      className="btn-secondary"
-                                      style={{ padding: '6px 10px', fontSize: '0.85rem', color: '#e74c3c', borderColor: 'rgba(231, 76, 60, 0.2)', background: 'rgba(231, 76, 60, 0.02)' }}
-                                      type="button"
-                                      title="Delete User"
-                                    >
-                                      <i className="bi bi-trash"></i>
-                                    </button>
-                                  </div>
-                                </td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
+                    <div className="row g-4">
+                      {/* Left Column: Form to Add/Edit */}
+                      <div className="col-lg-4">
+                        <div className="card-panel" style={{ padding: '20px' }}>
+                          <h3 style={{ fontSize: '1.2rem', color: '#b38728', marginBottom: '15px', fontWeight: 700 }}>
+                            Add New Item
+                          </h3>
 
-                      {/* Pagination */}
-                      {totalPages > 1 && (
-                        <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
-                          <div className="text-cosmic" style={{ fontSize: '0.9rem' }}>
-                            Showing {((currentPage - 1) * itemsPerPage) + 1} to {Math.min(currentPage * itemsPerPage, filteredUsers.length)} of {filteredUsers.length} users
-                          </div>
-                          <div className="d-flex gap-2">
-                            <button
-                              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                              className="btn-secondary py-1 px-3"
-                              disabled={currentPage === 1}
-                              type="button"
-                            >
-                              <i className="bi bi-chevron-left"></i> Previous
-                            </button>
-                            <span className="d-flex align-items-center px-3 text-cosmic">
-                              Page {currentPage} of {totalPages}
-                            </span>
-                            <button
-                              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                              className="btn-secondary py-1 px-3"
-                              disabled={currentPage === totalPages}
-                              type="button"
-                            >
-                              Next <i className="bi bi-chevron-right"></i>
-                            </button>
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-                </div>
-              </>
-            )}
-
-            {activeTab === 'content' && (
-              <div className="content-manager-wrapper card-panel" style={{ padding: '24px' }}>
-                {/* Select Content Key dropdown */}
-                <div className="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3 pb-3 border-bottom" style={{ borderColor: 'rgba(0,0,0,0.05)' }}>
-                  <div style={{ minWidth: '300px' }}>
-                    <label className="form-label">Select Content to Manage</label>
-                    <select
-                      className="form-control-custom"
-                      style={{
-                        border: '1px solid rgba(191, 149, 63, 0.2)',
-                        borderRadius: '8px',
-                        padding: '12px 15px',
-                        width: '100%',
-                        fontSize: '1rem',
-                        cursor: 'pointer'
-                      }}
-                      value={selectedContentKey}
-                      onChange={(e) => setSelectedContentKey(e.target.value)}
-                    >
-                      <option value="zion_songs">Zion Original Songs (Sermons Tab)</option>
-                      <option value="casual_covers">Casual Worship Covers (Sermons Tab)</option>
-                      <option value="service_hours">Weekly Service Timings (Meetings Page)</option>
-                      <option value="gallery_albums">Our Gallery Albums (Gallery Page)</option>
-                    </select>
-                  </div>
-
-                  <div className="d-flex gap-2 pt-4">
-                    <button
-                      onClick={handleSaveContent}
-                      className="btn-primary py-2 px-4"
-                      disabled={contentLoading}
-                      type="button"
-                    >
-                      <i className="bi bi-cloud-arrow-up-fill me-1"></i> Save Changes to Database
-                    </button>
-                  </div>
-                </div>
-
-                {contentSuccess && (
-                  <div className="sent-message mb-4" style={{ padding: '12px', borderRadius: '8px', background: 'rgba(46, 204, 113, 0.1)', color: '#27ae60' }}>
-                    <i className="bi bi-check-circle-fill me-2"></i> {contentSuccess}
-                  </div>
-                )}
-
-                {contentLoading && contentData.length === 0 ? (
-                  <div className="loading py-5 text-center">
-                    <p className="mt-3">Loading website content...</p>
-                  </div>
-                ) : (
-                  <div className="row g-4">
-                    {/* Left Column: Form to Add/Edit */}
-                    <div className="col-lg-4">
-                      <div className="card-panel" style={{ padding: '20px' }}>
-                        <h3 style={{ fontSize: '1.2rem', color: '#b38728', marginBottom: '15px', fontWeight: 700 }}>
-                          Add New Item
-                        </h3>
-
-                        {selectedContentKey === 'zion_songs' || selectedContentKey === 'casual_covers' ? (
-                          <form onSubmit={handleAddSong}>
-                            <div className="form-group mb-3">
-                              <label className="form-label">YouTube Video ID</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. ahIVNoJZR2k"
-                                value={newSong.id}
-                                onChange={(e) => setNewSong({ ...newSong, id: e.target.value })}
-                                required
-                                style={{ paddingLeft: '15px' }}
-                              />
-                              <small className="text-cosmic" style={{ fontSize: '0.8rem', marginTop: '4px', display: 'block' }}>
-                                The string of characters at the end of the video link (e.g. watch?v=<b>ahIVNoJZR2k</b>)
-                              </small>
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Song Title</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. Gospel Song on John 3:16"
-                                value={newSong.title}
-                                onChange={(e) => setNewSong({ ...newSong, title: e.target.value })}
-                                required
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <button type="submit" className="btn-primary w-100 py-2">
-                              <i className="bi bi-plus-circle me-1"></i> Add Song to List
-                            </button>
-                          </form>
-                        ) : selectedContentKey === 'gallery_albums' ? (
-                          <form onSubmit={handleAddAlbum}>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Album Title</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. Christmas Carol Service"
-                                value={newAlbum.title}
-                                onChange={(e) => setNewAlbum({ ...newAlbum, title: e.target.value })}
-                                required
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Category</label>
-                              <select
-                                className="form-control-custom"
-                                style={{
-                                  border: '1px solid rgba(191, 149, 63, 0.2)',
-                                  borderRadius: '8px',
-                                  padding: '12px 15px',
-                                  width: '100%',
-                                  fontSize: '1rem',
-                                  cursor: 'pointer'
-                                }}
-                                value={newAlbum.category}
-                                onChange={(e) => setNewAlbum({ ...newAlbum, category: e.target.value })}
-                              >
-                                <option value="church">Church Events</option>
-                                <option value="fellowship">Fellowships</option>
-                                <option value="youth">Kids & Youth</option>
-                                <option value="trips">ZPF Tours</option>
-                              </select>
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Description</label>
-                              <textarea
-                                className="form-control-custom"
-                                placeholder="e.g. Annual celebration and carols."
-                                value={newAlbum.desc}
-                                onChange={(e) => setNewAlbum({ ...newAlbum, desc: e.target.value })}
-                                required
-                                style={{ paddingLeft: '15px', minHeight: '80px', border: '1px solid rgba(191, 149, 63, 0.2)', borderRadius: '8px' }}
-                              />
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Cover Image</label>
-                              <div className="d-flex gap-2 align-items-center">
+                          {selectedContentKey === 'zion_songs' || selectedContentKey === 'casual_covers' ? (
+                            <form onSubmit={handleAddSong}>
+                              <div className="form-group mb-3">
+                                <label className="form-label">YouTube Video ID</label>
                                 <input
                                   type="text"
                                   className="form-control-custom"
-                                  placeholder="e.g. /assets/img/all_ministries.png"
-                                  value={newAlbum.cover}
-                                  onChange={(e) => setNewAlbum({ ...newAlbum, cover: e.target.value })}
+                                  placeholder="e.g. ahIVNoJZR2k"
+                                  value={newSong.id}
+                                  onChange={(e) => setNewSong({ ...newSong, id: e.target.value })}
                                   required
-                                  style={{ paddingLeft: '15px', flex: 1 }}
+                                  style={{ paddingLeft: '15px' }}
                                 />
-                                <label
-                                  className="btn-secondary"
-                                  style={{
-                                    padding: '10px 15px',
-                                    borderRadius: '8px',
-                                    fontSize: '0.9rem',
-                                    fontWeight: 600,
-                                    cursor: 'pointer',
-                                    margin: 0,
-                                    display: 'inline-flex',
-                                    alignItems: 'center',
-                                    gap: '5px',
-                                    whiteSpace: 'nowrap'
-                                  }}
-                                >
-                                  <i className="bi bi-upload"></i> Upload
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={(e) => {
-                                      const file = e.target.files[0]
-                                      if (file) {
-                                        if (file.size > 2 * 1024 * 1024) {
-                                          alert('File size exceeds 2MB limit. Please upload a smaller image.')
-                                          return
-                                        }
-                                        const reader = new FileReader()
-                                        reader.onloadend = () => {
-                                          setNewAlbum({ ...newAlbum, cover: reader.result })
-                                        }
-                                        reader.readAsDataURL(file)
-                                      }
-                                    }}
-                                    style={{ display: 'none' }}
-                                  />
-                                </label>
+                                <small className="text-cosmic" style={{ fontSize: '0.8rem', marginTop: '4px', display: 'block' }}>
+                                  The string of characters at the end of the video link (e.g. watch?v=<b>ahIVNoJZR2k</b>)
+                                </small>
                               </div>
-                              {newAlbum.cover && (
-                                <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                  <img
-                                    src={newAlbum.cover}
-                                    alt="Upload Preview"
-                                    style={{ width: '80px', height: '50px', objectFit: 'cover', borderRadius: '4px', border: '1px solid rgba(0,0,0,0.05)' }}
+                              <div className="form-group mb-3">
+                                <label className="form-label">Song Title</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Gospel Song on John 3:16"
+                                  value={newSong.title}
+                                  onChange={(e) => setNewSong({ ...newSong, title: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <button type="submit" className="btn-primary w-100 py-2">
+                                <i className="bi bi-plus-circle me-1"></i> Add Song to List
+                              </button>
+                            </form>
+                          ) : selectedContentKey === 'gallery_albums' ? (
+                            <form onSubmit={handleAddAlbum}>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Album Title</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Christmas Carol Service"
+                                  value={newAlbum.title}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, title: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Category</label>
+                                <select
+                                  className="form-control-custom"
+                                  style={{
+                                    border: '1px solid rgba(191, 149, 63, 0.2)',
+                                    borderRadius: '8px',
+                                    padding: '12px 15px',
+                                    width: '100%',
+                                    fontSize: '1rem',
+                                    cursor: 'pointer'
+                                  }}
+                                  value={newAlbum.category}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, category: e.target.value })}
+                                >
+                                  <option value="church">Church Events</option>
+                                  <option value="fellowship">Fellowships</option>
+                                  <option value="youth">Kids & Youth</option>
+                                  <option value="trips">ZPF Tours</option>
+                                </select>
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Description</label>
+                                <textarea
+                                  className="form-control-custom"
+                                  placeholder="e.g. Annual celebration and carols."
+                                  value={newAlbum.desc}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, desc: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px', minHeight: '80px', border: '1px solid rgba(191, 149, 63, 0.2)', borderRadius: '8px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Cover Image</label>
+                                <div className="d-flex gap-2 align-items-center">
+                                  <input
+                                    type="text"
+                                    className="form-control-custom"
+                                    placeholder="e.g. /assets/img/all_ministries.png"
+                                    value={newAlbum.cover}
+                                    onChange={(e) => setNewAlbum({ ...newAlbum, cover: e.target.value })}
+                                    required
+                                    style={{ paddingLeft: '15px', flex: 1 }}
                                   />
-                                  {newAlbum.cover.startsWith('data:') && (
+                                  <label
+                                    className="btn-secondary"
+                                    style={{
+                                      padding: '10px 15px',
+                                      borderRadius: '8px',
+                                      fontSize: '0.9rem',
+                                      fontWeight: 600,
+                                      cursor: 'pointer',
+                                      margin: 0,
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      gap: '5px',
+                                      whiteSpace: 'nowrap'
+                                    }}
+                                  >
+                                    <i className="bi bi-upload"></i> Upload
+                                    <input
+                                      type="file"
+                                      accept="image/*"
+                                      onChange={(e) => {
+                                        const file = e.target.files[0]
+                                        if (file) {
+                                          if (file.size > 2 * 1024 * 1024) {
+                                            alert('File size exceeds 2MB limit. Please upload a smaller image.')
+                                            return
+                                          }
+                                          const reader = new FileReader()
+                                          reader.onloadend = () => {
+                                            setNewAlbum({ ...newAlbum, cover: reader.result })
+                                          }
+                                          reader.readAsDataURL(file)
+                                        }
+                                      }}
+                                      style={{ display: 'none' }}
+                                    />
+                                  </label>
+                                </div>
+                                {newAlbum.cover && (
+                                  <div style={{ marginTop: '10px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                    <img
+                                      src={newAlbum.cover}
+                                      alt="Upload Preview"
+                                      style={{ width: '80px', height: '50px', objectFit: 'cover', borderRadius: '4px', border: '1px solid rgba(0,0,0,0.05)' }}
+                                    />
+                                    {newAlbum.cover.startsWith('data:') && (
+                                      <button
+                                        type="button"
+                                        onClick={() => setNewAlbum({ ...newAlbum, cover: '/assets/img/all_ministries.png' })}
+                                        className="btn-sm"
+                                        style={{ padding: '2px 8px', fontSize: '0.75rem', background: '#e74c3c', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                                      >
+                                        Remove Upload
+                                      </button>
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Sub-Items / Highlights (Optional, comma separated)</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Carol Service, Nativity Skit"
+                                  value={newAlbum.details}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, details: e.target.value })}
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Video Highlights (Optional, YouTubeID:Title, one per line)</label>
+                                <textarea
+                                  className="form-control-custom"
+                                  placeholder="e.g. dlOAth52Uc0:Carol 2025&#10;NK-efiHI1n0:Christmas Highlights"
+                                  value={newAlbum.videos}
+                                  onChange={(e) => setNewAlbum({ ...newAlbum, videos: e.target.value })}
+                                  style={{ paddingLeft: '15px', minHeight: '80px', border: '1px solid rgba(191, 149, 63, 0.2)', borderRadius: '8px' }}
+                                />
+                              </div>
+                              <button type="submit" className="btn-primary w-100 py-2">
+                                <i className="bi bi-plus-circle me-1"></i> Add Album to List
+                              </button>
+                            </form>
+                          ) : (
+                            <form onSubmit={handleAddMeeting}>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Service/Meeting Title</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Regular Tamil Service"
+                                  value={newMeeting.title}
+                                  onChange={(e) => setNewMeeting({ ...newMeeting, title: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Schedule</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Every Friday"
+                                  value={newMeeting.schedule}
+                                  onChange={(e) => setNewMeeting({ ...newMeeting, schedule: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Timing</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. 10:00 AM - 1:00 PM"
+                                  value={newMeeting.timing}
+                                  onChange={(e) => setNewMeeting({ ...newMeeting, timing: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Location Type</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Offline & Online or Online Only"
+                                  value={newMeeting.locationType}
+                                  onChange={(e) => setNewMeeting({ ...newMeeting, locationType: e.target.value })}
+                                  required
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Category</label>
+                                <select
+                                  className="form-control-custom"
+                                  style={{
+                                    border: '1px solid rgba(191, 149, 63, 0.2)',
+                                    borderRadius: '8px',
+                                    padding: '12px 15px',
+                                    width: '100%',
+                                    fontSize: '1rem',
+                                    cursor: 'pointer'
+                                  }}
+                                  value={newMeeting.category}
+                                  onChange={(e) => setNewMeeting({ ...newMeeting, category: e.target.value })}
+                                >
+                                  <option value="services">Weekly Services</option>
+                                  <option value="prayer">Prayer & Study</option>
+                                  <option value="fellowship">Fellowships</option>
+                                  <option value="seasonal">Special & Seasonal</option>
+                                </select>
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Bootstrap Icon Class</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. bi-bookmark-star"
+                                  value={newMeeting.icon}
+                                  onChange={(e) => setNewMeeting({ ...newMeeting, icon: e.target.value })}
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Icon Color Theme</label>
+                                <select
+                                  className="form-control-custom"
+                                  style={{
+                                    border: '1px solid rgba(191, 149, 63, 0.2)',
+                                    borderRadius: '8px',
+                                    padding: '12px 15px',
+                                    width: '100%',
+                                    fontSize: '1rem',
+                                    cursor: 'pointer'
+                                  }}
+                                  value={newMeeting.color}
+                                  onChange={(e) => setNewMeeting({ ...newMeeting, color: e.target.value })}
+                                >
+                                  <option value="blue">Blue</option>
+                                  <option value="orange">Orange</option>
+                                  <option value="purple">Purple</option>
+                                  <option value="green">Green</option>
+                                </select>
+                              </div>
+                              <div className="form-group mb-3">
+                                <label className="form-label">Extra Note (Optional)</label>
+                                <input
+                                  type="text"
+                                  className="form-control-custom"
+                                  placeholder="e.g. Communion blessing service"
+                                  value={newMeeting.note}
+                                  onChange={(e) => setNewMeeting({ ...newMeeting, note: e.target.value })}
+                                  style={{ paddingLeft: '15px' }}
+                                />
+                              </div>
+                              <button type="submit" className="btn-primary w-100 py-2">
+                                <i className="bi bi-plus-circle me-1"></i> Add Meeting to List
+                              </button>
+                            </form>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Right Column: Existing List with Deletion */}
+                      <div className="col-lg-8">
+                        <div className="card-panel" style={{ padding: '20px' }}>
+                          <h3 style={{ fontSize: '1.2rem', color: '#b38728', marginBottom: '15px', fontWeight: 700 }}>
+                            Current Items List
+                          </h3>
+
+                          {contentData.length === 0 ? (
+                            <div className="text-center py-5">
+                              <i className="bi bi-folder-x" style={{ fontSize: '2.5rem', color: 'rgba(191, 149, 63, 0.3)' }}></i>
+                              <p className="text-cosmic mt-3">No items in this list. Use the form to add some.</p>
+                            </div>
+                          ) : (selectedContentKey === 'zion_songs' || selectedContentKey === 'casual_covers') ? (
+                            <>
+                              <div className="table-responsive">
+                                <table className="admin-table">
+                                  <thead>
+                                    <tr>
+                                      <th>Thumbnail</th>
+                                      <th>YouTube ID / Title</th>
+                                      <th style={{ width: '80px' }}>Actions</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {paginatedContent.map((song, idx) => (
+                                      <tr key={idx}>
+                                        <td style={{ width: '120px' }}>
+                                          <img
+                                            src={`https://img.youtube.com/vi/${song.id}/hqdefault.jpg`}
+                                            alt={song.title}
+                                            style={{ width: '100px', height: 'auto', borderRadius: '4px', border: '1px solid rgba(0, 0, 0, 0.05)' }}
+                                          />
+                                        </td>
+                                        <td>
+                                          <div style={{ fontWeight: 600 }}>{song.title}</div>
+                                          <code style={{ fontSize: '0.8rem', opacity: 0.8 }}>ID: {song.id}</code>
+                                        </td>
+                                        <td>
+                                          <button
+                                            onClick={() => handleDeleteSong(song.id)}
+                                            className="btn-secondary"
+                                            style={{ padding: '6px 10px', fontSize: '0.85rem', color: '#e74c3c', borderColor: 'rgba(231, 76, 60, 0.2)', background: 'rgba(231, 76, 60, 0.02)' }}
+                                            type="button"
+                                            title="Delete Song"
+                                          >
+                                            <i className="bi bi-trash"></i>
+                                          </button>
+                                        </td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+
+                              {/* Content Pagination */}
+                              {totalContentPages > 1 && (
+                                <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
+                                  <div className="text-cosmic" style={{ fontSize: '0.9rem' }}>
+                                    Showing {((contentPage - 1) * itemsPerContentPage) + 1} to {Math.min(contentPage * itemsPerContentPage, contentData.length)} of {contentData.length} items
+                                  </div>
+                                  <div className="d-flex gap-2">
                                     <button
+                                      onClick={() => setContentPage(prev => Math.max(1, prev - 1))}
+                                      className="btn-secondary py-1 px-3"
+                                      disabled={contentPage === 1}
                                       type="button"
-                                      onClick={() => setNewAlbum({ ...newAlbum, cover: '/assets/img/all_ministries.png' })}
-                                      className="btn-sm"
-                                      style={{ padding: '2px 8px', fontSize: '0.75rem', background: '#e74c3c', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
                                     >
-                                      Remove Upload
+                                      <i className="bi bi-chevron-left"></i> Previous
                                     </button>
-                                  )}
+                                    <span className="d-flex align-items-center px-3 text-cosmic">
+                                      Page {contentPage} of {totalContentPages}
+                                    </span>
+                                    <button
+                                      onClick={() => setContentPage(prev => Math.min(totalContentPages, prev + 1))}
+                                      className="btn-secondary py-1 px-3"
+                                      disabled={contentPage === totalContentPages}
+                                      type="button"
+                                    >
+                                      Next <i className="bi bi-chevron-right"></i>
+                                    </button>
+                                  </div>
                                 </div>
                               )}
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Sub-Items / Highlights (Optional, comma separated)</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. Carol Service, Nativity Skit"
-                                value={newAlbum.details}
-                                onChange={(e) => setNewAlbum({ ...newAlbum, details: e.target.value })}
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Video Highlights (Optional, YouTubeID:Title, one per line)</label>
-                              <textarea
-                                className="form-control-custom"
-                                placeholder="e.g. dlOAth52Uc0:Carol 2025&#10;NK-efiHI1n0:Christmas Highlights"
-                                value={newAlbum.videos}
-                                onChange={(e) => setNewAlbum({ ...newAlbum, videos: e.target.value })}
-                                style={{ paddingLeft: '15px', minHeight: '80px', border: '1px solid rgba(191, 149, 63, 0.2)', borderRadius: '8px' }}
-                              />
-                            </div>
-                            <button type="submit" className="btn-primary w-100 py-2">
-                              <i className="bi bi-plus-circle me-1"></i> Add Album to List
-                            </button>
-                          </form>
-                        ) : (
-                          <form onSubmit={handleAddMeeting}>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Service/Meeting Title</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. Regular Tamil Service"
-                                value={newMeeting.title}
-                                onChange={(e) => setNewMeeting({ ...newMeeting, title: e.target.value })}
-                                required
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Schedule</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. Every Friday"
-                                value={newMeeting.schedule}
-                                onChange={(e) => setNewMeeting({ ...newMeeting, schedule: e.target.value })}
-                                required
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Timing</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. 10:00 AM - 1:00 PM"
-                                value={newMeeting.timing}
-                                onChange={(e) => setNewMeeting({ ...newMeeting, timing: e.target.value })}
-                                required
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Location Type</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. Offline & Online or Online Only"
-                                value={newMeeting.locationType}
-                                onChange={(e) => setNewMeeting({ ...newMeeting, locationType: e.target.value })}
-                                required
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Category</label>
-                              <select
-                                className="form-control-custom"
-                                style={{
-                                  border: '1px solid rgba(191, 149, 63, 0.2)',
-                                  borderRadius: '8px',
-                                  padding: '12px 15px',
-                                  width: '100%',
-                                  fontSize: '1rem',
-                                  cursor: 'pointer'
-                                }}
-                                value={newMeeting.category}
-                                onChange={(e) => setNewMeeting({ ...newMeeting, category: e.target.value })}
-                              >
-                                <option value="services">Weekly Services</option>
-                                <option value="prayer">Prayer & Study</option>
-                                <option value="fellowship">Fellowships</option>
-                                <option value="seasonal">Special & Seasonal</option>
-                              </select>
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Bootstrap Icon Class</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. bi-bookmark-star"
-                                value={newMeeting.icon}
-                                onChange={(e) => setNewMeeting({ ...newMeeting, icon: e.target.value })}
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Icon Color Theme</label>
-                              <select
-                                className="form-control-custom"
-                                style={{
-                                  border: '1px solid rgba(191, 149, 63, 0.2)',
-                                  borderRadius: '8px',
-                                  padding: '12px 15px',
-                                  width: '100%',
-                                  fontSize: '1rem',
-                                  cursor: 'pointer'
-                                }}
-                                value={newMeeting.color}
-                                onChange={(e) => setNewMeeting({ ...newMeeting, color: e.target.value })}
-                              >
-                                <option value="blue">Blue</option>
-                                <option value="orange">Orange</option>
-                                <option value="purple">Purple</option>
-                                <option value="green">Green</option>
-                              </select>
-                            </div>
-                            <div className="form-group mb-3">
-                              <label className="form-label">Extra Note (Optional)</label>
-                              <input
-                                type="text"
-                                className="form-control-custom"
-                                placeholder="e.g. Communion blessing service"
-                                value={newMeeting.note}
-                                onChange={(e) => setNewMeeting({ ...newMeeting, note: e.target.value })}
-                                style={{ paddingLeft: '15px' }}
-                              />
-                            </div>
-                            <button type="submit" className="btn-primary w-100 py-2">
-                              <i className="bi bi-plus-circle me-1"></i> Add Meeting to List
-                            </button>
-                          </form>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Right Column: Existing List with Deletion */}
-                    <div className="col-lg-8">
-                      <div className="card-panel" style={{ padding: '20px' }}>
-                        <h3 style={{ fontSize: '1.2rem', color: '#b38728', marginBottom: '15px', fontWeight: 700 }}>
-                          Current Items List
-                        </h3>
-
-                        {contentData.length === 0 ? (
-                          <div className="text-center py-5">
-                            <i className="bi bi-folder-x" style={{ fontSize: '2.5rem', color: 'rgba(191, 149, 63, 0.3)' }}></i>
-                            <p className="text-cosmic mt-3">No items in this list. Use the form to add some.</p>
-                          </div>
-                        ) : (selectedContentKey === 'zion_songs' || selectedContentKey === 'casual_covers') ? (
-                          <>
-                            <div className="table-responsive">
-                              <table className="admin-table">
-                                <thead>
-                                  <tr>
-                                    <th>Thumbnail</th>
-                                    <th>YouTube ID / Title</th>
-                                    <th style={{ width: '80px' }}>Actions</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {paginatedContent.map((song, idx) => (
-                                    <tr key={idx}>
-                                      <td style={{ width: '120px' }}>
-                                        <img
-                                          src={`https://img.youtube.com/vi/${song.id}/hqdefault.jpg`}
-                                          alt={song.title}
-                                          style={{ width: '100px', height: 'auto', borderRadius: '4px', border: '1px solid rgba(0, 0, 0, 0.05)' }}
-                                        />
-                                      </td>
-                                      <td>
-                                        <div style={{ fontWeight: 600 }}>{song.title}</div>
-                                        <code style={{ fontSize: '0.8rem', opacity: 0.8 }}>ID: {song.id}</code>
-                                      </td>
-                                      <td>
-                                        <button
-                                          onClick={() => handleDeleteSong(song.id)}
-                                          className="btn-secondary"
-                                          style={{ padding: '6px 10px', fontSize: '0.85rem', color: '#e74c3c', borderColor: 'rgba(231, 76, 60, 0.2)', background: 'rgba(231, 76, 60, 0.02)' }}
-                                          type="button"
-                                          title="Delete Song"
-                                        >
-                                          <i className="bi bi-trash"></i>
-                                        </button>
-                                      </td>
+                            </>
+                          ) : selectedContentKey === 'gallery_albums' ? (
+                            <>
+                              <div className="table-responsive">
+                                <table className="admin-table">
+                                  <thead>
+                                    <tr>
+                                      <th>Cover</th>
+                                      <th>Title / Category</th>
+                                      <th>Description / Highlights</th>
+                                      <th style={{ width: '80px' }}>Actions</th>
                                     </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                            </div>
-
-                            {/* Content Pagination */}
-                            {totalContentPages > 1 && (
-                              <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
-                                <div className="text-cosmic" style={{ fontSize: '0.9rem' }}>
-                                  Showing {((contentPage - 1) * itemsPerContentPage) + 1} to {Math.min(contentPage * itemsPerContentPage, contentData.length)} of {contentData.length} items
-                                </div>
-                                <div className="d-flex gap-2">
-                                  <button
-                                    onClick={() => setContentPage(prev => Math.max(1, prev - 1))}
-                                    className="btn-secondary py-1 px-3"
-                                    disabled={contentPage === 1}
-                                    type="button"
-                                  >
-                                    <i className="bi bi-chevron-left"></i> Previous
-                                  </button>
-                                  <span className="d-flex align-items-center px-3 text-cosmic">
-                                    Page {contentPage} of {totalContentPages}
-                                  </span>
-                                  <button
-                                    onClick={() => setContentPage(prev => Math.min(totalContentPages, prev + 1))}
-                                    className="btn-secondary py-1 px-3"
-                                    disabled={contentPage === totalContentPages}
-                                    type="button"
-                                  >
-                                    Next <i className="bi bi-chevron-right"></i>
-                                  </button>
-                                </div>
-                              </div>
-                            )}
-                          </>
-                        ) : selectedContentKey === 'gallery_albums' ? (
-                          <>
-                            <div className="table-responsive">
-                              <table className="admin-table">
-                                <thead>
-                                  <tr>
-                                    <th>Cover</th>
-                                    <th>Title / Category</th>
-                                    <th>Description / Highlights</th>
-                                    <th style={{ width: '80px' }}>Actions</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {paginatedContent.map((album, idx) => (
-                                    <tr key={idx}>
-                                      <td style={{ width: '120px' }}>
-                                        <img
-                                          src={album.cover || (album.id ? `https://img.youtube.com/vi/${album.id}/hqdefault.jpg` : '/assets/img/all_ministries.png')}
-                                          alt={album.title}
-                                          style={{ width: '100px', height: 'auto', borderRadius: '4px', border: '1px solid rgba(0, 0, 0, 0.05)' }}
-                                        />
-                                      </td>
-                                      <td>
-                                        <div style={{ fontWeight: 600 }}>{album.title}</div>
-                                        <span
-                                          style={{
-                                            fontSize: '0.75rem',
-                                            padding: '2px 8px',
-                                            borderRadius: '10px',
-                                            background: 'rgba(0, 0, 0, 0.03)',
-                                            color: '#b38728',
-                                            textTransform: 'uppercase'
-                                          }}
-                                        >
-                                          {album.category || 'worship'}
-                                        </span>
-                                      </td>
-                                      <td>
-                                        <p style={{ margin: 0, fontSize: '0.85rem', color: '#4a5568' }}>{album.desc || 'YouTube Video Highlight'}</p>
-                                        {album.details && (
-                                          <div style={{ fontSize: '0.75rem', color: '#d35400', marginTop: '4px' }}>
-                                            Highlights: {album.details.join(', ')}
-                                          </div>
-                                        )}
-                                        {album.videos && (
-                                          <div style={{ fontSize: '0.75rem', color: '#2980b9', marginTop: '4px' }}>
-                                            Videos: {album.videos.map(v => v.title).join(', ')}
-                                          </div>
-                                        )}
-                                        {!album.videos && album.id && (
-                                          <div style={{ fontSize: '0.75rem', color: '#2980b9', marginTop: '4px' }}>
-                                            YouTube ID: <code>{album.id}</code>
-                                          </div>
-                                        )}
-                                      </td>
-                                      <td>
-                                        <button
-                                          onClick={() => handleDeleteAlbum((contentPage - 1) * itemsPerContentPage + idx)}
-                                          className="btn-secondary"
-                                          style={{ padding: '6px 10px', fontSize: '0.85rem', color: '#e74c3c', borderColor: 'rgba(231, 76, 60, 0.2)', background: 'rgba(231, 76, 60, 0.02)' }}
-                                          type="button"
-                                          title="Delete Album"
-                                        >
-                                          <i className="bi bi-trash"></i>
-                                        </button>
-                                      </td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                            </div>
-
-                            {/* Content Pagination */}
-                            {totalContentPages > 1 && (
-                              <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
-                                <div className="text-cosmic" style={{ fontSize: '0.9rem' }}>
-                                  Showing {((contentPage - 1) * itemsPerContentPage) + 1} to {Math.min(contentPage * itemsPerContentPage, contentData.length)} of {contentData.length} albums
-                                </div>
-                                <div className="d-flex gap-2">
-                                  <button
-                                    onClick={() => setContentPage(prev => Math.max(1, prev - 1))}
-                                    className="btn-secondary py-1 px-3"
-                                    disabled={contentPage === 1}
-                                    type="button"
-                                  >
-                                    <i className="bi bi-chevron-left"></i> Previous
-                                  </button>
-                                  <span className="d-flex align-items-center px-3 text-cosmic">
-                                    Page {contentPage} of {totalContentPages}
-                                  </span>
-                                  <button
-                                    onClick={() => setContentPage(prev => Math.min(totalContentPages, prev + 1))}
-                                    className="btn-secondary py-1 px-3"
-                                    disabled={contentPage === totalContentPages}
-                                    type="button"
-                                  >
-                                    Next <i className="bi bi-chevron-right"></i>
-                                  </button>
-                                </div>
-                              </div>
-                            )}
-                          </>
-                        ) : (
-                          <>
-                            <div className="table-responsive">
-                              <table className="admin-table">
-                                <thead>
-                                  <tr>
-                                    <th>Icon / Title</th>
-                                    <th>Schedule / Timing</th>
-                                    <th>Location / Category</th>
-                                    <th style={{ width: '80px' }}>Actions</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  {paginatedContent.map((meeting, idx) => (
-                                    <tr key={idx}>
-                                      <td>
-                                        <div className="d-flex align-items-center gap-2">
-                                          <i
-                                            className={`bi ${meeting.icon || 'bi-calendar'}`}
+                                  </thead>
+                                  <tbody>
+                                    {paginatedContent.map((album, idx) => (
+                                      <tr key={idx}>
+                                        <td style={{ width: '120px' }}>
+                                          <img
+                                            src={album.cover || (album.id ? `https://img.youtube.com/vi/${album.id}/hqdefault.jpg` : '/assets/img/all_ministries.png')}
+                                            alt={album.title}
+                                            style={{ width: '100px', height: 'auto', borderRadius: '4px', border: '1px solid rgba(0, 0, 0, 0.05)' }}
+                                          />
+                                        </td>
+                                        <td>
+                                          <div style={{ fontWeight: 600 }}>{album.title}</div>
+                                          <span
                                             style={{
-                                              color: meeting.color === 'blue' ? '#2563eb' :
-                                                     meeting.color === 'orange' ? '#d97706' :
-                                                     meeting.color === 'purple' ? '#9333ea' : '#16a34a',
-                                              fontSize: '1.2rem'
+                                              fontSize: '0.75rem',
+                                              padding: '2px 8px',
+                                              borderRadius: '10px',
+                                              background: 'rgba(0, 0, 0, 0.03)',
+                                              color: '#b38728',
+                                              textTransform: 'uppercase'
                                             }}
-                                          ></i>
-                                          <div>
-                                            <span style={{ fontWeight: 600 }}>{meeting.title}</span>
-                                            {meeting.note && (
-                                              <div style={{ fontSize: '0.75rem', color: '#d97706' }}>{meeting.note}</div>
-                                            )}
-                                          </div>
-                                        </div>
-                                      </td>
-                                      <td>
-                                        <div>{meeting.schedule}</div>
-                                        <div className="text-cosmic" style={{ fontSize: '0.85rem' }}>{meeting.timing}</div>
-                                      </td>
-                                      <td>
-                                        <div>{meeting.locationType}</div>
-                                        <span
-                                          style={{
-                                            fontSize: '0.75rem',
-                                            padding: '2px 8px',
-                                            borderRadius: '10px',
-                                            background: 'rgba(0, 0, 0, 0.03)',
-                                            color: '#b38728'
-                                          }}
-                                        >
-                                          {meeting.category}
-                                        </span>
-                                      </td>
-                                      <td>
-                                        <button
-                                          onClick={() => handleDeleteMeeting((contentPage - 1) * itemsPerContentPage + idx)}
-                                          className="btn-secondary"
-                                          style={{ padding: '6px 10px', fontSize: '0.85rem', color: '#e74c3c', borderColor: 'rgba(231, 76, 60, 0.2)', background: 'rgba(231, 76, 60, 0.02)' }}
-                                          type="button"
-                                          title="Delete Meeting"
-                                        >
-                                          <i className="bi bi-trash"></i>
-                                        </button>
-                                      </td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                            </div>
-
-                            {/* Content Pagination */}
-                            {totalContentPages > 1 && (
-                              <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
-                                <div className="text-cosmic" style={{ fontSize: '0.9rem' }}>
-                                  Showing {((contentPage - 1) * itemsPerContentPage) + 1} to {Math.min(contentPage * itemsPerContentPage, contentData.length)} of {contentData.length} services
-                                </div>
-                                <div className="d-flex gap-2">
-                                  <button
-                                    onClick={() => setContentPage(prev => Math.max(1, prev - 1))}
-                                    className="btn-secondary py-1 px-3"
-                                    disabled={contentPage === 1}
-                                    type="button"
-                                  >
-                                    <i className="bi bi-chevron-left"></i> Previous
-                                  </button>
-                                  <span className="d-flex align-items-center px-3 text-cosmic">
-                                    Page {contentPage} of {totalContentPages}
-                                  </span>
-                                  <button
-                                    onClick={() => setContentPage(prev => Math.min(totalContentPages, prev + 1))}
-                                    className="btn-secondary py-1 px-3"
-                                    disabled={contentPage === totalContentPages}
-                                    type="button"
-                                  >
-                                    Next <i className="bi bi-chevron-right"></i>
-                                  </button>
-                                </div>
+                                          >
+                                            {album.category || 'worship'}
+                                          </span>
+                                        </td>
+                                        <td>
+                                          <p style={{ margin: 0, fontSize: '0.85rem', color: '#4a5568' }}>{album.desc || 'YouTube Video Highlight'}</p>
+                                          {album.details && (
+                                            <div style={{ fontSize: '0.75rem', color: '#d35400', marginTop: '4px' }}>
+                                              Highlights: {album.details.join(', ')}
+                                            </div>
+                                          )}
+                                          {album.videos && (
+                                            <div style={{ fontSize: '0.75rem', color: '#2980b9', marginTop: '4px' }}>
+                                              Videos: {album.videos.map(v => v.title).join(', ')}
+                                            </div>
+                                          )}
+                                          {!album.videos && album.id && (
+                                            <div style={{ fontSize: '0.75rem', color: '#2980b9', marginTop: '4px' }}>
+                                              YouTube ID: <code>{album.id}</code>
+                                            </div>
+                                          )}
+                                        </td>
+                                        <td>
+                                          <button
+                                            onClick={() => handleDeleteAlbum((contentPage - 1) * itemsPerContentPage + idx)}
+                                            className="btn-secondary"
+                                            style={{ padding: '6px 10px', fontSize: '0.85rem', color: '#e74c3c', borderColor: 'rgba(231, 76, 60, 0.2)', background: 'rgba(231, 76, 60, 0.02)' }}
+                                            type="button"
+                                            title="Delete Album"
+                                          >
+                                            <i className="bi bi-trash"></i>
+                                          </button>
+                                        </td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
                               </div>
-                            )}
-                          </>
-                        )}
+
+                              {/* Content Pagination */}
+                              {totalContentPages > 1 && (
+                                <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
+                                  <div className="text-cosmic" style={{ fontSize: '0.9rem' }}>
+                                    Showing {((contentPage - 1) * itemsPerContentPage) + 1} to {Math.min(contentPage * itemsPerContentPage, contentData.length)} of {contentData.length} albums
+                                  </div>
+                                  <div className="d-flex gap-2">
+                                    <button
+                                      onClick={() => setContentPage(prev => Math.max(1, prev - 1))}
+                                      className="btn-secondary py-1 px-3"
+                                      disabled={contentPage === 1}
+                                      type="button"
+                                    >
+                                      <i className="bi bi-chevron-left"></i> Previous
+                                    </button>
+                                    <span className="d-flex align-items-center px-3 text-cosmic">
+                                      Page {contentPage} of {totalContentPages}
+                                    </span>
+                                    <button
+                                      onClick={() => setContentPage(prev => Math.min(totalContentPages, prev + 1))}
+                                      className="btn-secondary py-1 px-3"
+                                      disabled={contentPage === totalContentPages}
+                                      type="button"
+                                    >
+                                      Next <i className="bi bi-chevron-right"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <>
+                              <div className="table-responsive">
+                                <table className="admin-table">
+                                  <thead>
+                                    <tr>
+                                      <th>Icon / Title</th>
+                                      <th>Schedule / Timing</th>
+                                      <th>Location / Category</th>
+                                      <th style={{ width: '80px' }}>Actions</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    {paginatedContent.map((meeting, idx) => (
+                                      <tr key={idx}>
+                                        <td>
+                                          <div className="d-flex align-items-center gap-2">
+                                            <i
+                                              className={`bi ${meeting.icon || 'bi-calendar'}`}
+                                              style={{
+                                                color: meeting.color === 'blue' ? '#2563eb' :
+                                                  meeting.color === 'orange' ? '#d97706' :
+                                                    meeting.color === 'purple' ? '#9333ea' : '#16a34a',
+                                                fontSize: '1.2rem'
+                                              }}
+                                            ></i>
+                                            <div>
+                                              <span style={{ fontWeight: 600 }}>{meeting.title}</span>
+                                              {meeting.note && (
+                                                <div style={{ fontSize: '0.75rem', color: '#d97706' }}>{meeting.note}</div>
+                                              )}
+                                            </div>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <div>{meeting.schedule}</div>
+                                          <div className="text-cosmic" style={{ fontSize: '0.85rem' }}>{meeting.timing}</div>
+                                        </td>
+                                        <td>
+                                          <div>{meeting.locationType}</div>
+                                          <span
+                                            style={{
+                                              fontSize: '0.75rem',
+                                              padding: '2px 8px',
+                                              borderRadius: '10px',
+                                              background: 'rgba(0, 0, 0, 0.03)',
+                                              color: '#b38728'
+                                            }}
+                                          >
+                                            {meeting.category}
+                                          </span>
+                                        </td>
+                                        <td>
+                                          <button
+                                            onClick={() => handleDeleteMeeting((contentPage - 1) * itemsPerContentPage + idx)}
+                                            className="btn-secondary"
+                                            style={{ padding: '6px 10px', fontSize: '0.85rem', color: '#e74c3c', borderColor: 'rgba(231, 76, 60, 0.2)', background: 'rgba(231, 76, 60, 0.02)' }}
+                                            type="button"
+                                            title="Delete Meeting"
+                                          >
+                                            <i className="bi bi-trash"></i>
+                                          </button>
+                                        </td>
+                                      </tr>
+                                    ))}
+                                  </tbody>
+                                </table>
+                              </div>
+
+                              {/* Content Pagination */}
+                              {totalContentPages > 1 && (
+                                <div className="d-flex justify-content-between align-items-center mt-4 flex-wrap gap-3">
+                                  <div className="text-cosmic" style={{ fontSize: '0.9rem' }}>
+                                    Showing {((contentPage - 1) * itemsPerContentPage) + 1} to {Math.min(contentPage * itemsPerContentPage, contentData.length)} of {contentData.length} services
+                                  </div>
+                                  <div className="d-flex gap-2">
+                                    <button
+                                      onClick={() => setContentPage(prev => Math.max(1, prev - 1))}
+                                      className="btn-secondary py-1 px-3"
+                                      disabled={contentPage === 1}
+                                      type="button"
+                                    >
+                                      <i className="bi bi-chevron-left"></i> Previous
+                                    </button>
+                                    <span className="d-flex align-items-center px-3 text-cosmic">
+                                      Page {contentPage} of {totalContentPages}
+                                    </span>
+                                    <button
+                                      onClick={() => setContentPage(prev => Math.min(totalContentPages, prev + 1))}
+                                      className="btn-secondary py-1 px-3"
+                                      disabled={contentPage === totalContentPages}
+                                      type="button"
+                                    >
+                                      Next <i className="bi bi-chevron-right"></i>
+                                    </button>
+                                  </div>
+                                </div>
+                              )}
+                            </>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
+                </div>
+              )}
+
+              {/* Add User Modal */}
+              <AnimatePresence>
+                {showAddModal && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="modal-overlay"
+                    onClick={() => setShowAddModal(false)}
+                  >
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.9, opacity: 0 }}
+                      className="modal-content"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="modal-header">
+                        <h3>Add New User</h3>
+                        <button onClick={() => setShowAddModal(false)} className="btn-close">
+                          <i className="bi bi-x-lg"></i>
+                        </button>
+                      </div>
+                      <form onSubmit={handleAddUser} className="modal-body">
+                        <div className="form-group mb-3">
+                          <label className="form-label">Full Name</label>
+                          <input
+                            type="text"
+                            className="form-control-custom"
+                            placeholder="e.g. Alwyn"
+                            value={newUser.name}
+                            onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+                            required
+                          />
+                        </div>
+                        <div className="form-group mb-3">
+                          <label className="form-label">Date of Birth (DD-MM-YYYY)</label>
+                          <input
+                            type="text"
+                            className="form-control-custom"
+                            placeholder="15-08-1995"
+                            value={newUser.dob}
+                            onChange={(e) => setNewUser({ ...newUser, dob: e.target.value })}
+                            required
+                            pattern="\d{2}-\d{2}-\d{4}"
+                          />
+                        </div>
+                        <div className="form-group mb-3">
+                          <label className="form-label">Passcode</label>
+                          <input
+                            type="text"
+                            className="form-control-custom"
+                            placeholder="7777"
+                            value={newUser.passcode}
+                            onChange={(e) => setNewUser({ ...newUser, passcode: e.target.value })}
+                            required
+                          />
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" onClick={() => setShowAddModal(false)} className="btn-secondary">
+                            Cancel
+                          </button>
+                          <button type="submit" className="btn-primary" disabled={loading}>
+                            {loading ? 'Adding...' : 'Add User'}
+                          </button>
+                        </div>
+                      </form>
+                    </motion.div>
+                  </motion.div>
                 )}
-              </div>
-            )}
+              </AnimatePresence>
 
-            {/* Add User Modal */}
-            <AnimatePresence>
-              {showAddModal && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="modal-overlay"
-                  onClick={() => setShowAddModal(false)}
-                >
+              {/* Edit User Modal */}
+              <AnimatePresence>
+                {showEditModal && selectedUser && (
                   <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    className="modal-content"
-                    onClick={(e) => e.stopPropagation()}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="modal-overlay"
+                    onClick={() => setShowEditModal(false)}
                   >
-                    <div className="modal-header">
-                      <h3>Add New User</h3>
-                      <button onClick={() => setShowAddModal(false)} className="btn-close">
-                        <i className="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                    <form onSubmit={handleAddUser} className="modal-body">
-                      <div className="form-group mb-3">
-                        <label className="form-label">Full Name</label>
-                        <input
-                          type="text"
-                          className="form-control-custom"
-                          placeholder="e.g. Alwyn"
-                          value={newUser.name}
-                          onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-                          required
-                        />
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.9, opacity: 0 }}
+                      className="modal-content"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="modal-header">
+                        <h3>Edit User #{selectedUser.id}</h3>
+                        <button onClick={() => setShowEditModal(false)} className="btn-close">
+                          <i className="bi bi-x-lg"></i>
+                        </button>
                       </div>
-                      <div className="form-group mb-3">
-                        <label className="form-label">Date of Birth (DD-MM-YYYY)</label>
-                        <input
-                          type="text"
-                          className="form-control-custom"
-                          placeholder="15-08-1995"
-                          value={newUser.dob}
-                          onChange={(e) => setNewUser({ ...newUser, dob: e.target.value })}
-                          required
-                          pattern="\d{2}-\d{2}-\d{4}"
-                        />
+                      <form onSubmit={handleEditUser} className="modal-body">
+                        <div className="form-group mb-3">
+                          <label className="form-label">Full Name</label>
+                          <input
+                            type="text"
+                            className="form-control-custom"
+                            placeholder="e.g. Alwyn"
+                            value={editUser.name}
+                            onChange={(e) => setEditUser({ ...editUser, name: e.target.value })}
+                            required
+                          />
+                        </div>
+                        <div className="form-group mb-3">
+                          <label className="form-label">Date of Birth (DD-MM-YYYY)</label>
+                          <input
+                            type="text"
+                            className="form-control-custom"
+                            placeholder="15-08-1995"
+                            value={editUser.dob}
+                            onChange={(e) => setEditUser({ ...editUser, dob: e.target.value })}
+                            required
+                            pattern="\d{2}-\d{2}-\d{4}"
+                          />
+                        </div>
+                        <div className="form-group mb-3">
+                          <label className="form-label">Passcode</label>
+                          <input
+                            type="text"
+                            className="form-control-custom"
+                            placeholder="7777"
+                            value={editUser.passcode}
+                            onChange={(e) => setEditUser({ ...editUser, passcode: e.target.value })}
+                            required
+                          />
+                        </div>
+                        <div className="modal-footer">
+                          <button type="button" onClick={() => setShowEditModal(false)} className="btn-secondary">
+                            Cancel
+                          </button>
+                          <button type="submit" className="btn-primary" disabled={loading}>
+                            {loading ? 'Updating...' : 'Update User'}
+                          </button>
+                        </div>
+                      </form>
+                    </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Delete Confirmation Modal */}
+              <AnimatePresence>
+                {showDeleteConfirm && deleteTarget && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="modal-overlay"
+                    onClick={() => setShowDeleteConfirm(false)}
+                  >
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.9, opacity: 0 }}
+                      className="modal-content"
+                      style={{ maxWidth: '400px' }}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="modal-header" style={{ borderBottom: 'none', paddingBottom: '10px' }}>
+                        <h3 style={{ color: '#e74c3c', display: 'flex', alignItems: 'center', gap: '8px', margin: 0 }}>
+                          <i className="bi bi-exclamation-triangle-fill"></i> Confirm Delete
+                        </h3>
+                        <button onClick={() => setShowDeleteConfirm(false)} className="btn-close">
+                          <i className="bi bi-x-lg"></i>
+                        </button>
                       </div>
-                      <div className="form-group mb-3"> 
-                        <label className="form-label">Passcode</label>
-                        <input
-                          type="text"
-                          className="form-control-custom"
-                          placeholder="7777"
-                          value={newUser.passcode}
-                          onChange={(e) => setNewUser({ ...newUser, passcode: e.target.value })}
-                          required
-                        />
+                      <div className="modal-body" style={{ paddingTop: '10px', paddingBottom: '20px' }}>
+                        <p style={{ margin: 0, color: '#4a5568', fontSize: '0.95rem', lineHeight: '1.5' }}>
+                          Are you sure you want to delete <strong>{deleteTarget.name}</strong>? This action cannot be undone.
+                        </p>
                       </div>
-                      <div className="modal-footer">
-                        <button type="button" onClick={() => setShowAddModal(false)} className="btn-secondary">
+                      <div className="modal-footer" style={{ borderTop: 'none', paddingTop: '10px', gap: '10px' }}>
+                        <button
+                          type="button"
+                          onClick={() => setShowDeleteConfirm(false)}
+                          className="btn-secondary"
+                          style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+                        >
                           Cancel
                         </button>
-                        <button type="submit" className="btn-primary" disabled={loading}>
-                          {loading ? 'Adding...' : 'Add User'}
+                        <button
+                          type="button"
+                          onClick={executeDelete}
+                          className="btn-danger"
+                          style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+                        >
+                          Delete
                         </button>
                       </div>
-                    </form>
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Edit User Modal */}
-            <AnimatePresence>
-              {showEditModal && selectedUser && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="modal-overlay"
-                  onClick={() => setShowEditModal(false)}
-                >
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    className="modal-content"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <div className="modal-header">
-                      <h3>Edit User #{selectedUser.id}</h3>
-                      <button onClick={() => setShowEditModal(false)} className="btn-close">
-                        <i className="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                    <form onSubmit={handleEditUser} className="modal-body">
-                      <div className="form-group mb-3">
-                        <label className="form-label">Full Name</label>
-                        <input
-                          type="text"
-                          className="form-control-custom"
-                          placeholder="e.g. Alwyn"
-                          value={editUser.name}
-                          onChange={(e) => setEditUser({ ...editUser, name: e.target.value })}
-                          required
-                        />
-                      </div>
-                      <div className="form-group mb-3">
-                        <label className="form-label">Date of Birth (DD-MM-YYYY)</label>
-                        <input
-                          type="text"
-                          className="form-control-custom"
-                          placeholder="15-08-1995"
-                          value={editUser.dob}
-                          onChange={(e) => setEditUser({ ...editUser, dob: e.target.value })}
-                          required
-                          pattern="\d{2}-\d{2}-\d{4}"
-                        />
-                      </div>
-                      <div className="form-group mb-3">
-                        <label className="form-label">Passcode</label>
-                        <input
-                          type="text"
-                          className="form-control-custom"
-                          placeholder="7777"
-                          value={editUser.passcode}
-                          onChange={(e) => setEditUser({ ...editUser, passcode: e.target.value })}
-                          required
-                        />
-                      </div>
-                      <div className="modal-footer">
-                        <button type="button" onClick={() => setShowEditModal(false)} className="btn-secondary">
-                          Cancel
-                        </button>
-                        <button type="submit" className="btn-primary" disabled={loading}>
-                          {loading ? 'Updating...' : 'Update User'}
-                        </button>
-                      </div>
-                    </form>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Delete Confirmation Modal */}
-            <AnimatePresence>
-              {showDeleteConfirm && deleteTarget && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="modal-overlay"
-                  onClick={() => setShowDeleteConfirm(false)}
-                >
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.9, opacity: 0 }}
-                    className="modal-content"
-                    style={{ maxWidth: '400px' }}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <div className="modal-header" style={{ borderBottom: 'none', paddingBottom: '10px' }}>
-                      <h3 style={{ color: '#e74c3c', display: 'flex', alignItems: 'center', gap: '8px', margin: 0 }}>
-                        <i className="bi bi-exclamation-triangle-fill"></i> Confirm Delete
-                      </h3>
-                      <button onClick={() => setShowDeleteConfirm(false)} className="btn-close">
-                        <i className="bi bi-x-lg"></i>
-                      </button>
-                    </div>
-                    <div className="modal-body" style={{ paddingTop: '10px', paddingBottom: '20px' }}>
-                      <p style={{ margin: 0, color: '#4a5568', fontSize: '0.95rem', lineHeight: '1.5' }}>
-                        Are you sure you want to delete <strong>{deleteTarget.name}</strong>? This action cannot be undone.
-                      </p>
-                    </div>
-                    <div className="modal-footer" style={{ borderTop: 'none', paddingTop: '10px', gap: '10px' }}>
-                      <button
-                        type="button"
-                        onClick={() => setShowDeleteConfirm(false)}
-                        className="btn-secondary"
-                        style={{ padding: '8px 16px', fontSize: '0.85rem' }}
-                      >
-                        Cancel
-                      </button>
-                      <button
-                        type="button"
-                        onClick={executeDelete}
-                        className="btn-danger"
-                        style={{ padding: '8px 16px', fontSize: '0.85rem' }}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </div>
-  </div>
-)
+  )
 }
