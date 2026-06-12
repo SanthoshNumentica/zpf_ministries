@@ -48,7 +48,7 @@ export default function Header() {
         />
       </Link>
 
-      <nav className="navmenu">
+      <nav className="navmenu align-items-center">
         <ul>
           <li>
             <NavLink
