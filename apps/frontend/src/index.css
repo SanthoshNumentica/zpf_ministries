@@ -3444,3 +3444,147 @@ body.scrolled .header.redesign-header .logo img {
     padding-left: 0 !important;
   }
 }
+
+/* =======================================================
+ * Custom Worship Section
+ * ======================================================= */
+.worship-section {
+  padding: 80px 0;
+  background: #0f1016; /* Deep dark cosmic background to make the video pop */
+  border-top: 1px solid rgba(229, 193, 88, 0.1);
+  border-bottom: 1px solid rgba(229, 193, 88, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gold abstract glow behind the section */
+.worship-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(229, 193, 88, 0.08) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.worship-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 50px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.worship-text-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.worship-tag {
+  color: var(--accent-gold);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  display: inline-block;
+  position: relative;
+  padding-left: 25px;
+}
+
+.worship-tag::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 15px;
+  height: 2px;
+  background: var(--gold-metallic);
+  transform: translateY(-50%);
+}
+
+.worship-title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  background: var(--gold-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.worship-desc {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 30px;
+}
+
+.worship-play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold-metallic);
+  color: #0c0d12 !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 14px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 20px rgba(191, 149, 63, 0.3);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.worship-play-btn i {
+  font-size: 1.3rem;
+  transition: transform 0.3s ease;
+}
+
+.worship-play-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(191, 149, 63, 0.5);
+}
+
+.worship-play-btn:hover i {
+  transform: scale(1.2);
+}
+
+.worship-video-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(229, 193, 88, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  transform: perspective(1000px) rotateY(-5deg);
+  transition: transform 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+.worship-video-card:hover {
+  transform: perspective(1000px) rotateY(0deg) translateY(-5px);
+  border-color: rgba(229, 193, 88, 0.5);
+  box-shadow: 0 25px 60px rgba(229, 193, 88, 0.15);
+}
+
+@media (max-width: 992px) {
+  .worship-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .worship-title {
+    font-size: 2.2rem;
+  }
+  
+  .worship-video-card {
+    transform: none !important;
+  }
+}
