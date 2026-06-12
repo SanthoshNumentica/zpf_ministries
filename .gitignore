@@ -18,10 +18,6 @@ Thumbs.db
 # Users file (IMPORTANT - hide passwords)
 users.json
 
-# Build output
-apps/backend/dist
-apps/frontend/dist
-
 # Node modules
 apps/backend/node_modules
 apps/frontend/node_modules
