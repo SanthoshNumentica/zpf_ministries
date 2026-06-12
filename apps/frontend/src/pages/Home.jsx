@@ -109,14 +109,37 @@ export default function Home() {
 
       {/* 1. HERO SLIDESHOW */}
       <section className="redesign-hero">
-        <div className="redesign-hero-slider">
+        {/* Background YouTube Video */}
+        <iframe
+          src="https://www.youtube.com/embed/ahIVNoJZR2k?autoplay=1&mute=1&controls=0&loop=1&playlist=ahIVNoJZR2k&start=193&playsinline=1&enablejsapi=1&showinfo=0&rel=0&iv_load_policy=3"
+          title="Background Video"
+          frameBorder="0"
+          allow="autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            width: '100vw',
+            height: '56.25vw', /* 16:9 Aspect Ratio */
+            minHeight: '100%',
+            minWidth: '177.77%', /* 16:9 Aspect Ratio */
+            transform: 'translate(-50%, -50%) scale(1.2)',
+            pointerEvents: 'none',
+            zIndex: 0
+          }}
+        />
+
+        {/* Overlay placed over the video */}
+        <div className="redesign-hero-overlay" style={{ zIndex: 1 }}></div>
+
+        <div className="redesign-hero-slider" style={{ zIndex: 2 }}>
           {heroSlides.map((slide, idx) => (
             <div
               key={idx}
               className={`redesign-hero-slide ${idx === heroIndex ? 'active' : ''}`}
-              style={{ backgroundImage: `url(${slide.image})` }}
+              style={{ background: 'transparent' }}
             >
-              <div className="redesign-hero-overlay"></div>
               <div className="container">
                 <div className="redesign-hero-content">
                   <div className="redesign-hero-tag">{slide.tag}</div>
@@ -267,7 +290,7 @@ export default function Home() {
       </section>
 
       {/* 4. WORSHIP TEAM BANNER */}
-      <section className="worship-banner" style={{ backgroundImage: `url('/assets/img/worship_singers.png')` }}>
+      <section className="worship-banner" style={{ backgroundImage: `url('/assets/img/events/showcase-9.jpg')` }}>
         <div className="worship-banner-overlay"></div>
         <div className="container">
           <div className="worship-banner-content text-white">

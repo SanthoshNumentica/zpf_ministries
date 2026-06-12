@@ -33,7 +33,7 @@ export default function About() {
 
   return (
     <main className="main redesign-mode">
-      
+
       {/* 1. ABOUT HERO BANNER */}
       <div className="about-banner">
         <div className="container">
@@ -50,7 +50,7 @@ export default function About() {
       <section className="redesign-section light-bg">
         <div className="container">
           <div className="row align-items-center gy-5">
-            
+
             {/* History Details */}
             <div className="col-lg-6">
               <motion.div
@@ -84,14 +84,14 @@ export default function About() {
                 transition={{ duration: 0.8 }}
               >
                 <div className="pastor-family-card" style={{ position: 'relative' }}>
-                  <img 
-                    src={dhasPhotos[dhasPhotoIndex]} 
-                    alt="Founder Bro. Perinba Dhas and Wife" 
+                  <img
+                    src={dhasPhotos[dhasPhotoIndex]}
+                    alt="Founder Bro. Perinba Dhas and Wife"
                     className="pastor-family-card-img"
-                    style={{ 
+                    style={{
                       transition: 'opacity 0.6s ease-in-out',
                       width: '100%',
-                      height: '320px',
+                      height: '580px',
                       objectFit: 'cover'
                     }}
                   />
@@ -104,6 +104,59 @@ export default function About() {
             </div>
 
           </div>
+
+          {/* Founder's Daughters' Families */}
+          <div style={{ marginTop: '60px', paddingTop: '40px', borderTop: '1px dashed #eaeaea' }}>
+            <div className="redesign-section-header" style={{ marginBottom: '40px' }}>
+              <h2>Founder's Daughters' Families</h2>
+              <p>We honor the continuing legacy of our Founder Bro. Perinba Dhas through the active service of his family members supporting the fellowship.</p>
+            </div>
+            <div className="row g-4 justify-content-center">
+              <div className="col-lg-6 col-md-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="pastor-family-card">
+                    <img
+                      src="/assets/img/daughter_family_1.jpg"
+                      alt="Bro. Muhil and Family (Daughter's Family)"
+                      className="pastor-family-card-img"
+                      style={{ height: '600px', width: '100%', objectFit: 'cover' }}
+                    />
+                    <div className="pastor-family-card-body" style={{ padding: '20px 15px' }}>
+                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>Bro. Muhil & Family</h3>
+                      <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Daughter's Family</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+              <div className="col-lg-6 col-md-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <div className="pastor-family-card">
+                    <img
+                      src="/assets/img/daughter_family_2.jpg"
+                      alt="Founder's Daughter and Family"
+                      className="pastor-family-card-img"
+                      style={{ height: '600px', width: '100%', objectFit: 'cover' }}
+                    />
+                    <div className="pastor-family-card-body" style={{ padding: '20px 15px' }}>
+                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>Daughter's Family</h3>
+                      <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Founder's Family</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -181,7 +234,7 @@ export default function About() {
             <p>Meet the leaders, teachers, and coordinators who serve dedicatedly to build Zion Prayer Fellowship.</p>
           </div>
 
-          {/* Current Pastor & Leadership Families */}
+          {/* Current Pastor */}
           <div className="row align-items-center gy-5" style={{ marginBottom: '60px' }}>
             <div className="col-lg-6 order-lg-2">
               <motion.div
@@ -190,47 +243,28 @@ export default function About() {
                 viewport={{ once: true }}
                 variants={fadeInUp}
               >
-                <div className="row g-3">
-                  <div className="col-sm-6">
-                    <div className="pastor-family-card">
-                      <img 
-                        src="/assets/img/daughter_family_1.jpg" 
-                        alt="Pastor Bro. Muhil and Family (Daughter's Family)" 
-                        className="pastor-family-card-img"
-                      />
-                      <div className="pastor-family-card-body" style={{ padding: '16px 12px' }}>
-                        <h3 className="pastor-family-card-title" style={{ fontSize: '1.1rem' }}>Bro. Muhil & Family</h3>
-                        <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Our Pastor</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="pastor-family-card">
-                      <img 
-                        src="/assets/img/daughter_family_2.jpg" 
-                        alt="Founder's Daughter and Family" 
-                        className="pastor-family-card-img"
-                      />
-                      <div className="pastor-family-card-body" style={{ padding: '16px 12px' }}>
-                        <h3 className="pastor-family-card-title" style={{ fontSize: '1.1rem' }}>Daughter's Family</h3>
-                        <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Founder's Family</p>
-                      </div>
-                    </div>
+                <div className="pastor-family-card">
+                  <img
+                    src="/assets/img/muhil_family.png"
+                    alt="Pastor Bro. Muhil and Family"
+                    className="pastor-family-card-img"
+                    style={{ height: '500px', width: '100%', objectFit: 'cover' }}
+                  />
+                  <div className="pastor-family-card-body">
+                    <h3 className="pastor-family-card-title">Bro. Muhil & Family</h3>
+                    <p className="pastor-family-card-role">Our Pastor</p>
                   </div>
                 </div>
               </motion.div>
             </div>
 
             <div className="col-lg-6 order-lg-1">
-              <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '20px' }}>Pastoral Leadership & Legacy</h3>
+              <h3 style={{ fontSize: '1.8rem', fontWeight: 800, marginBottom: '20px' }}>Pastoral Leadership</h3>
               <p style={{ color: '#555', lineHeight: '1.7', marginBottom: '15px' }}>
                 Pastor Bro. Muhil leads our weekly services, coordinates support team units, and preaches the Gospel with passion and spirit-led guidance.
               </p>
-              <p style={{ color: '#666', lineHeight: '1.6', marginBottom: '15px' }}>
-                Dedicated to shepherding the congregation, teaching biblical foundation classes, and encouraging members to grow in their personal prayer lives.
-              </p>
               <p style={{ color: '#666', lineHeight: '1.6' }}>
-                We honor the continuing legacy of our Founder Bro. Perinba Dhas through the active service and dedication of the family members supporting the fellowship.
+                Dedicated to shepherding the congregation, teaching biblical foundation classes, and encouraging members to grow in their personal prayer lives.
               </p>
             </div>
           </div>
@@ -291,7 +325,7 @@ export default function About() {
           {/* Deacons (Tamil & English services) */}
           <div style={{ marginBottom: '60px' }}>
             <h3 className="servants-subheading">Service Deacons</h3>
-            
+
             <div className="row gy-4">
               {/* Tamil Service Deacons */}
               <div className="col-lg-6">

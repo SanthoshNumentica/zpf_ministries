@@ -207,8 +207,13 @@ body.scrolled .header {
 .navmenu {
   display: flex;
   align-items: center;
-  margin-left: 50px;
-  margin-right: auto;
+}
+
+@media (min-width: 993px) {
+  .header.redesign-header .navmenu {
+    margin-left: 50px;
+    margin-right: auto;
+  }
 }
 
 .navmenu ul {
