@@ -109,10 +109,11 @@ export default function About() {
           {/* Founder's Daughters' Families */}
           <div style={{ marginTop: '60px', paddingTop: '40px', borderTop: '1px dashed #eaeaea' }}>
             <div className="redesign-section-header" style={{ marginBottom: '40px' }}>
-              <h2>Founder's Daughters' Families</h2>
+              <h2>Founder's Families</h2>
               <p>We honor the continuing legacy of our Founder Bro. Perinba Dhas through the active service of his family members supporting the fellowship.</p>
             </div>
             <div className="row g-4 justify-content-center">
+              {/* Jemima Lydia's Family Card */}
               <div className="col-lg-6 col-md-6">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -121,19 +122,44 @@ export default function About() {
                   transition={{ duration: 0.6 }}
                 >
                   <SpotlightCard className="pastor-family-card" spotlightColor="rgba(229, 193, 88, 0.12)">
-                    <img
-                      src="/assets/img/daughter_family_1.jpg"
-                      alt="Bro. Muhil and Family (Daughter's Family)"
-                      className="pastor-family-card-img"
-                      style={{ height: '600px', width: '100%', objectFit: 'cover' }}
-                    />
+                    <div style={{ position: 'relative', height: '480px', width: '100%', overflow: 'hidden', backgroundColor: '#f8f9fa' }}>
+                      <img
+                        src="/assets/img/daughter_family_2.jpg"
+                        alt=""
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          filter: 'blur(12px) brightness(0.95)',
+                          opacity: 0.4,
+                          transform: 'scale(1.1)'
+                        }}
+                      />
+                      <img
+                        src="/assets/img/daughter_family_2.jpg"
+                        alt="Founder's Daughter and Family"
+                        className="pastor-family-card-img"
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          zIndex: 1
+                        }}
+                      />
+                    </div>
                     <div className="pastor-family-card-body" style={{ padding: '20px 15px' }}>
-                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>Family</h3>
+                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>Jemima Lydia's Family</h3>
                       <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Daughter's Family</p>
                     </div>
                   </SpotlightCard>
                 </motion.div>
               </div>
+
+              {/* Aileen Sonia's Family Card */}
               <div className="col-lg-6 col-md-6">
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -142,15 +168,84 @@ export default function About() {
                   transition={{ duration: 0.6 }}
                 >
                   <SpotlightCard className="pastor-family-card" spotlightColor="rgba(229, 193, 88, 0.12)">
-                    <img
-                      src="/assets/img/daughter_family_2.jpg"
-                      alt="Founder's Daughter and Family"
-                      className="pastor-family-card-img"
-                      style={{ height: '600px', width: '100%', objectFit: 'cover' }}
-                    />
+                    <div style={{ position: 'relative', height: '480px', width: '100%', overflow: 'hidden', backgroundColor: '#f8f9fa' }}>
+                      <img
+                        src="/assets/img/aileen_sonia_family.jpg"
+                        alt=""
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          filter: 'blur(12px) brightness(0.95)',
+                          opacity: 0.4,
+                          transform: 'scale(1.1)'
+                        }}
+                      />
+                      <img
+                        src="/assets/img/aileen_sonia_family.jpg"
+                        alt="Aileen Sonia's Family"
+                        className="pastor-family-card-img"
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          zIndex: 1
+                        }}
+                      />
+                    </div>
                     <div className="pastor-family-card-body" style={{ padding: '20px 15px' }}>
-                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>Daughter's Family</h3>
-                      <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Founder's Family</p>
+                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>Aileen Sonia's Family</h3>
+                      <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Daughter's Family</p>
+                    </div>
+                  </SpotlightCard>
+                </motion.div>
+              </div>
+
+              {/* John Wesley's Family Card */}
+              <div className="col-lg-6 col-md-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <SpotlightCard className="pastor-family-card" spotlightColor="rgba(229, 193, 88, 0.12)">
+                    <div style={{ position: 'relative', height: '480px', width: '100%', overflow: 'hidden', backgroundColor: '#f8f9fa' }}>
+                      <img
+                        src="/assets/img/john_wesley_family.jpg"
+                        alt=""
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          filter: 'blur(12px) brightness(0.95)',
+                          opacity: 0.4,
+                          transform: 'scale(1.1)'
+                        }}
+                      />
+                      <img
+                        src="/assets/img/john_wesley_family.jpg"
+                        alt="John Wesley's Family"
+                        className="pastor-family-card-img"
+                        style={{
+                          position: 'relative',
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          zIndex: 1
+                        }}
+                      />
+                    </div>
+                    <div className="pastor-family-card-body" style={{ padding: '20px 15px' }}>
+                      <h3 className="pastor-family-card-title" style={{ fontSize: '1.15rem' }}>John Wesley's Family</h3>
+                      <p className="pastor-family-card-role" style={{ fontSize: '0.8rem' }}>Son's Family</p>
                     </div>
                   </SpotlightCard>
                 </motion.div>
@@ -545,7 +640,7 @@ export default function About() {
                   </span>
                 </div>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '12px' }}>Deborah Fellowship</h3>
-                
+
                 <p style={{ fontSize: '0.95rem', color: '#555', lineHeight: '1.6', marginBottom: '15px' }}>
                   A monthly gathering for women focusing on intercessory prayers for families, missions, and spiritual mentorship.
                 </p>
@@ -620,7 +715,7 @@ export default function About() {
                   </span>
                 </div>
                 <h3 style={{ fontSize: '1.4rem', fontWeight: 800, marginBottom: '12px' }}>Kids Bible School</h3>
-                
+
                 <p style={{ fontSize: '0.95rem', color: '#555', lineHeight: '1.6', marginBottom: '15px' }}>
                   Providing sound biblical education, memorization, and activities to anchor children's faith early. Led by our dedicated teaching staff.
                 </p>
@@ -691,7 +786,7 @@ export default function About() {
             <h3 className="servants-subheading" style={{ borderBottomColor: '#2563eb', fontSize: '1.6rem', fontWeight: 800, paddingBottom: '10px', marginBottom: '25px' }}>
               Equipping & Edifying
             </h3>
-            
+
             <p style={{ color: '#555', lineHeight: '1.7', fontSize: '1.05rem', marginBottom: '30px', maxWidth: '800px' }}>
               We are committed to training, raising, and releasing believers to fulfill their spiritual callings in the church and outreach fields. Our structured edification path empowers every member to grow and serve.
             </p>

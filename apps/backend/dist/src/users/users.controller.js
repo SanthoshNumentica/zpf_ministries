@@ -45,11 +45,11 @@ let UsersController = class UsersController {
     }
     async create(body, authHeader) {
         this.validateToken(authHeader);
-        return this.usersService.create(body.dob, body.passcode);
+        return this.usersService.create(body.dob, body.passcode, body.name);
     }
     async update(id, body, authHeader) {
         this.validateToken(authHeader);
-        return this.usersService.update(+id, body.dob, body.passcode);
+        return this.usersService.update(+id, body.dob, body.passcode, body.name);
     }
     async remove(id, authHeader) {
         this.validateToken(authHeader);

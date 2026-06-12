@@ -66,38 +66,41 @@ async function main() {
         });
         console.log('Admin user password updated successfully.');
     }
+    await prisma.sanctuaryUser.deleteMany({});
+    await prisma.$executeRawUnsafe(`ALTER SEQUENCE "SanctuaryUser_id_seq" RESTART WITH 1;`);
+    console.log('Cleared existing sanctuary users and reset ID sequence to 1.');
     const users = [
-        { name: 'Philip Bro', dob: '2018-06-26' },
-        { name: 'Gilbert Bro', dob: '2021-06-11' },
-        { name: 'Sujith Bro', dob: '1726-11-14' },
-        { name: 'Simon Bro', dob: '2006-04-26' },
-        { name: 'Prabu Bro', dob: '2004-12-26' },
-        { name: 'Rajamohan Bro', dob: '1967-10-07' },
-        { name: 'Anusha Arun', dob: '2023-11-22' },
-        { name: 'Joncy Sis', dob: '1997-05-03' },
-        { name: 'Sowmiya Sis', dob: '2023-08-21' },
-        { name: 'Vinu Bro', dob: '2010-08-15' },
-        { name: 'Asir Bro', dob: '2000-12-21' },
-        { name: 'Vigil Bro', dob: '1978-12-34' },
-        { name: 'James Bro', dob: '2015-11-20' },
-        { name: 'Sundar Bro', dob: '1952-08-48' },
-        { name: 'Francis Bro', dob: '2022-03-15' },
-        { name: 'Immanuel Bro', dob: '2092-12-25' },
-        { name: 'John Peter Bro', dob: '2013-07-20' },
-        { name: 'Satish Bro', dob: '1992-10-10' },
-        { name: 'Joshua bro', dob: '2019-06-20' },
-        { name: 'Jeroslin bro', dob: '1993-06-20' },
-        { name: 'Moses bro', dob: '2005-12-07' },
-        { name: 'Jermy', dob: '1980-09-18' },
-        { name: 'Jermiah', dob: '1931-04-06' },
-        { name: 'Mani', dob: '2015-11-15' },
-        { name: 'Palani', dob: '1935-05-27' },
-        { name: 'Sathish', dob: '1975-02-19' },
-        { name: 'Rajesh', dob: '2026-11-15' },
-        { name: 'Alwyn', dob: '1967-10-22' },
-        { name: 'Sam', dob: '1987-03-03' },
-        { name: 'Pon', dob: '1975-07-07' },
-        { name: 'Muhil', dob: '2017-11-28' },
+        { name: 'Philip', dob: '26-06-2018' },
+        { name: 'Gilbert', dob: '11-06-2021' },
+        { name: 'Sujith', dob: '14-11-1726' },
+        { name: 'Simon', dob: '26-04-2006' },
+        { name: 'Prabu', dob: '26-12-2004' },
+        { name: 'Rajamohan', dob: '07-10-1967' },
+        { name: 'Anusha Arun', dob: '22-11-2023' },
+        { name: 'Joncy Sis', dob: '03-05-1997' },
+        { name: 'Sowmiya Sis', dob: '21-08-2023' },
+        { name: 'Vinu ', dob: '15-08-2010' },
+        { name: 'Asir ', dob: '21-12-2000' },
+        { name: 'Vigil ', dob: '34-12-1978' },
+        { name: 'James ', dob: '20-11-2015' },
+        { name: 'Sundar ', dob: '48-08-1952' },
+        { name: 'Francis ', dob: '15-03-2022' },
+        { name: 'Immanuel ', dob: '25-12-2092' },
+        { name: 'John Peter ', dob: '20-07-2013' },
+        { name: 'Satish ', dob: '10-10-1992' },
+        { name: 'Joshua ', dob: '20-06-2019' },
+        { name: 'Jeroslin ', dob: '20-06-1993' },
+        { name: 'Moses ', dob: '07-12-2005' },
+        { name: 'Jermy', dob: '18-09-1980' },
+        { name: 'Jermiah', dob: '06-04-1931' },
+        { name: 'Mani', dob: '15-11-2015' },
+        { name: 'Palani', dob: '27-05-1935' },
+        { name: 'Sathish', dob: '19-02-1975' },
+        { name: 'Rajesh', dob: '15-11-2026' },
+        { name: 'Alwyn', dob: '22-10-1967' },
+        { name: 'Sam', dob: '03-03-1987' },
+        { name: 'Pon', dob: '07-07-1975' },
+        { name: 'Muhil', dob: '28-11-2017' },
     ];
     const passcode = '2026';
     for (const user of users) {
@@ -108,6 +111,7 @@ async function main() {
             await prisma.sanctuaryUser.create({
                 data: {
                     dob: user.dob,
+                    name: user.name,
                     passcode: passcode,
                 },
             });
@@ -116,7 +120,7 @@ async function main() {
         else {
             await prisma.sanctuaryUser.update({
                 where: { id: existingUser.id },
-                data: { passcode: passcode },
+                data: { passcode: passcode, name: user.name },
             });
             console.log(`Updated ${user.name} passcode successfully.`);
         }
@@ -301,5 +305,6 @@ main()
 })
     .finally(async () => {
     await prisma.$disconnect();
+    await pool.end();
 });
 //# sourceMappingURL=seed.js.map

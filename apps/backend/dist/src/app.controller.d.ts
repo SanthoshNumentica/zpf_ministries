@@ -22,6 +22,7 @@ export declare class AppController {
     }>;
     getUsers(authHeader: string): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;

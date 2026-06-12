@@ -4,6 +4,7 @@ export declare class UsersService {
     constructor(prisma: PrismaService);
     findAll(): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
@@ -11,20 +12,23 @@ export declare class UsersService {
     }[]>;
     findOne(id: number): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
         updatedAt: Date;
     } | null>;
-    create(dob: string, passcode: string): Promise<{
+    create(dob: string, passcode: string, name: string): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
         updatedAt: Date;
     }>;
-    update(id: number, dob?: string, passcode?: string): Promise<{
+    update(id: number, dob?: string, passcode?: string, name?: string): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
@@ -32,6 +36,7 @@ export declare class UsersService {
     }>;
     remove(id: number): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;

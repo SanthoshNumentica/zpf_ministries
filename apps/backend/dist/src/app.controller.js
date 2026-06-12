@@ -102,7 +102,7 @@ let AppController = class AppController {
             throw new common_1.UnauthorizedException('Invalid or expired token.');
         }
         const users = await this.prisma.sanctuaryUser.findMany({
-            orderBy: { createdAt: 'desc' },
+            orderBy: { createdAt: 'asc' },
         });
         return users;
     }

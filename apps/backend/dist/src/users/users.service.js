@@ -19,7 +19,7 @@ let UsersService = class UsersService {
     }
     async findAll() {
         return this.prisma.sanctuaryUser.findMany({
-            orderBy: { createdAt: 'desc' },
+            orderBy: { id: 'asc' },
         });
     }
     async findOne(id) {
@@ -27,15 +27,15 @@ let UsersService = class UsersService {
             where: { id },
         });
     }
-    async create(dob, passcode) {
+    async create(dob, passcode, name) {
         return this.prisma.sanctuaryUser.create({
-            data: { dob, passcode },
+            data: { dob, passcode, name },
         });
     }
-    async update(id, dob, passcode) {
+    async update(id, dob, passcode, name) {
         return this.prisma.sanctuaryUser.update({
             where: { id },
-            data: { dob, passcode },
+            data: { dob, passcode, name },
         });
     }
     async remove(id) {

@@ -7,6 +7,7 @@ export declare class UsersController {
     private validateToken;
     findAll(authHeader: string): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
@@ -14,6 +15,7 @@ export declare class UsersController {
     }[]>;
     findOne(id: string, authHeader: string): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
@@ -22,8 +24,10 @@ export declare class UsersController {
     create(body: {
         dob: string;
         passcode: string;
+        name: string;
     }, authHeader: string): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
@@ -32,8 +36,10 @@ export declare class UsersController {
     update(id: string, body: {
         dob?: string;
         passcode?: string;
+        name?: string;
     }, authHeader: string): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
@@ -41,6 +47,7 @@ export declare class UsersController {
     }>;
     remove(id: string, authHeader: string): Promise<{
         id: number;
+        name: string;
         dob: string;
         passcode: string;
         createdAt: Date;
