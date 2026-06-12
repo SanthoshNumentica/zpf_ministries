@@ -475,86 +475,134 @@ export default function Admin() {
 
   if (!adminToken) {
     return (
-      <div className="admin-page-container login-mode">
-        {/* Background celestial animations */}
-        <div className="ambient-background">
-          <div className="glow-sphere glow-sphere-1"></div>
-          <div className="glow-sphere glow-sphere-2"></div>
+      <div className="login-split-container">
+        {/* Left side: Very Big Logo with animation */}
+        <div className="login-split-left" style={{ background: 'radial-gradient(circle at center, rgba(43, 67, 182, 0.15) 0%, rgba(5, 6, 9, 1) 70%)' }}>
+          <div className="ambient-background">
+            <div className="glow-sphere glow-sphere-1"></div>
+            <div className="glow-sphere glow-sphere-2"></div>
+          </div>
+          <div className="giant-cross-glow" style={{ background: 'radial-gradient(circle, rgba(43, 67, 182, 0.18) 0%, rgba(43, 67, 182, 0) 70%)' }}></div>
+          <motion.div
+            className="giant-cross-wrapper"
+            style={{ filter: 'drop-shadow(0 0 35px rgba(43, 67, 182, 0.35))' }}
+            animate={{
+              y: [0, -15, 0],
+              rotate: [0, 1.5, 0]
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 6,
+              ease: "easeInOut"
+            }}
+          >
+            <svg width="220" height="220" viewBox="0 0 24 24" fill="none">
+              <defs>
+                <linearGradient id="adminGiantCrossGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#2b43b6" />
+                  <stop offset="50%" stopColor="#4d65df" />
+                  <stop offset="100%" stopColor="#1e339a" />
+                </linearGradient>
+              </defs>
+              <path
+                d="M12,2 L12,22 M7,8 L17,8"
+                stroke="url(#adminGiantCrossGrad)"
+                strokeWidth="2.0"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.div>
+          
+          {/* Admin Branding */}
+          <h1 style={{ marginTop: '24px', fontSize: '2.4rem', fontWeight: 800, letterSpacing: '2px', textAlign: 'center' }}>
+            <ShinyText text="ADMIN ACCESS" speed={6} />
+          </h1>
+          <p className="text-cosmic" style={{ fontSize: '1.05rem', marginTop: '10px', opacity: 0.8, letterSpacing: '1px' }}>
+            ZPF MINISTRIES DASHBOARD
+          </p>
         </div>
 
-        <div className="container">
-          <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh', width: '100%' }}>
-            <div className="login-card-container">
-              <div className="login-card-glow"></div>
-              <SpotlightCard className="login-card" spotlightColor="rgba(191, 149, 63, 0.16)">
-                <div className="login-header text-center mb-3">
-                  <i className="bi bi-shield-lock lock-icon"></i>
-                  <h2 className="login-title">
-                    <ShinyText text="Admin Access Portal" speed={6} />
-                  </h2>
+        {/* Right side: Login Card Form */}
+        <div className="login-split-right">
+          <motion.div
+            className="login-card-container"
+            style={{ width: '100%', maxWidth: '440px' }}
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className="login-card-glow"></div>
+            <SpotlightCard className="login-card" spotlightColor="rgba(43, 67, 182, 0.16)">
+              <div className="login-header text-center mb-3">
+                <h2 className="login-title">
+                  Sign In
+                </h2>
+                <p className="text-cosmic" style={{ fontSize: '0.85rem', marginTop: '5px' }}>
+                  Enter administrative credentials
+                </p>
+              </div>
+
+              {/* Tamil Bible Verse */}
+              <div className="login-verse-container">
+                <i className="bi bi-quote quote-icon-left"></i>
+                <p className="tamil-verse-text">"கர்த்தருடைய ஆலயத்திற்குப் போவோம் வாருங்கள் என்று எனக்கு அவர்கள் சொன்னபோது மகிழ்ச்சியாயிருந்தேன்."</p>
+                <p className="verse-ref">சங்கீதம் 122:1</p>
+              </div>
+
+              <form onSubmit={handleLoginSubmit} className="login-form mt-3">
+                <div className="form-group mb-4">
+                  <label className="form-label">Email Address</label>
+                  <div className="input-group-custom">
+                    <i className="bi bi-envelope input-icon"></i>
+                    <input
+                      type="email"
+                      className="form-control-custom"
+                      placeholder="admin@gmail.com"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
                 </div>
 
-                {/* Tamil Bible Verse */}
-                <div className="login-verse-container">
-                  <i className="bi bi-quote quote-icon-left"></i>
-                  <p className="tamil-verse-text">"கர்த்தருடைய ஆலயத்திற்குப் போவோம் வாருங்கள் என்று எனக்கு அவர்கள் சொன்னபோது மகிழ்ச்சியாயிருந்தேன்."</p>
-                  <p className="verse-ref">சங்கீதம் 122:1</p>
+                <div className="form-group mb-4">
+                  <label className="form-label">Password</label>
+                  <div className="input-group-custom">
+                    <i className="bi bi-key input-icon"></i>
+                    <input
+                      type="password"
+                      className="form-control-custom"
+                      placeholder="••••••••"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                    />
+                  </div>
                 </div>
 
-                <form onSubmit={handleLoginSubmit} className="login-form mt-3">
-                  <div className="form-group mb-4">
-                    <label className="form-label">Email Address</label>
-                    <div className="input-group-custom">
-                      <i className="bi bi-envelope input-icon"></i>
-                      <input
-                        type="email"
-                        className="form-control-custom"
-                        placeholder="admin@gmail.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                      />
-                    </div>
+                {error && (
+                  <div className="login-error-alert mb-4">
+                    <i className="bi bi-exclamation-triangle-fill me-2"></i>
+                    {error}
                   </div>
+                )}
 
-                  <div className="form-group mb-4">
-                    <label className="form-label">Password</label>
-                    <div className="input-group-custom">
-                      <i className="bi bi-key input-icon"></i>
-                      <input
-                        type="password"
-                        className="form-control-custom"
-                        placeholder="••••••••"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  {error && (
-                    <div className="login-error-alert mb-4">
-                      <i className="bi bi-exclamation-triangle-fill me-2"></i>
-                      {error}
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    className="btn-login-submit"
-                    disabled={loading}
-                  >
-                    {loading ? 'AUTHENTICATING...' : 'ACCESS DASHBOARD'}
-                  </button>
-                  <div className="text-center mt-3">
-                    <Link to="/" className="user-redirect-link">
-                      Are you a User? Login here
-                    </Link>
-                  </div>
-                </form>
-              </SpotlightCard>
-            </div>
-          </div>
+                <button
+                  type="submit"
+                  className="btn-login-submit"
+                  disabled={loading}
+                >
+                  {loading ? 'AUTHENTICATING...' : 'ACCESS DASHBOARD'}
+                </button>
+                <div className="text-center mt-3">
+                  <Link to="/" className="user-redirect-link">
+                    Are you a User? Login here
+                  </Link>
+                </div>
+              </form>
+            </SpotlightCard>
+          </motion.div>
         </div>
       </div>
     )

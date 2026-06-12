@@ -706,22 +706,40 @@ body.scrolled .header {
 
 .btn-login-submit {
   width: 100%;
-  background: var(--gold-metallic);
   border: none;
-  border-radius: 30px;
+  border-radius: 8px;
   padding: 14px;
-  color: #1a150e;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.95rem;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(191, 149, 63, 0.3);
+  transition: all 0.2s ease;
 }
 
-.btn-login-submit:hover:not(:disabled) {
-  box-shadow: 0 6px 25px rgba(191, 149, 63, 0.5);
+/* User Gate submit style (solid gold) */
+.login-gate-wrapper .btn-login-submit {
+  background: #b38728;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(179, 135, 40, 0.15);
+}
+
+.login-gate-wrapper .btn-login-submit:hover:not(:disabled) {
+  background: #9a7320;
   transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(179, 135, 40, 0.25);
+}
+
+/* Admin Gate submit style (solid royal blue) */
+.admin-page-container.login-mode .btn-login-submit {
+  background: #2b43b6;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(43, 67, 182, 0.15);
+}
+
+.admin-page-container.login-mode .btn-login-submit:hover:not(:disabled) {
+  background: #1e339a;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(43, 67, 182, 0.25);
 }
 
 .btn-login-submit:disabled {
@@ -4392,4 +4410,78 @@ body.scrolled .header.redesign-header .logo img {
 .user-redirect-link:hover {
   color: #1e339a !important;
   text-decoration: underline !important;
+}
+
+/* Login Split Screen Layout styles */
+.login-split-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #050609;
+  overflow: hidden;
+}
+
+.login-split-left {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, rgba(191, 149, 63, 0.15) 0%, rgba(5, 6, 9, 1) 70%);
+  position: relative;
+  border-right: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 40px;
+}
+
+.login-split-right {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: #050609;
+  position: relative;
+}
+
+.giant-cross-glow {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(191, 149, 63, 0.18) 0%, rgba(191, 149, 63, 0) 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+}
+
+.giant-cross-wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.giant-cross-wrapper svg {
+  filter: drop-shadow(0 0 35px rgba(191, 149, 63, 0.35));
+}
+
+@media (max-width: 992px) {
+  .login-split-container {
+    flex-direction: column;
+  }
+  .login-split-left {
+    flex: none;
+    height: 340px;
+    padding: 20px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  }
+  .login-split-right {
+    flex: 1;
+    padding: 30px 20px;
+  }
 }
