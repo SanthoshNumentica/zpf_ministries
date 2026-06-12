@@ -102,6 +102,7 @@ export default function LoginGate({ children }) {
         <div className="giant-cross-glow"></div>
         <motion.div
           className="giant-cross-wrapper"
+          style={{ position: 'relative', display: 'inline-block' }}
           animate={{
             y: [0, -15, 0],
             rotate: [0, 1.5, 0]
@@ -112,6 +113,29 @@ export default function LoginGate({ children }) {
             ease: "easeInOut"
           }}
         >
+          {/* Left Dove facing the Cross */}
+          <motion.div
+            className="dove-left"
+            animate={{
+              y: [0, -6, 0],
+              x: [0, 4, 0],
+              rotate: [0, 1, 0]
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 4,
+              ease: "easeInOut",
+              delay: 0.2
+            }}
+          >
+            <svg viewBox="0 0 512 512" width="100%" height="100%">
+              <path
+                d="M496 64c13.2 0 20.7 15.1 12.8 25.6L480 128 480 304c0 79.5-64.5 144-144 144l-112 0-46.3 46.3c-10.4 10.4-26.5 12.4-39.1 4.8L41.5 440.9c-17-10.2-15-35.5 3.4-42.9L160 352C23.8 311.1 7.5 169.8 22 95.7 25.6 77.9 45.3 71.4 61.3 80.2L320 224 320 144c0-44.2 35.8-80 80-80l96 0zm-96 56a24 24 0 1 0 0 48 24 24 0 1 0 0-48zM182.5-9.6c12.4-13.7 33.3-8.9 42.5 7.1l56.4 98.3c-5.8 14.4-9.2 30.1-9.4 46.5L138.1 68c10.1-31.6 27-58.4 44.4-77.6z"
+                fill="url(#giantCrossGrad)"
+              />
+            </svg>
+          </motion.div>
+
           <svg width="220" height="220" viewBox="0 0 24 24" fill="none">
             <defs>
               <linearGradient id="giantCrossGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -129,6 +153,30 @@ export default function LoginGate({ children }) {
               strokeLinejoin="round"
             />
           </svg>
+
+          {/* Right Dove facing the Cross (flipped horizontally) */}
+          <motion.div
+            className="dove-right"
+            style={{ scaleX: -1 }}
+            animate={{
+              y: [0, -6, 0],
+              x: [0, -4, 0],
+              rotate: [0, -1, 0]
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 4,
+              ease: "easeInOut",
+              delay: 0.8
+            }}
+          >
+            <svg viewBox="0 0 512 512" width="100%" height="100%">
+              <path
+                d="M496 64c13.2 0 20.7 15.1 12.8 25.6L480 128 480 304c0 79.5-64.5 144-144 144l-112 0-46.3 46.3c-10.4 10.4-26.5 12.4-39.1 4.8L41.5 440.9c-17-10.2-15-35.5 3.4-42.9L160 352C23.8 311.1 7.5 169.8 22 95.7 25.6 77.9 45.3 71.4 61.3 80.2L320 224 320 144c0-44.2 35.8-80 80-80l96 0zm-96 56a24 24 0 1 0 0 48 24 24 0 1 0 0-48zM182.5-9.6c12.4-13.7 33.3-8.9 42.5 7.1l56.4 98.3c-5.8 14.4-9.2 30.1-9.4 46.5L138.1 68c10.1-31.6 27-58.4 44.4-77.6z"
+                fill="url(#giantCrossGrad)"
+              />
+            </svg>
+          </motion.div>
         </motion.div>
         
         {/* Ministry Branding */}
@@ -138,6 +186,22 @@ export default function LoginGate({ children }) {
         <p className="text-cosmic" style={{ fontSize: '1.05rem', marginTop: '10px', opacity: 0.8, letterSpacing: '1px' }}>
           TAMIL CHRISTIAN CHURCH
         </p>
+
+        {/* Decorative Divider */}
+        <div style={{ width: '40px', height: '1px', background: 'rgba(191, 149, 63, 0.3)', marginTop: '24px', marginBottom: '24px' }}></div>
+
+        {/* Left Side Bible Verse */}
+        <div className="login-left-verse-container" style={{ maxWidth: '440px', textAlign: 'center', padding: '0 20px' }}>
+          <p style={{ fontStyle: 'italic', fontSize: '0.95rem', color: 'rgba(255, 255, 255, 0.75)', lineHeight: '1.6', margin: '0 0 10px 0' }}>
+            "One thing I ask from the Lord, this only do I seek: that I may dwell in the house of the Lord all the days of my life..."
+          </p>
+          <p style={{ fontStyle: 'italic', fontSize: '0.9rem', color: '#bf953f', margin: '0 0 8px 0', lineHeight: '1.6' }}>
+            "நான் கர்த்தரிடத்தில் ஒன்றைக் கேட்டேன், அதையே நாடுவேன்; நான் என் ஜீவனுள்ள நாளெல்லாம் கர்த்தருடைய ஆலயத்தில் தங்கியிருப்பதையே நாடுவேன்."
+          </p>
+          <span style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.4)', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase' }}>
+            Psalm / சங்கீதம் 27:4
+          </span>
+        </div>
       </div>
 
       {/* Right side: Login Card Form */}
